@@ -3,13 +3,13 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-import { signUp as signUpService } from "./../services/auth-api";
+import { SignUp as signUpService } from "./../services/auth-api";
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      name: "",
       email: "",
       password: ""
     };
@@ -27,8 +27,8 @@ export default class SignUp extends Component {
 
   onSubmitForm(event) {
     event.preventDefault();
-    const { username, email, password } = this.state;
-    signUpService({ username, email, password })
+    const { name, email, password } = this.state;
+    signUpService({ name, email, password })
       .then(user => {
         this.props.history.push("/profile");
       })

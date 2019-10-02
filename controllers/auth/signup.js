@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
       req.session.user = {
         _id: user._id
       };
-      req.json({ user });
+      res.json({ user });
     })
     .catch(error => {
       next(error);
