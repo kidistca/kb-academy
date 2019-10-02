@@ -24,9 +24,6 @@ export default class Login extends Component {
     });
   }
 
-  //Function passed as prop from app
-  //this.props.loadUser(user);
-
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
