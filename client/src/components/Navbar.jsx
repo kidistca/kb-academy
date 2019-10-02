@@ -3,14 +3,14 @@ import React, { Fragment } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
-const Menu = user => {
+const Menu = props => {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">Train Your Brain</Navbar.Brand>
+      <Navbar.Brand href="/">Train Your Brain</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          {(!user && (
+          {(!props.user && (
             <Fragment>
               <Nav.Link href="/signin">Sign In</Nav.Link>
               <Nav.Link href="/signup">Sign Up</Nav.Link>
