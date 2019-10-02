@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-import { SignUp as signUpService } from "./../services/auth-api";
+import { signUp as signUpService } from "./../services/auth-api";
 
 export default class SignUp extends Component {
   constructor(props) {
