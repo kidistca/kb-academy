@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import "./Home.css";
 
+import Container from "react-bootstrap/Container";
+
 export default class HomeView extends Component {
   render() {
     return (
       <div className="Background">
-        <h1>MERN APP BOILERPLATE</h1>
+        <Container>
+          <h1>LOREM IPSUM</h1>
+        </Container>
       </div>
     );
   }

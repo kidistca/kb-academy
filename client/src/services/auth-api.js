@@ -48,7 +48,7 @@ export const SignIn = ({ email, password }) => {
 export const SignOut = () => {
   return new Promise((resolve, reject) => {
     authApi
-      .get("/signout")
+      .post("/signout")
       .then(response => {
         resolve();
       })

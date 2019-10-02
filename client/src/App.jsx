@@ -14,6 +14,7 @@ import ProfileView from "./views/Profile";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 import { SignedIn } from "./services/auth-api";
+//import { SignOut } from "./services/auth-api";
 
 export default class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class App extends Component {
     this.state = {
       user: null
     };
+    //this.signOut = this.signOut.bind(this);
   }
   componentDidMount() {
     SignedIn()
@@ -35,6 +37,19 @@ export default class App extends Component {
         console.log(error);
       });
   }
+
+  // signOut(event) {
+  //   event.preventDefault();
+  //   SignOut()
+  //     .then(() => {
+  //       this.setState({
+  //         user: null
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 
   render() {
     return (
