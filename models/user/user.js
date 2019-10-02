@@ -15,15 +15,18 @@ const schema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  passwordHash: {
+  password: {
     type: String,
     required: true
   },
   role: {
     type: String,
     required: true,
-    enum: ["user", "editor", "admin"],
-    default: "user"
+    enum: ["student", "admin"],
+    default: "student"
+  },
+  image: {
+    type: String
   }
 });
 
