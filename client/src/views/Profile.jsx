@@ -11,8 +11,6 @@ export default class Profile extends Component {
     this.state = {
       user: ""
     };
-
-    // this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +41,7 @@ export default class Profile extends Component {
 
   render() {
     const userOne = this.state.user;
-    // console.log(userOne.name);
+    console.log(userOne.name);
     return (
       <Container>
         <h1>Your Profile</h1>

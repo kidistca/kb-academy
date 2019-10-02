@@ -24,15 +24,11 @@ export default class Login extends Component {
     });
   }
 
-  //Function passed as prop from app
-  //this.props.loadUser(user);
-
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
     signInService({ email, password })
       .then(user => {
-        this.props.loadUser(user);
         this.props.history.push("/profile");
       })
       .catch(error => {
