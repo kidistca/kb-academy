@@ -1,6 +1,6 @@
 "use strict";
 
-const User = require("./../models/user");
+const User = require("./../models/user/user");
 
 module.exports = (req, res, next) => {
   if (req.session && req.session.user) {

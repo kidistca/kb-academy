@@ -17,7 +17,7 @@ module.exports = function({ email, password, name }) {
     .then(hash => {
       return Model.create({
         email,
-        passwordHash: hash,
+        password: hash,
         name
       });
     })
