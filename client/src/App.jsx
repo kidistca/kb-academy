@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Menu from "./components/Navbar";
 
 import HomeView from "./views/Home";
 import SignUpView from "./views/SignUp";
@@ -11,12 +13,34 @@ import ProfileView from "./views/Profile";
 // import * as AuthServices from "./services/auth-api";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
+import { SignedIn } from "./services/auth-api";
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+  }
+  componentDidMount() {
+    SignedIn()
+      .then(user => {
+        if (user) {
+          this.setState({
+            user
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="App">
         <Router>
+          <Menu />
           <Switch>
             <Route path="/" exact component={HomeView} />
             <Route path="/signup" component={SignUpView} />

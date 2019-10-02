@@ -21,9 +21,16 @@
     "http-errors": "^1.7.3",
     "mongoose": "^=5.6.13",
     "morgan": "^1.9.1",
+<<<<<<< HEAD
     "multer": "^1.4.2",
     "multer-storage-cloudinary": "^2.2.1",
     "serve-favicon": "^2.5.0"
+=======
+    "node-sass": "^4.12.0",
+    "react-animations": "^1.0.0",
+    "serve-favicon": "^2.5.0",
+    "styled-components": "^4.4.0"
+>>>>>>> 2ffff9b010d32cb6c3c0595d9cde9818d2df46b6
   },
   "devDependencies": {
     "mocha": "^6.2.0",
