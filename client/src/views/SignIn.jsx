@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-import { SignIn as loginService } from "./../services/auth-api";
+import { SignIn as signInService } from "./../services/auth-api";
 
 export default class Login extends Component {
   constructor() {
@@ -30,7 +30,7 @@ export default class Login extends Component {
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    loginService({ email, password })
+    signInService({ email, password })
       .then(user => {
         this.props.history.push("/profile");
       })
