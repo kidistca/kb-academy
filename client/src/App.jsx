@@ -13,28 +13,28 @@ import ProfileView from "./views/Profile";
 // import * as AuthServices from "./services/auth-api";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
-//import { SignedIn } from "./services/auth-api";
+import { SignedIn } from "./services/auth-api";
 
 export default class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     user: null
-  //   };
-  // }
-  // componentDidMount() {
-  //   SignedIn()
-  //     .then(user => {
-  //       if (user) {
-  //         this.setState({
-  //           user
-  //         });
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+  }
+  componentDidMount() {
+    SignedIn()
+      .then(user => {
+        if (user) {
+          this.setState({
+            user
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   render() {
     return (
