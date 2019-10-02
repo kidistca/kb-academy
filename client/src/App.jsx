@@ -8,7 +8,7 @@ import HomeView from "./views/Home";
 import SignUpView from "./views/SignUp";
 import SignInView from "./views/SignIn";
 import ProfileView from "./views/Profile";
-
+// import * as AuthServices from "./services/auth-api";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 

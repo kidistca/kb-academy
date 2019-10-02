@@ -4,6 +4,19 @@ const authApi = axios.create({
   baseURL: "/auth"
 });
 
+export const SignedIn = () =>
+  new Promise((resolve, reject) => {
+    authApi
+      .get("/signedin")
+      .then(response => {
+        const user = response.data.user;
+        resolve(user);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+
 export const SignUp = ({ name, email, password }) => {
   return new Promise((resolve, reject) => {
     authApi
@@ -23,21 +36,7 @@ export const SignIn = ({ email, password }) => {
     authApi
       .post("/signin", { email, password })
       .then(response => {
-        console.log(response);
-        resolve(response.data.user);
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
-};
-
-export const SignedIn = () => {
-  return new Promise((resolve, reject) => {
-    authApi
-      .get("/signedin")
-      .then(response => {
-        console.log(response);
+        // console.log(response.data.user.name);
         resolve(response.data.user);
       })
       .catch(error => {

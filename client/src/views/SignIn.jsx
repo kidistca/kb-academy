@@ -32,6 +32,7 @@ export default class Login extends Component {
     const { email, password } = this.state;
     signInService({ email, password })
       .then(user => {
+        this.props.loadUser(user);
         this.props.history.push("/profile");
       })
       .catch(error => {
