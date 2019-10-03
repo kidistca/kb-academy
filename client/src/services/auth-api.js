@@ -50,7 +50,7 @@ export const signOut = () => {
     authApi
       .post("/signout")
       .then(response => {
-        resolve();
+        resolve(response.data.user);
       })
       .catch(error => {
         reject(error);

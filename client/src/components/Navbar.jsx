@@ -3,25 +3,12 @@ import { Link } from "react-router-dom";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
-// import { SignOut } from "./../services/auth-api";
+import { withRouter } from "react-router";
 
-const Menu = () => {
-  // function signOut(event) {
-  //   event.preventDefault();
-  //   SignOut()
-  //     .then(() => {
-  //       this.setState({
-  //         user: null
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
-
+const Menu = props => {
   return (
     <Navbar bg="transparent" expand="lg">
       <Link to="/">Train Your Brain</Link>
@@ -29,11 +16,21 @@ const Menu = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Fragment>
-            <Link to="/profile">Profile</Link>
-            <Link to="/signout">Sign Out</Link>
-            {/* <Form onSubmit={signOut}>
+            <Link className="btn" to="/signin">
+              Sign In
+            </Link>
+            <Link className="btn" to="/signup">
+              Sign Up
+            </Link>
+          </Fragment>
+
+          <Fragment>
+            <Link className="btn" to="/profile">
+              Profile
+            </Link>
+            <Form onSubmit={props.signOut}>
               <Button type="submit">Sign Out</Button>
-            </Form> */}
+            </Form>
           </Fragment>
         </Nav>
       </Navbar.Collapse>
@@ -41,4 +38,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default withRouter(Menu);
