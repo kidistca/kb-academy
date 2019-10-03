@@ -5,10 +5,10 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-// import * as AuthServices from "./../services/auth-api";
-import { signedIn as signedInService } from "./../services/auth-api";
-import { uploadPicture as uploadService } from "./../services/auth-api";
+import { Link } from "react-router-dom";
+import * as AuthServices from "./../services/auth-api";
+// import { signedIn as signedInService } from "./../services/auth-api";
+// import { uploadPicture as uploadService } from "./../services/auth-api";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -17,10 +17,12 @@ export default class Profile extends Component {
       user: null
     };
     this.onFileChange = this.onFileChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    // this.onSubmitFormEdit = this.onSubmitFormEdit.bind(this);
   }
 
   componentDidMount() {
-    signedInService()
+    AuthServices.signedIn()
       .then(user => {
         this.setState({
           user
@@ -31,23 +33,24 @@ export default class Profile extends Component {
         console.log(error);
       });
   }
+  handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+  }
 
-  //   handleChange(event) {
-  //     const { name, value } = event.target;
-  //     this.setState({
-  //       [name]: value
-  //     });
-  //   }
   onFileChange(event) {
     // console.dir(event.target)
     event.preventDefault();
     const data = new window.FormData();
     data.append("image", event.target.files[0]);
-    uploadService(data)
+    AuthServices.uploadPicture(data)
       .then(user => {
         console.log(user);
         this.setState({
-          user
+          user: null
         });
       })
       .catch(error => {
@@ -55,10 +58,10 @@ export default class Profile extends Component {
       });
   }
 
-  // onSubmitForm(event) {
+  // onSubmitFormEdit(event) {
   //   event.preventDefault();
-  //   const { name, email, password } = this.state;
-  //   signUpService({ name, email, password })
+  //   const { name, email } = this.state.user;
+  //   AuthServices.edit(name, email)
   //     .then(user => {
   //       this.props.history.push("/profile");
   //     })
@@ -79,12 +82,13 @@ export default class Profile extends Component {
         <Container>
           <Row>
             <Col>
-              <h1>Your Profile</h1>
-              <h2>{userOne.name}</h2>
-              <h2>{userOne.email}</h2>
-              <h2>{userOne.role}</h2>
-              <Button>Edit</Button>
-              <Button>Delet</Button>
+              <h3>{userOne.name}</h3>
+              <h3>{userOne.email}</h3>
+              <h3>{userOne.role}</h3>
+              <Link to="/profile-edit">
+                <Button>Change Profile</Button>
+              </Link>
+              {/* <Button>Delet</Button> */}
             </Col>
             <Col>
               <Form>
