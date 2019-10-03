@@ -25,6 +25,7 @@ const Menu = props => {
         </div>
       )) || (
         <div className="ml-auto">
+          <span className="btn">{props.user.name}</span>
           <Link className="btn" to="/profile">
             Profile
           </Link>

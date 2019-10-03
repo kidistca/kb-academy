@@ -10,6 +10,10 @@ const routeGuardMiddleware = require("./../middleware/route-guard");
 
 const createExerciseController = require("./../controllers/exercise/create-exercise");
 
-router.post("/exercise/create-exercise", createExerciseController);
+router.post(
+  "/exercise/create-exercise",
+  routeGuardMiddleware(true),
+  createExerciseController
+);
 
 module.exports = router;

@@ -12,13 +12,15 @@ export default class MathExercise extends Component {
     this.state = {
       exercise: {
         question: "",
-        answerOne: "",
-        answerTwo: "",
+        answerOne: Math.floor(Math.random() * 1000),
+        answerTwo: Math.floor(Math.random() * 1000),
         solution: ""
-      }
+      },
+      score: 0
     };
     this.createExercise = this.createExercise.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.scoreCounter = this.scoreCounter.bind(this);
   }
 
   // onEdit(event) {
@@ -50,13 +52,21 @@ export default class MathExercise extends Component {
     const value = event.target.value;
     console.log("first-value", value);
     this.setState({
-      exercise: { [name]: value }
+      // exercise: { solution: value }
+      exercise: { ...this.state.exercise, ...{ solution: event.target.value } }
+    });
+  }
+
+  scoreCounter() {
+    this.setState({
+      score: this.state.score + 1
     });
   }
 
   render() {
     return (
       <Container>
+        <Button onClick={this.scoreCounter}>{this.state.score}</Button>
         <Form onSubmit={this.createExercise}>
           <Form.Group>
             <Form.Label htmlFor="math-question">Question</Form.Label>
@@ -69,23 +79,25 @@ export default class MathExercise extends Component {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label htmlFor="first-value">First Value</Form.Label>
+            {/* <Form.Label htmlFor="first-value">First Value</Form.Label> */}
             <Form.Control
+              style={{ borderWidth: "0px", border: "none", background: "none" }}
               id="first-value"
               type="text"
               name="answerOne"
-              value={Math.floor(Math.random() * 10)}
+              value={this.state.exercise.answerOne}
               //onChange={this.onExerciseValueChange}
             />
           </Form.Group>
 
           <Form.Group>
-            <Form.Label htmlFor="second-value">Second Value</Form.Label>
+            {/* <Form.Label htmlFor="second-value">Second Value</Form.Label> */}
             <Form.Control
+              style={{ borderWidth: "0px", border: "none", background: "none" }}
               id="second-value"
               type="text"
               name="answerTwo"
-              value={Math.floor(Math.random() * 1000)}
+              value={this.state.exercise.answerTwo}
               // onChange={this.onExerciseValueChange}
             />
           </Form.Group>
@@ -95,11 +107,18 @@ export default class MathExercise extends Component {
               id="answer"
               type="text"
               name="solution"
-              value={this.state.exercise.question}
+              value={
+                this.state.exercise.answerOne + this.state.exercise.answerOne
+              }
               onChange={this.handleChange}
             />
           </Form.Group>
           <Button type="submit">Calculate</Button>
+          <br />
+          <br />
+        </Form>
+        <Form onSubmit="">
+          <Button type="submit">Next</Button>
         </Form>
       </Container>
     );
