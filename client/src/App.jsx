@@ -8,10 +8,10 @@ import Menu from "./components/Navbar";
 import Container from "react-bootstrap/Container";
 
 import HomeView from "./views/Home";
-import SignUpView from "./views/SignUp";
-import SignInView from "./views/SignIn";
-import ProfileView from "./views/Profile";
-import EditProfileView from "./views/Edit";
+import SignUpView from "./views/user/SignUp";
+import SignInView from "./views/user/SignIn";
+import ProfileView from "./views/user/Profile";
+import EditProfileView from "./views/user/Edit";
 // import * as AuthServices from "./services/auth-api";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";

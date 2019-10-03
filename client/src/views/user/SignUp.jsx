@@ -3,17 +3,18 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-import { signIn as signInService } from "./../services/auth-api";
+import { signUp as signUpService } from "./../../services/auth-api";
 
-export default class Login extends Component {
-  constructor() {
-    super();
+export default class SignUp extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
+      name: "",
       email: "",
       password: ""
     };
-    this.handleChange = this.handleChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -26,8 +27,8 @@ export default class Login extends Component {
 
   onSubmitForm(event) {
     event.preventDefault();
-    const { email, password } = this.state;
-    signInService({ email, password })
+    const { name, email, password } = this.state;
+    signUpService({ name, email, password })
       .then(user => {
         this.props.history.push("/profile");
       })
@@ -39,8 +40,19 @@ export default class Login extends Component {
   render() {
     return (
       <Container>
-        <h1>Login</h1>
+        <h1>Sign up</h1>
         <Form onSubmit={this.onSubmitForm}>
+          <Form.Group>
+            <Form.Label htmlFor="user-name">Name</Form.Label>
+            <Form.Control
+              id="user-name"
+              name="name"
+              type="text"
+              placeholder="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
           <Form.Group>
             <Form.Label htmlFor="user-email">Email</Form.Label>
             <Form.Control
@@ -63,14 +75,9 @@ export default class Login extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button type="submit">Sign in</Button>
+          <Button type="submit">Sign up</Button>
         </Form>
       </Container>
     );
   }
 }
-
-//client - services- authentication axios,
-//        views - forms with handle changes
-//server - controllers -router contrroller
-// routes - login
