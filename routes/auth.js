@@ -30,8 +30,3 @@ router.post(
   uploadImageMiddleware.single("image"),
   uploadController
 );
-<<<<<<< HEAD
-=======
-
-module.exports = router;
->>>>>>> 13040b1d4e67bb1848a090b540d9f269ed852268
