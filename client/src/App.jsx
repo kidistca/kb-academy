@@ -25,10 +25,12 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      loaded: false
     };
     this.signOut = this.signOut.bind(this);
   }
+
   componentDidMount() {
     signedIn()
       .then(user => {
@@ -70,7 +72,7 @@ export default class App extends Component {
               <Route path="/signin" component={SignInView} />
               <Route path="/profile" component={ProfileView} />
               <Route path="/profile-edit" component={EditProfileView} />
-              <Route path="/create-exercise" exact component={MathExercise} />
+              <Route path="/create-exercise" component={MathExercise} />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
             </Switch>

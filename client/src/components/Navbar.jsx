@@ -10,30 +10,29 @@ import { withRouter } from "react-router";
 
 const Menu = props => {
   return (
-    <Navbar bg="transparent" expand="lg">
-      <Link to="/">Train Your Brain</Link>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Fragment>
-            <Link className="btn" to="/signin">
-              Sign In
-            </Link>
-            <Link className="btn" to="/signup">
-              Sign Up
-            </Link>
-          </Fragment>
-
-          <Fragment>
-            <Link className="btn" to="/profile">
-              Profile
-            </Link>
-            <Form onSubmit={props.signOut}>
-              <Button type="submit">Sign Out</Button>
-            </Form>
-          </Fragment>
-        </Nav>
-      </Navbar.Collapse>
+    <Navbar>
+      <Link className="btn" to="/">
+        Edukids
+      </Link>
+      {(!props.user && (
+        <div className="ml-auto">
+          <Link className="btn" to="/signin">
+            Sign In
+          </Link>
+          <Link className="btn" to="/signup">
+            Sign Up
+          </Link>
+        </div>
+      )) || (
+        <div className="ml-auto">
+          <Link className="btn" to="/profile">
+            Profile
+          </Link>
+          <Form onSubmit={props.signOut}>
+            <Button type="submit">Sign Out</Button>
+          </Form>
+        </div>
+      )}
     </Navbar>
   );
 };

@@ -33,6 +33,7 @@ export default class Profile extends Component {
         console.log(error);
       });
   }
+
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
@@ -87,6 +88,11 @@ export default class Profile extends Component {
               <h3>{userOne.role}</h3>
               <Link to="/profile-edit">
                 <Button>Change Profile</Button>
+              </Link>
+              <br />
+              <br />
+              <Link to="/create-exercise">
+                <Button>Please create good exercise</Button>
               </Link>
               {/* <Button>Delet</Button> */}
             </Col>

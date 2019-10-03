@@ -4,61 +4,67 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 
-import { create } from "./../../services/exercise-api";
+import { createExercise } from "./../../services/exercise-api";
 
 export default class MathExercise extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: {
+      exercise: {
         question: "",
         answerOne: "",
         answerTwo: "",
-        answerThree: "",
-        answerFour: "",
         solution: ""
       }
     };
-    //this.onExerciseValueChange = this.onExerciseValueChange.bind(this);
     this.createExercise = this.createExercise.bind(this);
-    // this.randomAction = this.randomAction.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  //   onExerciseValueChange(data) {
-  //     this.setState({
-  //       exercise: {
-  //         ...this.state.exercise,
-  //         ...data
-  //       }
+  // onEdit(event) {
+  //   event.preventDefault();
+  //   const { name, email } = this.state.exercise;
+  //   AuthServices.edit({ name, email })
+  //     .then(user => {
+  //       this.props.history.push("/profile");
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
   //     });
-  //   }
+  // }
 
-  createExercise() {
-    const exercise = this.state.exercise;
-    create(exercise)
+  createExercise(event) {
+    event.preventDefault();
+    const { solution } = this.state.exercise;
+    createExercise({ solution })
       .then(exercise => {
-        this.props.history.push(`/exercise/${exercise._id}`);
+        this.props.history.push("/create-exercise");
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  // randomAction() {
-  //   const actions = ["+", "-", "x", "/"];
-  //   this.randomAction = actions[Math.floor(Math.random() * actions.length)];
-  // }
+  handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    console.log("first-value", value);
+    this.setState({
+      exercise: { [name]: value }
+    });
+  }
 
   render() {
     return (
       <Container>
-        <Form>
+        <Form onSubmit={this.createExercise}>
           <Form.Group>
             <Form.Label htmlFor="math-question">Question</Form.Label>
             <Form.Control
               id="math-question"
               name="question"
               type="text"
+              placeholder="Do addition"
               //   onChange={this.onExerciseValueChange}
             />
           </Form.Group>
@@ -79,21 +85,21 @@ export default class MathExercise extends Component {
               id="second-value"
               type="text"
               name="answerTwo"
-              value={Math.floor(Math.random() * 10)}
-              //onChange={this.onExerciseValueChange}
+              value={Math.floor(Math.random() * 1000)}
+              // onChange={this.onExerciseValueChange}
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label htmlFor="answer">answerOne</Form.Label>
+            <Form.Label htmlFor="answer">Solution</Form.Label>
             <Form.Control
               id="answer"
               type="text"
               name="solution"
-              value="answer"
-              //onChange={this.onExerciseValueChange}
+              value={this.state.exercise.question}
+              onChange={this.handleChange}
             />
           </Form.Group>
-          <Button type="submit">Create</Button>
+          <Button type="submit">Calculate</Button>
         </Form>
       </Container>
     );
