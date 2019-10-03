@@ -11,6 +11,7 @@ import HomeView from "./views/Home";
 import SignUpView from "./views/SignUp";
 import SignInView from "./views/SignIn";
 import ProfileView from "./views/Profile";
+import EditProfileView from "./views/Edit";
 // import * as AuthServices from "./services/auth-api";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
@@ -65,6 +66,7 @@ export default class App extends Component {
               <Route path="/signup" component={SignUpView} />
               <Route path="/signin" component={SignInView} />
               <Route path="/profile" component={ProfileView} />
+              <Route path="/profile-edit" component={EditProfileView} />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
             </Switch>
