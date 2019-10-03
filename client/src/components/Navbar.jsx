@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
 
 // import { SignOut } from "./../services/auth-api";
 
@@ -24,7 +24,7 @@ const Menu = () => {
 
   return (
     <Navbar bg="transparent" expand="lg">
-      <Navbar.Brand to="/">Train Your Brain</Navbar.Brand>
+      <Link to="/">Train Your Brain</Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">

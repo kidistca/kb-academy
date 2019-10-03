@@ -4,7 +4,7 @@ const authApi = axios.create({
   baseURL: "/auth"
 });
 
-export const SignedIn = () =>
+export const signedIn = () =>
   new Promise((resolve, reject) => {
     authApi
       .get("/signedin")
@@ -17,7 +17,7 @@ export const SignedIn = () =>
       });
   });
 
-export const SignUp = ({ name, email, password }) => {
+export const signUp = ({ name, email, password }) => {
   return new Promise((resolve, reject) => {
     authApi
       .post("/signup", { name, email, password })
@@ -31,7 +31,7 @@ export const SignUp = ({ name, email, password }) => {
   });
 };
 
-export const SignIn = ({ email, password }) => {
+export const signIn = ({ email, password }) => {
   return new Promise((resolve, reject) => {
     authApi
       .post("/signin", { email, password })
@@ -45,12 +45,50 @@ export const SignIn = ({ email, password }) => {
   });
 };
 
-export const SignOut = () => {
+export const signOut = () => {
   return new Promise((resolve, reject) => {
     authApi
       .post("/signout")
       .then(response => {
         resolve();
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
+
+export const edit = ({ name, email }) =>
+  new Promise((resolve, reject) => {
+    authApi
+      .post("/edit", { name, email })
+      .then(response => {
+        resolve(response.data.user);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+
+export const remove = () => {
+  return new Promise((resolve, reject) => {
+    authApi
+      .delete("/delete")
+      .then(() => {
+        resolve();
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
+
+export const uploadPicture = data => {
+  return new Promise((resolve, reject) => {
+    authApi
+      .post("/upload", data)
+      .then(response => {
+        resolve(response.data.user);
       })
       .catch(error => {
         reject(error);

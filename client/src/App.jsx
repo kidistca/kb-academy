@@ -13,7 +13,7 @@ import ProfileView from "./views/Profile";
 // import * as AuthServices from "./services/auth-api";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
-import { SignedIn } from "./services/auth-api";
+import { signedIn } from "./services/auth-api";
 //import { SignOut } from "./services/auth-api";
 
 export default class App extends Component {
@@ -25,7 +25,7 @@ export default class App extends Component {
     //this.signOut = this.signOut.bind(this);
   }
   componentDidMount() {
-    SignedIn()
+    signedIn()
       .then(user => {
         if (user) {
           this.setState({
