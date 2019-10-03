@@ -2,7 +2,7 @@
 
 const { Router } = require("express");
 const router = Router();
-// const routeGuardMiddleware = require("./../middleware/route-guard");
+const routeGuardMiddleware = require("./../middleware/route-guard");
 
 // ---------------------------------- EXERCISE ----------------------------------
 // ---------------------------------- EXERCISE ----------------------------------
@@ -10,6 +10,6 @@ const router = Router();
 
 const createExerciseController = require("./../controllers/exercise/create-exercise");
 
-router.post("/auth/create-exercise", createExerciseController);
+router.post("/exercise/create-exercise", createExerciseController);
 
 module.exports = router;

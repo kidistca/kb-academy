@@ -4,22 +4,10 @@ const exerciseApi = axios.create({
   baseURL: "/exercise"
 });
 
-export const createExercise = ({
-  question,
-  answerOne,
-  answerTwo,
-  answerThree,
-  answerFour,
-  solution
-}) => {
+export const createExercise = ({ solution }) => {
   return new Promise((resolve, reject) => {
     exerciseApi
-      .post("/math", {
-        question,
-        answerOne,
-        answerTwo,
-        answerThree,
-        answerFour,
+      .post("/create-exercise", {
         solution
       })
       .then(response => {

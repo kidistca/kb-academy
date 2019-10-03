@@ -88,6 +88,11 @@ export default class Profile extends Component {
               <Link to="/profile-edit">
                 <Button>Change Profile</Button>
               </Link>
+              <br />
+              <br />
+              <Link to="/create-exercise">
+                <Button>Please create good exercise</Button>
+              </Link>
               {/* <Button>Delet</Button> */}
             </Col>
             <Col>

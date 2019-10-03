@@ -29,7 +29,9 @@ const Menu = props => {
               Profile
             </Link>
             <Form onSubmit={props.signOut}>
-              <Button type="submit">Sign Out</Button>
+              <Button type="submit" href="/">
+                Sign Out
+              </Button>
             </Form>
           </Fragment>
         </Nav>
