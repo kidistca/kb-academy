@@ -6,7 +6,7 @@ import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import * as AuthServices from "./../services/auth-api";
+import * as AuthServices from "./../../services/auth-api";
 // import { signedIn as signedInService } from "./../services/auth-api";
 // import { uploadPicture as uploadService } from "./../services/auth-api";
 

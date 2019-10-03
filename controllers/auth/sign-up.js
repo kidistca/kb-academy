@@ -1,6 +1,6 @@
 "use strict";
 
-const User = require("./../../models/user/user");
+const User = require("../../models/user/user");
 
 module.exports = (req, res, next) => {
   const { name, email, password } = req.body;

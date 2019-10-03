@@ -11,27 +11,27 @@ const schema = new mongoose.Schema({
   },
   answerOne: {
     type: String,
-    required: true,
+    // required: true,
     trim: true
   },
   answerTwo: {
     type: String,
-    required: true,
+    // required: true,
     trim: true
   },
   answerThree: {
     type: String,
-    required: true,
+    // required: true,
     trim: true
   },
   answerFour: {
     type: String,
-    required: true,
+    // required: true,
     trim: true
   },
   solution: {
     type: String,
-    required: true,
+    // required: true,
     trim: true
   }
 });

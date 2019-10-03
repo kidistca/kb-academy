@@ -1,6 +1,6 @@
 "use strict";
 
-const Exercise = require("./../../models/exercises/exercise-math");
+const ExerciseMath = require("../../models/exercises/exercise-math");
 
 module.exports = (req, res, next) => {
   const {
@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
     answerFour,
     solution
   } = req.body;
-  Exercise.create({
+  ExerciseMath.create({
     question,
     answerOne,
     answerTwo,
@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
     solution
   })
     .then(exercise => {
-      res.json(exercise);
+      res.json({ exercise });
     })
     .catch(error => {
       next(error);

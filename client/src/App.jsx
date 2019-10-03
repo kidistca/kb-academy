@@ -8,11 +8,13 @@ import Menu from "./components/Navbar";
 import Container from "react-bootstrap/Container";
 
 import HomeView from "./views/Home";
-import SignUpView from "./views/SignUp";
-import SignInView from "./views/SignIn";
-import ProfileView from "./views/Profile";
-import EditProfileView from "./views/Edit";
-// import * as AuthServices from "./services/auth-api";
+import SignUpView from "./views/user/SignUp";
+import SignInView from "./views/user/SignIn";
+import ProfileView from "./views/user/Profile";
+import EditProfileView from "./views/user/Edit";
+
+import MathExercise from "./views/exercise/mathExercise";
+
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 import { signedIn } from "./services/auth-api";
@@ -69,6 +71,7 @@ export default class App extends Component {
               <Route path="/profile-edit" component={EditProfileView} />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
+              <Route path="/create-exercise" exact component={MathExercise} />
             </Switch>
           </Container>
         </Router>

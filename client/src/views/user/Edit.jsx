@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import * as AuthServices from "./../services/auth-api";
+import * as AuthServices from "./../../services/auth-api";
 
 export default class Edit extends Component {
   constructor(props) {
