@@ -87,10 +87,10 @@ export default class Profile extends Component {
               <Button>Delet</Button>
             </Col>
             <Col>
-              <Form onSubmit={this.onFileChange}>
+              <Form>
                 <Image
-                  src={this.state.user.image}
-                  alt={this.state.user.name}
+                  src={userOne.image}
+                  alt={userOne.name}
                   style={{ maxWidth: "100%" }}
                 />
                 <Form.Group>
@@ -102,7 +102,7 @@ export default class Profile extends Component {
                     onChange={this.onFileChange}
                   />
                 </Form.Group>
-                <Button type="submit">Upload Image</Button>
+                {/* <Button type="submit">Upload Image</Button> */}
               </Form>
             </Col>
           </Row>

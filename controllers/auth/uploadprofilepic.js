@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   User.findByIdAndUpdate(
     req.user._id,
     {
-      ...User(url && { image: url })
+      ...(url && { image: url })
     },
     { new: true }
   )

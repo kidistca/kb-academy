@@ -5,19 +5,20 @@ const router = Router();
 const uploadImageMiddleware = require("./../middleware/picture-upload");
 const routeGuardMiddleware = require("./../middleware/route-guard");
 
-const SignUpController = require("./../controllers/auth/signup");
-const SignInController = require("./../controllers/auth/signin");
-const SignedInController = require("./../controllers/auth/signedin");
-const SignOutController = require("./../controllers/auth/signout");
+const signUpController = require("./../controllers/auth/signup");
+const signInController = require("./../controllers/auth/signin");
+const signedInController = require("./../controllers/auth/signedin");
+const signOutController = require("./../controllers/auth/signout");
 const uploadController = require("./../controllers/auth/uploadprofilepic");
-// const EditControllers = require("./../controllers/auth/edit");
+// const editController = require("./../controllers/auth/edit");
 
-router.post("/auth/signup", routeGuardMiddleware(false), SignUpController);
-router.post("/auth/signin", routeGuardMiddleware(false), SignInController);
-router.get("/auth/signedin", SignedInController);
-router.post("/auth/signout", routeGuardMiddleware(true), SignOutController);
+router.post("/auth/signup", routeGuardMiddleware(false), signUpController);
+router.post("/auth/signin", routeGuardMiddleware(false), signInController);
+router.get("/auth/signedin", signedInController);
+router.post("/auth/signout", routeGuardMiddleware(true), signOutController);
+// router.post("/auth/edit", routeGuardMiddleware(true), editController);
 router.post(
-  "/upload",
+  "/auth/upload",
   routeGuardMiddleware(true),
   uploadImageMiddleware.single("image"),
   uploadController
