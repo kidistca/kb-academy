@@ -14,6 +14,7 @@ const mongoose = require("mongoose");
 const deserializeUserMiddleware = require("./middleware/deserialize-user");
 
 const authRouter = require("./routes/auth");
+const exerciseRouter = require("./routes/exercise");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use(
 app.use(deserializeUserMiddleware);
 
 app.use("/", authRouter);
+app.use("/", exerciseRouter);
 
 app.get("*", (req, res, next) => {
   res.sendFile(join(__dirname, "./client/build/index.html"));

@@ -70,9 +70,9 @@ export default class App extends Component {
               <Route path="/signin" component={SignInView} />
               <Route path="/profile" component={ProfileView} />
               <Route path="/profile-edit" component={EditProfileView} />
+              <Route path="/create-exercise" exact component={MathExercise} />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
-              <Route path="/create-exercise" exact component={MathExercise} />
             </Switch>
           </Container>
         </Router>

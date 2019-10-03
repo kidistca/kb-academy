@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 
-import { create } from "./../services/exercise-api";
+import { create } from "./../../services/exercise-api";
 
 export default class MathExercise extends Component {
   constructor(props) {
@@ -19,8 +19,9 @@ export default class MathExercise extends Component {
         solution: ""
       }
     };
-    this.onExerciseValueChange = this.onExerciseValueChange.bind(this);
+    //this.onExerciseValueChange = this.onExerciseValueChange.bind(this);
     this.createExercise = this.createExercise.bind(this);
+    // this.randomAction = this.randomAction.bind(this);
   }
 
   //   onExerciseValueChange(data) {
@@ -43,6 +44,11 @@ export default class MathExercise extends Component {
       });
   }
 
+  // randomAction() {
+  //   const actions = ["+", "-", "x", "/"];
+  //   this.randomAction = actions[Math.floor(Math.random() * actions.length)];
+  // }
+
   render() {
     return (
       <Container>
@@ -62,17 +68,18 @@ export default class MathExercise extends Component {
               id="first-value"
               type="text"
               name="answerOne"
-              value={Math.floor(Math.random() * 1000)}
+              value={Math.floor(Math.random() * 10)}
               //onChange={this.onExerciseValueChange}
             />
           </Form.Group>
+
           <Form.Group>
             <Form.Label htmlFor="second-value">Second Value</Form.Label>
             <Form.Control
               id="second-value"
               type="text"
               name="answerTwo"
-              value={Math.floor(Math.random() * 1000)}
+              value={Math.floor(Math.random() * 10)}
               //onChange={this.onExerciseValueChange}
             />
           </Form.Group>

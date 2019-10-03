@@ -4,7 +4,7 @@ const exerciseApi = axios.create({
   baseURL: "/exercise"
 });
 
-export const createExercise = ({
+export const create = ({
   question,
   answerOne,
   answerTwo,
