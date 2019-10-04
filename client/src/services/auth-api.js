@@ -36,7 +36,6 @@ export const signIn = ({ email, password }) => {
     authApi
       .post("/signin", { email, password })
       .then(response => {
-        // console.log(response.data.user.name);
         resolve(response.data.user);
       })
       .catch(error => {

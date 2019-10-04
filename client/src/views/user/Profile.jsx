@@ -7,8 +7,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import * as AuthServices from "./../../services/auth-api";
-// import { signedIn as signedInService } from "./../services/auth-api";
-// import { uploadPicture as uploadService } from "./../services/auth-api";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -17,8 +15,6 @@ export default class Profile extends Component {
       user: null
     };
     this.onFileChange = this.onFileChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    // this.onSubmitFormEdit = this.onSubmitFormEdit.bind(this);
   }
 
   componentDidMount() {
@@ -34,24 +30,14 @@ export default class Profile extends Component {
       });
   }
 
-  handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({
-      [name]: value
-    });
-  }
-
   onFileChange(event) {
-    // console.dir(event.target)
-    event.preventDefault();
     const data = new window.FormData();
     data.append("image", event.target.files[0]);
     AuthServices.uploadPicture(data)
       .then(user => {
         console.log(user);
         this.setState({
-          user: null
+          user
         });
       })
       .catch(error => {
@@ -59,21 +45,8 @@ export default class Profile extends Component {
       });
   }
 
-  // onSubmitFormEdit(event) {
-  //   event.preventDefault();
-  //   const { name, email } = this.state.user;
-  //   AuthServices.edit(name, email)
-  //     .then(user => {
-  //       this.props.history.push("/profile");
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
-
   render() {
     const userOne = this.state.user;
-    // console.log(userOne.name);
     return (
       (!userOne && (
         <div>
@@ -94,7 +67,6 @@ export default class Profile extends Component {
               <Link to="/create-exercise">
                 <Button>Please create good exercise</Button>
               </Link>
-              {/* <Button>Delet</Button> */}
             </Col>
             <Col>
               <Form>

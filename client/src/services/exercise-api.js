@@ -12,7 +12,6 @@ export const createExercise = ({ answer, solution }) => {
         solution
       })
       .then(response => {
-        //console.log("RESPONSE", response);
         resolve(response.data.user);
       })
       .catch(error => {
