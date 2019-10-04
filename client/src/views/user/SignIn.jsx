@@ -39,11 +39,13 @@ export default class Login extends Component {
   render() {
     return (
       <Container>
-        <h1>Login</h1>
+        <h1 className="text-white">Login</h1>
 
         <Form onSubmit={this.onSubmitForm}>
           <Form.Group>
-            <Form.Label htmlFor="user-email">Email</Form.Label>
+            <Form.Label htmlFor="user-email" className="text-white">
+              Email
+            </Form.Label>
             <Form.Control
               id="user-email"
               name="email"
@@ -54,7 +56,9 @@ export default class Login extends Component {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label htmlFor="user-password">Password</Form.Label>
+            <Form.Label htmlFor="user-password" className="text-white">
+              Password
+            </Form.Label>
             <Form.Control
               id="user-password"
               name="password"

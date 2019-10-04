@@ -51,7 +51,7 @@ export default class Profile extends Component {
       .then(user => {
         console.log(user);
         this.setState({
-          user: null
+          user
         });
       })
       .catch(error => {
@@ -83,9 +83,9 @@ export default class Profile extends Component {
         <Container>
           <Row>
             <Col>
-              <h3>{userOne.name}</h3>
-              <h3>{userOne.email}</h3>
-              <h3>{userOne.role}</h3>
+              <h3 className="text-white">{userOne.name}</h3>
+              <h3 className="text-white">{userOne.email}</h3>
+              <h3 className="text-white">{userOne.role}</h3>
               <Link to="/profile-edit">
                 <Button>Change Profile</Button>
               </Link>
