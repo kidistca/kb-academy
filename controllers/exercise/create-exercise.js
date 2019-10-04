@@ -3,11 +3,12 @@
 const ExerciseMath = require("../../models/exercises/exercise-math");
 
 module.exports = (req, res, next) => {
-  const { question, answerOne, answerTwo, solution } = req.body;
+  const { question, valueOne, valueTwo, answer, solution } = req.body;
   ExerciseMath.create({
     question,
-    answerOne,
-    answerTwo,
+    valueOne,
+    valueTwo,
+    answer,
     solution
   })
     .then(exercise => {

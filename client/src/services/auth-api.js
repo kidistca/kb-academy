@@ -22,7 +22,7 @@ export const signUp = ({ name, email, password }) => {
     authApi
       .post("/signup", { name, email, password })
       .then(response => {
-        console.log(response);
+        //console.log(response);
         resolve(response.data.user);
       })
       .catch(error => {

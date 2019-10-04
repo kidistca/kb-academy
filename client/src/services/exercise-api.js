@@ -4,14 +4,15 @@ const exerciseApi = axios.create({
   baseURL: "/exercise"
 });
 
-export const createExercise = ({ solution }) => {
+export const createExercise = ({ answer, solution }) => {
   return new Promise((resolve, reject) => {
     exerciseApi
       .post("/create-exercise", {
+        answer,
         solution
       })
       .then(response => {
-        console.log(response);
+        //console.log("RESPONSE", response);
         resolve(response.data.user);
       })
       .catch(error => {
