@@ -65,7 +65,7 @@ export default class App extends Component {
       <div className="App">
         <Router>
           <Container>
-            <Menu user={this.state.user} signOut={this.signOut} />
+            {/* <Menu user={this.state.user} signOut={this.signOut} /> */}
             <Switch>
               <Route path="/" exact component={HomeView} />
               <Route path="/signup" component={SignUpView} />

@@ -9,18 +9,18 @@ const schema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
-  answerOne: {
-    type: String,
+  valueOne: {
+    type: Number,
     // required: true,
     trim: true
   },
-  answerTwo: {
-    type: String,
+  valueTwo: {
+    type: Number,
     // required: true,
     trim: true
   },
-  answerThree: {
-    type: String,
+  answer: {
+    type: Number,
     // required: true,
     trim: true
   },
@@ -30,7 +30,7 @@ const schema = new mongoose.Schema({
     trim: true
   },
   solution: {
-    type: String,
+    type: Number,
     // required: true,
     trim: true
   }
