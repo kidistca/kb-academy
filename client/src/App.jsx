@@ -5,6 +5,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Menu from "./components/Navbar";
+
 import Container from "react-bootstrap/Container";
 
 import HomeView from "./views/Home";
@@ -19,7 +20,6 @@ import MathExercise from "./views/exercise/mathExercise";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 import { signedIn } from "./services/auth-api";
-import { signOut as signOutService } from "./services/auth-api";
 
 export default class App extends Component {
   constructor(props) {
@@ -28,7 +28,6 @@ export default class App extends Component {
       user: null,
       loaded: false
     };
-    this.signOut = this.signOut.bind(this);
   }
 
   componentDidMount() {
@@ -47,25 +46,12 @@ export default class App extends Component {
       });
   }
 
-  signOut(event) {
-    event.preventDefault();
-    signOutService()
-      .then(() => {
-        this.setState({
-          user: null
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
   render() {
     return (
       <div className="App">
         <Router>
           <Container>
-            <Menu user={this.state.user} signOut={this.signOut} />
+            <Menu />
             <Switch>
               <Route path="/" exact component={HomeView} />
               <Route path="/signup" component={SignUpView} />

@@ -8,7 +8,7 @@ export default class HomeView extends Component {
     return (
       <div className="Background">
         <Container>
-          <h1>LOREM IPSUM</h1>
+          <h1 className="text-white">LOREM IPSUM</h1>
         </Container>
       </div>
     );

@@ -1,41 +1,78 @@
-import React, { Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+import { signOut as signOutService } from "../services/auth-api";
 
 import { withRouter } from "react-router";
 
-const Menu = props => {
-  return (
-    <Navbar>
-      <Link className="btn" to="/">
-        Edukids
-      </Link>
-      {(!props.user && (
-        <div className="ml-auto">
-          <Link className="btn" to="/signin">
-            Sign In
-          </Link>
-          <Link className="btn" to="/signup">
-            Sign Up
-          </Link>
-        </div>
-      )) || (
-        <div className="ml-auto">
-          <span className="btn">{props.user.name}</span>
-          <Link className="btn" to="/profile">
-            Profile
-          </Link>
-          <Form onSubmit={props.signOut}>
-            <Button type="submit">Sign Out</Button>
-          </Form>
-        </div>
-      )}
-    </Navbar>
-  );
-};
+class Menu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+    this.signOut = this.signOut.bind(this);
+  }
+
+  signOut(event) {
+    event.preventDefault();
+    signOutService()
+      .then(() => {
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Navbar>
+            <Col>
+              <Image
+                alt="logo"
+                src="./logo-edukids.png"
+                className="mr-auto"
+                style={this.state.imgWidth}
+              />
+            </Col>
+            <Row>
+              <Fragment>
+                <Link className="btn text-white" to="/signin">
+                  Sign In
+                </Link>
+                <Link className="btn text-white" to="/signup">
+                  Sign Up
+                </Link>
+              </Fragment>
+              <Fragment>
+                <Link className="btn text-white" to="/profile">
+                  Profile
+                </Link>
+                <Form onSubmit={this.signOut}>
+                  <Button
+                    type="submit"
+                    className="btn btn-outline-light bg-transparent"
+                  >
+                    Sign Out
+                  </Button>
+                </Form>
+              </Fragment>
+            </Row>
+          </Navbar>
+        </Row>
+      </Container>
+    );
+  }
+}
 
 export default withRouter(Menu);
