@@ -50,7 +50,7 @@ export default class Profile extends Component {
     return (
       (!userOne && (
         <div>
-          <h1>Loading profile...</h1>
+          <h1 className="text-white">Loading profile...</h1>
         </div>
       )) || (
         <Container>

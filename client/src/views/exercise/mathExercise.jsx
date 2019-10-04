@@ -74,11 +74,13 @@ export default class MathExercise extends Component {
     return (
       <Container>
         <Button onClick={this.checkAnswer}>{this.state.score}</Button>
-        <h6>Do addition</h6>
-        <h5>{this.state.exercise.valueOne}</h5>
-        <h5>{this.state.exercise.valueTwo}</h5>
+        <h6 className="text-white">Do addition</h6>
+        <h5 className="text-white">{this.state.exercise.valueOne}</h5>
+        <h5 className="text-white">{this.state.exercise.valueTwo}</h5>
         <Form.Group>
-          <Form.Label htmlFor="answer">Answer</Form.Label>
+          <Form.Label htmlFor="answer" className="text-white">
+            Answer
+          </Form.Label>
           <Form.Control
             id="answer"
             type="number"
@@ -87,14 +89,18 @@ export default class MathExercise extends Component {
             onChange={this.handleAnswer}
           />
         </Form.Group>
-        <h5>Solution</h5>
-        <h5>{this.state.exercise.valueOne + this.state.exercise.valueTwo}</h5>
-        <Button type="submit" onClick={this.checkAnswer}>
+        <h5 className="text-white">Solution</h5>
+        <h5 className="text-white">
+          {this.state.exercise.valueOne + this.state.exercise.valueTwo}
+        </h5>
+        <Button type="submit" onClick={this.checkAnswer} className="text-white">
           Check answer
         </Button>
         <br />
         <br />
-        <Button onClick={this.nextNumberToCaculate}>Next</Button>
+        <Button onClick={this.nextNumberToCaculate} className="text-white">
+          Next
+        </Button>
       </Container>
     );
   }
