@@ -23,7 +23,7 @@ export default class Profile extends Component {
         this.setState({
           user
         });
-        console.log("loged in", user);
+        console.log("loged in", user.name);
       })
       .catch(error => {
         console.log(error);
@@ -56,19 +56,6 @@ export default class Profile extends Component {
         <Container>
           <Row>
             <Col>
-              <h3 className="text-white">{userOne.name}</h3>
-              <h3 className="text-white">{userOne.email}</h3>
-              <h3 className="text-white">{userOne.role}</h3>
-              <Link to="/profile-edit">
-                <Button>Change Profile</Button>
-              </Link>
-              <br />
-              <br />
-              <Link to="/create-exercise">
-                <Button>Please create good exercise</Button>
-              </Link>
-            </Col>
-            <Col>
               <Form>
                 <Image
                   src={userOne.image}
@@ -76,7 +63,9 @@ export default class Profile extends Component {
                   style={{ maxWidth: "100%" }}
                 />
                 <Form.Group>
-                  <Form.Label htmlFor="profile-photo">Profile Photo</Form.Label>
+                  <Form.Label htmlFor="profile-photo" className="text-white">
+                    Profile Photo
+                  </Form.Label>
                   <Form.Control
                     id="profile-photo"
                     type="file"
@@ -86,6 +75,16 @@ export default class Profile extends Component {
                 </Form.Group>
                 {/* <Button type="submit">Upload Image</Button> */}
               </Form>
+            </Col>
+            <Col>
+              <h3 className="text-white">{userOne.name}</h3>
+              <h3 className="text-white">{userOne.email}</h3>
+              <h3 className="text-white">{userOne.role}</h3>
+              <Link to="/profile-edit">
+                <Button>Change Profile</Button>
+              </Link>
+              <br />
+              <br />
             </Col>
           </Row>
         </Container>

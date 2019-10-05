@@ -19,3 +19,19 @@ export const createExercise = ({ answer, solution }) => {
       });
   });
 };
+
+export const multipleChoice = ({ answer, solution }) => {
+  return new Promise((resolve, reject) => {
+    exerciseApi
+      .post("/multiple-choice", {
+        answer,
+        solution
+      })
+      .then(response => {
+        resolve(response.data.user);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};

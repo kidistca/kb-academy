@@ -4,7 +4,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Menu from "./components/Navbar";
+import NavbarEdu from "./components/NavbarEdu";
 
 import Container from "react-bootstrap/Container";
 
@@ -16,6 +16,7 @@ import EditProfileView from "./views/user/Edit";
 // import * as AuthServices from "./services/auth-api";
 
 import MathExercise from "./views/exercise/mathExercise";
+import MultipleChoice from "./views/exercise/multiple-choice";
 
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
@@ -51,7 +52,7 @@ export default class App extends Component {
       <div className="App">
         <Router>
           <Container>
-            <Menu />
+            <NavbarEdu />
             <Switch>
               <Route path="/" exact component={HomeView} />
               <Route path="/signup" component={SignUpView} />
@@ -59,6 +60,7 @@ export default class App extends Component {
               <Route path="/profile" component={ProfileView} />
               <Route path="/profile-edit" component={EditProfileView} />
               <Route path="/create-exercise" component={MathExercise} />
+              <Route path="/multiple-choice" component={MultipleChoice} />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
             </Switch>

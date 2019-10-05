@@ -14,7 +14,7 @@ import { signedIn as signedInService } from "../services/auth-api";
 
 import { withRouter } from "react-router";
 
-class Menu extends Component {
+class NavbarEdu extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,6 +35,17 @@ class Menu extends Component {
         console.log(error);
       });
   }
+  // componentDidUpdate() {
+  //   signedInService()
+  //     .then(user => {
+  //       this.setState({
+  //         user
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 
   signOut(event) {
     event.preventDefault();
@@ -57,7 +68,7 @@ class Menu extends Component {
         <Col>
           <Image
             alt="logo"
-            src="/logo-edukids.png"
+            src="../images/logo-edukids.png"
             className="mr-auto"
             style={{ maxWidth: "100%" }}
           />
@@ -74,6 +85,9 @@ class Menu extends Component {
           </Fragment>
         )) || (
           <Fragment>
+            <Link className="btn text-white" to="/">
+              Home
+            </Link>
             <Link className="btn text-white" to="/profile">
               Profile
             </Link>
@@ -92,4 +106,4 @@ class Menu extends Component {
   }
 }
 
-export default withRouter(Menu);
+export default withRouter(NavbarEdu);
