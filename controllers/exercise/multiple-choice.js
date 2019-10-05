@@ -1,15 +1,25 @@
 "use strict";
 
-const ExerciseMath = require("../../models/exercises/exercise-math");
+const MultipleChoice = require("../../models/exercises/multiple-choice");
 
 module.exports = (req, res, next) => {
-  const { question, valueOne, valueTwo, answer, solution } = req.body;
-  ExerciseMath.create({
+  const {
     question,
-    valueOne,
-    valueTwo,
-    answer,
-    solution
+    optionOne,
+    optionTwo,
+    optionThree,
+    optionFour,
+    solution,
+    description
+  } = req.body;
+  MultipleChoice.create({
+    question,
+    optionOne,
+    optionTwo,
+    optionThree,
+    optionFour,
+    solution,
+    description
   })
     .then(exercise => {
       res.json({ exercise });

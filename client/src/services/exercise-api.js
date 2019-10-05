@@ -20,14 +20,28 @@ export const createExercise = ({ answer, solution }) => {
   });
 };
 
-export const multipleChoice = ({ answer, solution }) => {
+export const multipleChoice = ({
+  question,
+  optionOne,
+  optionTwo,
+  optionThree,
+  optionFour,
+  solution,
+  description
+}) => {
   return new Promise((resolve, reject) => {
     exerciseApi
       .post("/multiple-choice", {
-        answer,
-        solution
+        question,
+        optionOne,
+        optionTwo,
+        optionThree,
+        optionFour,
+        solution,
+        description
       })
       .then(response => {
+        console.log(response.data.user);
         resolve(response.data.user);
       })
       .catch(error => {

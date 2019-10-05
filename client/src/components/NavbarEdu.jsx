@@ -75,11 +75,7 @@ class NavbarEdu extends Component {
         </Col>
         {(!user1 && (
           <Fragment>
-            <Link
-              className="btn text-white"
-              to="/signin"
-              className="text-white"
-            >
+            <Link className="btn text-white" to="/signin">
               Sign In
             </Link>
           </Fragment>

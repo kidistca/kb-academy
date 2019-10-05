@@ -17,6 +17,7 @@ import EditProfileView from "./views/user/Edit";
 
 import MathExercise from "./views/exercise/mathExercise";
 import MultipleChoice from "./views/exercise/multiple-choice";
+import InterviewQuestion from "./views/exercise/CreateChoiceQuestion";
 
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
@@ -61,6 +62,10 @@ export default class App extends Component {
               <Route path="/profile-edit" component={EditProfileView} />
               <Route path="/create-exercise" component={MathExercise} />
               <Route path="/multiple-choice" component={MultipleChoice} />
+              <Route
+                path="/create-interview-question"
+                component={InterviewQuestion}
+              />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
             </Switch>
