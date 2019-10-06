@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 // import { createExercise } from "./../../services/exercise-api";
 let operators = [
@@ -20,7 +22,7 @@ let operators = [
     }
   },
   {
-    sign: "*",
+    sign: "x",
     method: function(a, b) {
       return a * b;
     }
@@ -108,43 +110,69 @@ export default class MathExercise extends Component {
   render() {
     return (
       <Container>
-        <Button onClick={this.checkAnswer}>{this.state.score}</Button>
-        <h6 className="text-white">
-          {this.state.operators[this.state.randomOperator].sign}
-        </h6>
-        <h5 className="text-white">{this.state.exercise.valueOne}</h5>
-        <h5 className="text-white">{this.state.exercise.valueTwo}</h5>
-        <Form.Group>
-          <Form.Label htmlFor="answer" className="text-white">
-            Answer
-          </Form.Label>
+        <Row className="my-5">
+          <Col md={4} className="px-5">
+            <h1 className="text-info font-weight-lighter">
+              SCORE: {this.state.score}
+            </h1>
+          </Col>
+
+          {/* <Button onClick={this.checkAnswer}>{this.state.score}</Button> */}
+        </Row>
+        <Row className="my-5 px-5">
+          <h5 className="text-white mr-4 display-1 font-weight-lighter">
+            {this.state.exercise.valueOne}
+          </h5>
+          <h6 className="text-white mr-4 display-1 font-weight-lighter">
+            {this.state.operators[this.state.randomOperator].sign}
+          </h6>
+          <h5 className="text-white mr-5 display-1 font-weight-lighter">
+            {this.state.exercise.valueTwo} ={" "}
+          </h5>
           <Form.Control
+            size="lg"
             id="answer"
             type="number"
             name="answer"
             value={this.state.exercise.answer}
             onChange={this.handleAnswer}
+            style={{ width: "10rem" }}
           />
-        </Form.Group>
-        <h5 className="text-white">Solution</h5>
-        <h5 className="text-white">
-          {this.state.operators[this.state.randomOperator].method(
-            this.state.exercise.valueOne,
-            this.state.exercise.valueTwo
-          )}
-        </h5>
-        <Button type="submit" onClick={this.checkAnswer} className="text-white">
-          Check answer
-        </Button>
-        <br />
-        <br />
-        <Button onClick={this.nextNumberToCaculate} className="text-white">
-          Next
-        </Button>
-        <Image
-          src={this.state.correct ? "../images/logo-edukids.png" : "No image"}
-          height="300px"
-        />
+        </Row>
+        <Row className="my-5">
+          <Form.Group>
+            {/* <Form.Label htmlFor="answer" className="text-white">
+              Answer 456
+            </Form.Label> */}
+          </Form.Group>
+        </Row>
+        <Row className="my-5">
+          <h5 className="text-white">Solution</h5>
+          <h5 className="text-white">
+            {this.state.operators[this.state.randomOperator].method(
+              this.state.exercise.valueOne,
+              this.state.exercise.valueTwo
+            )}
+          </h5>
+        </Row>
+        <Row className="my-5">
+          <Button
+            type="submit"
+            onClick={this.checkAnswer}
+            className="text-white"
+          >
+            Check answer
+          </Button>
+        </Row>
+        <Row className="my-5">
+          <Button onClick={this.nextNumberToCaculate} className="text-white">
+            Next
+          </Button>
+          <Image
+            src={this.state.correct ? "../images/logo-edukids.png" : "No image"}
+            height="300px"
+          />
+        </Row>
       </Container>
     );
   }

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Alert from "react-bootstrap/Alert";
 
 import { signIn as signInService } from "./../../services/auth-api";
 
@@ -38,38 +42,56 @@ export default class Login extends Component {
 
   render() {
     return (
-      <Container>
-        <h1 className="text-white">Login</h1>
-
-        <Form onSubmit={this.onSubmitForm}>
-          <Form.Group>
-            <Form.Label htmlFor="user-email" className="text-white">
-              Email
-            </Form.Label>
-            <Form.Control
-              id="user-email"
-              name="email"
-              type="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="user-password" className="text-white">
-              Password
-            </Form.Label>
-            <Form.Control
-              id="user-password"
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Button type="submit">Sign in</Button>
-        </Form>
+      <Container className="d-flex justify-content-center">      
+            <Card
+              bg="transparent"
+              text="info"
+              border="info"
+              className="my-5  px-3"
+            >
+              <Card.Body>
+                <h1 className="my-3 font-weight-lighter">
+                  Find a challenge for you!
+                </h1>
+                <Form onSubmit={this.onSubmitForm}>
+                  <Form.Group>
+                    <Form.Label htmlFor="user-email" className="mt-3">
+                      Email
+                    </Form.Label>
+                    <Form.Control
+                      id="user-email"
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      value={this.state.email}
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label htmlFor="user-password" className="mt-3">
+                      Password
+                    </Form.Label>
+                    <Form.Control
+                      id="user-password"
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <Button type="submit" className="mt-3" variant="info">
+                    Sign in
+                  </Button>
+                  <p className="text-info mt-5 mb-3">
+                    New in Edukids?{" "}
+                    <a href="/signup" className="text-info">
+                      Sign Up here.
+                    </a>
+                  </p>
+                </Form>
+              </Card.Body>
+            </Card>
       </Container>
     );
   }
