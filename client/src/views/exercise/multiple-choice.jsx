@@ -28,7 +28,7 @@ export default class Quiz extends Component {
   }
 
   handleClick(choice) {
-    if (choice == this.state.questionCollection[this.state.current].correct) {
+    if (choice === this.state.questionCollection[this.state.current].correct) {
       this.setState({
         correct: this.state.correct + 1
       });
@@ -38,7 +38,7 @@ export default class Quiz extends Component {
       });
     }
 
-    if (this.state.current == 9) {
+    if (this.state.current === 9) {
       this.setState({ current: 0 });
       this.setState({ incorrect: 0 });
       this.setState({ correct: 0 });

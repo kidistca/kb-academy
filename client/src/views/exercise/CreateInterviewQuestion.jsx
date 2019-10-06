@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { multipleChoice as interviewQuestionServices } from "./../../services/exercise-api";
+import { interviewQuestion as interviewQuestionServices } from "../../services/exercise-api";
+import GetInterviewQuestion from "../../views/exercise/GetInterviewQuestion";
 
 export default class CreateChoiceQuestion extends Component {
   constructor(props) {
@@ -33,11 +34,16 @@ export default class CreateChoiceQuestion extends Component {
     const { question, optionOne, optionTwo } = this.state;
     interviewQuestionServices({ question, optionOne, optionTwo })
       .then(user => {
+        // this.props.history.push("/list-of-interview-question");
         this.props.history.push("/");
       })
       .catch(error => {
         console.log(error);
       });
+  }
+
+  get QuestionList() {
+    return this.state.question;
   }
 
   render() {
@@ -86,6 +92,7 @@ export default class CreateChoiceQuestion extends Component {
           </Form.Group>
           <Button type="submit">Add question</Button>
         </Form>
+        <GetInterviewQuestion questions={this.QuestionList} />
       </Container>
     );
   }

@@ -29,7 +29,7 @@ class NavbarEdu extends Component {
         this.setState({
           user
         });
-        console.log("loged in", user);
+        // console.log("loged in", user);
       })
       .catch(error => {
         console.log(error);

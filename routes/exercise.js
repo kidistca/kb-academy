@@ -9,7 +9,8 @@ const routeGuardMiddleware = require("./../middleware/route-guard");
 // ---------------------------------- EXERCISE ----------------------------------
 
 const createExerciseController = require("./../controllers/exercise/create-exercise");
-const multipleChoiceController = require("./../controllers/exercise/multiple-choice");
+const interviewQuestionController = require("../controllers/exercise/interview-question");
+const listInterviewQuestionController = require("../controllers/exercise/list-interview-question");
 
 router.post(
   "/exercise/create-exercise",
@@ -18,8 +19,15 @@ router.post(
 );
 
 router.post(
-  "/exercise/multiple-choice",
+  "/exercise/create-interview-question",
   routeGuardMiddleware(true),
-  multipleChoiceController
+  interviewQuestionController
 );
+
+router.get(
+  "/exercise/list-interview-question",
+  routeGuardMiddleware(true),
+  listInterviewQuestionController
+);
+
 module.exports = router;

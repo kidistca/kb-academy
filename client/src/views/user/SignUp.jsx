@@ -3,8 +3,6 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 import { signUp as signUpService } from "./../../services/auth-api";
 
@@ -43,12 +41,17 @@ export default class SignUp extends Component {
   render() {
     return (
       <Container className="d-flex justify-content-center">
-        <Card bg="transparent" text="info" border="info" className="my-5  px-3">
-          <Card.Body>
-            <h1 className="my-3 font-weight-lighter">
-              Discover our challanges!
-            </h1>
-            <Form onSubmit={this.onSubmitForm}>
+        <Form onSubmit={this.onSubmitForm}>
+          <Card
+            bg="transparent"
+            text="info"
+            border="info"
+            className="my-5  px-3"
+          >
+            <Card.Body>
+              <h1 className="my-3 font-weight-lighter">
+                Discover our challanges!
+              </h1>
               <Form.Group>
                 <Form.Label htmlFor="user-name" className="mt-3">
                   Name
@@ -91,9 +94,9 @@ export default class SignUp extends Component {
               <Button type="submit" className="my-3" variant="info">
                 Sign up
               </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+            </Card.Body>
+          </Card>
+        </Form>
       </Container>
     );
   }
