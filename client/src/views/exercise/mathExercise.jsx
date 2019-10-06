@@ -48,6 +48,7 @@ export default class MathExercise extends Component {
       },
       score: 0,
       correct: false,
+      wrong: false,
       operators: operators,
       randomOperator: Math.floor(Math.random() * operators.length)
     };
@@ -68,6 +69,7 @@ export default class MathExercise extends Component {
         solution: 0
       },
       correct: false,
+      wrong: false,
       operators: operators,
       randomOperator: Math.floor(Math.random() * operators.length)
     });
@@ -92,18 +94,20 @@ export default class MathExercise extends Component {
     console.log("solu", solution);
     if (answer1 === solution) {
       this.setState({
-        score: this.state.score + 1,
+        score: this.state.score + 5,
         correct: true
       });
-      // alert("Right answer", answer1);
     } else {
-      alert("Yo, its addition- Wronggggg");
+      this.setState({
+        score: this.state.score,
+        wrong: true
+      });
     }
   }
 
   scoreCounter() {
     this.setState({
-      score: this.state.score + 1
+      score: this.state.score + 5
     });
   }
 
@@ -136,42 +140,61 @@ export default class MathExercise extends Component {
             name="answer"
             value={this.state.exercise.answer}
             onChange={this.handleAnswer}
-            style={{ width: "10rem" }}
+            style={{
+              fontSize: "80px",
+              width: "20rem",
+              height: "6rem",
+              background: "transparent"
+            }}
+            className="text-white font-weight-lighter mt-3"
           />
+          <Col>
+            {(this.state.correct && (
+              <Image
+                className="ml-5 mt-4"
+                src={this.state.correct ? "../images/correct.png" : false}
+              />
+            )) || (
+              <Image
+                className="ml-5 mt-4"
+                src={this.state.wrong ? "../images/wrong.png" : false}
+              />
+            )}
+          </Col>
         </Row>
-        <Row className="my-5">
+        {/* <Row className="mt-5">
           <Form.Group>
-            {/* <Form.Label htmlFor="answer" className="text-white">
+            <Form.Label htmlFor="answer" className="text-white">
               Answer 456
-            </Form.Label> */}
+            </Form.Label>
           </Form.Group>
+        </Row> */}
+        <Row className="px-5">
+          <Button
+            variant="outline-info"
+            type="submit"
+            onClick={this.checkAnswer}
+            size="lg"
+            className="mr-5"
+          >
+            Check answer
+          </Button>
+          <Button
+            variant="outline-secondary"
+            onClick={this.nextNumberToCaculate}
+            size="lg"
+          >
+            Next
+          </Button>
         </Row>
-        <Row className="my-5">
-          <h5 className="text-white">Solution</h5>
+        <Row className="my-5 px-5">
           <h5 className="text-white">
+            Solution{" "}
             {this.state.operators[this.state.randomOperator].method(
               this.state.exercise.valueOne,
               this.state.exercise.valueTwo
             )}
           </h5>
-        </Row>
-        <Row className="my-5">
-          <Button
-            type="submit"
-            onClick={this.checkAnswer}
-            className="text-white"
-          >
-            Check answer
-          </Button>
-        </Row>
-        <Row className="my-5">
-          <Button onClick={this.nextNumberToCaculate} className="text-white">
-            Next
-          </Button>
-          <Image
-            src={this.state.correct ? "../images/logo-edukids.png" : "No image"}
-            height="300px"
-          />
         </Row>
       </Container>
     );

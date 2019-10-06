@@ -42,17 +42,12 @@ export default class Login extends Component {
   render() {
     return (
       <Container className="d-flex justify-content-center">
-        <Form onSubmit={this.onSubmitForm}>
-          <Card
-            bg="transparent"
-            text="info"
-            border="info"
-            className="my-5  px-3"
-          >
-            <Card.Body>
-              <h1 className="my-3 font-weight-lighter">
-                Find a challenge for you!
-              </h1>
+        <Card bg="transparent" text="info" border="info" className="my-5  px-3">
+          <Card.Body>
+            <h1 className="my-3 font-weight-lighter">
+              Find a challenge for you!
+            </h1>
+            <Form onSubmit={this.onSubmitForm}>
               <Form.Group>
                 <Form.Label htmlFor="user-email" className="mt-3">
                   Email
@@ -91,9 +86,9 @@ export default class Login extends Component {
                   Create account
                 </Link>
               </p>
-            </Card.Body>
-          </Card>
-        </Form>
+            </Form>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }
