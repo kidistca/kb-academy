@@ -51,11 +51,11 @@ router.get(
   listGeoQuestionController
 );
 
-router.post(
-  "/exercise/upload",
-  routeGuardMiddleware(true),
-  uploadImageMiddleware.single("image"),
-  uploadGeoController
-);
+// router.post(
+//   "/exercise/upload",
+//   routeGuardMiddleware(true),
+//   uploadImageMiddleware.single("image"),
+//   uploadGeoController
+// );
 
 module.exports = router;

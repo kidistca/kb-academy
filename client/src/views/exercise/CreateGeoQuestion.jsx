@@ -5,9 +5,8 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
-import * as AuthServices from "./../../services/auth-api";
 import * as ExercServices from "./../../services/exercise-api";
-import { geoQuestion as geoQuestionServices } from "../../services/exercise-api";
+//import { geoQuestion } from "../../services/exercise-api";
 
 export default class CreateGeoQuestion extends Component {
   constructor(props) {
@@ -23,22 +22,9 @@ export default class CreateGeoQuestion extends Component {
       }
     };
     this.handleChange = this.handleChange.bind(this);
-    this.onFileChange = this.onFileChange.bind(this);
+    this.handleChangeImage = this.handleChangeImage.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
-
-  // componentDidMount() {
-  //   AuthServices.signedIn()
-  //     .then(exercise => {
-  //       this.setState({
-  //         exercise
-  //       });
-  //       console.log("Question in from geo", exercise.question);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
 
   handleChange(event) {
     const name = event.target.name;
@@ -48,49 +34,28 @@ export default class CreateGeoQuestion extends Component {
     });
   }
 
-  onFileChange(event) {
-    const data = new window.FormData();
-    data.append("image", event.target.files[0]);
-    ExercServices.uploadGeoPicture(data)
+  onSubmitForm(event) {
+    event.preventDefault();
+    const exercise = this.state.exercise;
+    ExercServices.geoQuestion(exercise)
       .then(exercise => {
-        console.log(exercise);
-        this.setState({
-          exercise
-        });
+        console.log("BENIIIII", exercise);
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  onSubmitForm(event) {
-    event.preventDefault();
-    const {
-      question,
-      imageOne,
-      imageTwo,
-      imageThree,
-      imageFour,
-      solution
-    } = this.state.exercise;
-    geoQuestionServices({
-      question,
-      imageOne,
-      imageTwo,
-      imageThree,
-      imageFour,
-      solution
-    })
-      .then(exercise => {
-        this.props.history.push("/list-geo-question");
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  handleChangeImage(event) {
+    this.setState({
+      exercise: {
+        ...this.state.exercise,
+        imageOne: event.target.files[0]
+      }
+    });
   }
 
   render() {
-    //const imageOne = this.state;
     return (
       <Container>
         <h1 className="text-white">Geography Question</h1>
@@ -122,7 +87,7 @@ export default class CreateGeoQuestion extends Component {
               id="geo-one-image"
               type="file"
               name="imageOne"
-              onChange={this.onFileChange}
+              onChange={this.handleChangeImage}
             />
           </Form.Group>
 
