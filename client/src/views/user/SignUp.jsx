@@ -95,9 +95,9 @@ export default class SignUp extends Component {
                   Sign in
                 </Link>
               </p>
-            </Card.Body>
-          </Card>
-        </Form>
+            </Form>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }

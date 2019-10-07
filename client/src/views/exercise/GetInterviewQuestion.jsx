@@ -11,22 +11,26 @@ export default class ListQuestions extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   listInterviewQuestionServices()
-  //     .then(exercise => {
-  //       this.setState({
-  //         exercise
-  //       });
-  //       console.log("Exercise question", exercise);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
+  componentDidMount() {
+    listInterviewQuestionServices()
+      .then(questionList => {
+        this.setState({
+          questionList
+        });
+        console.log("Exercise question", questionList);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   render() {
-    const questionList = this.state.questionList;
-    console.log("List questions", questionList);
+    const questionList = this.props.questions;
+    console.log(
+      "List questions",
+      this.props.questions,
+      this.state.questionList
+    );
     return (
       // (!questionMany && (
       //   <div>
@@ -41,7 +45,7 @@ export default class ListQuestions extends Component {
             <h3 className="text-white">{questionItem.optionTwo}</h3>
           </div>
         ))} */}
-        <h1>{questionList.question}</h1>
+        {/* <h1>{questionList.question}</h1> */}
       </Container>
     );
   }

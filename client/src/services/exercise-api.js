@@ -53,7 +53,7 @@ export const interviewQuestion = ({
 export const listInterviewQuestion = () => {
   return new Promise((resolve, reject) => {
     exerciseApi
-      .get("/create-interview-question")
+      .get("/list-of-interview-question")
       .then(response => {
         console.log("From list interview", response.data.exercise);
         resolve(response.data["exercise"]);

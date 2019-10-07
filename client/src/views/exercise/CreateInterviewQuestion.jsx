@@ -43,7 +43,7 @@ export default class CreateChoiceQuestion extends Component {
   }
 
   get QuestionList() {
-    return this.state.question;
+    return this.state;
   }
 
   render() {
@@ -91,8 +91,8 @@ export default class CreateChoiceQuestion extends Component {
             />
           </Form.Group>
           <Button type="submit">Add question</Button>
+          <GetInterviewQuestion questions={this.QuestionList} />
         </Form>
-        <GetInterviewQuestion questions={this.QuestionList} />
       </Container>
     );
   }
