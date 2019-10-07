@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 // import Radio from "react-bootstrap";
 
 import { interviewQuestion as interviewQuestionServices } from "../../services/exercise-api";
-import GetInterviewQuestion from "../../views/exercise/GetInterviewQuestion";
+// import GetInterviewQuestion from "../../views/exercise/GetInterviewQuestion";
 
 export default class CreateChoiceQuestion extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ export default class CreateChoiceQuestion extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   handleChange(event) {
@@ -31,9 +32,14 @@ export default class CreateChoiceQuestion extends Component {
     });
   }
 
-  // handleCheck() {
-  //   checked = "checked";
-  // }
+  handleCheck(event) {
+    const checked = event.currentTarget.value;
+    console.log(checked);
+    this.setState({
+      ...this.state,
+      solution: checked
+    });
+  }
 
   onSubmitForm(event) {
     event.preventDefault();
@@ -56,7 +62,6 @@ export default class CreateChoiceQuestion extends Component {
       description
     })
       .then(user => {
-        // this.props.history.push("/list-interview-question");
         this.props.history.push("/list-interview-question");
       })
       .catch(error => {
@@ -64,12 +69,8 @@ export default class CreateChoiceQuestion extends Component {
       });
   }
 
-  // get QuestionList() {
-  //   return this.state;
-  // }
-
   render() {
-    const question = this.state.question;
+    // const question = this.state.question;
     return (
       <Container>
         <h1 className="text-white">WebDev Interview Question</h1>
@@ -149,34 +150,37 @@ export default class CreateChoiceQuestion extends Component {
               className="text-white"
               inline
               name="choice"
-              label="A"
+              value="A"
               type="radio"
               id="optionA"
-              onChange={this.handleChange}
+              onChange={this.handleCheck}
             />
             <Form.Check
               className="text-white"
               inline
               name="choice"
-              label="B"
+              value="B"
               type="radio"
               id="optionB"
+              onChange={this.handleCheck}
             />
             <Form.Check
               className="text-white"
               inline
               name="choice"
-              label="C"
+              value="C"
               type="radio"
               id="optionC"
+              onChange={this.handleCheck}
             />
             <Form.Check
               className="text-white"
               inline
               name="choice"
-              label="D"
+              value="D"
               type="radio"
               id="optionD"
+              onChange={this.handleCheck}
             />
           </Form.Group>
 
