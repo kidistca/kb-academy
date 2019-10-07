@@ -17,7 +17,10 @@ import EditProfileView from "./views/user/Edit";
 import MathExercise from "./views/exercise/mathExercise";
 import MultipleChoice from "./views/exercise/multiple-choice";
 import InterviewQuestion from "./views/exercise/CreateInterviewQuestion";
-import ListOfInterviewQuestion from "./views/exercise/GetInterviewQuestion";
+import ListOfInterviewQuestion from "./views/exercise/GetGeoQuestion";
+
+import GeoQuestion from "./views/exercise/CreateGeoQuestion";
+import ListOfGeoQuestion from "./views/exercise/GetInterviewQuestion";
 
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
@@ -67,9 +70,11 @@ export default class App extends Component {
                 component={InterviewQuestion}
               />
               <Route
-                path="/list-of-interview-question"
+                path="/list-interview-question"
                 component={ListOfInterviewQuestion}
               />
+              <Route path="/create-geo-question" component={GeoQuestion} />
+              <Route path="/list-geo-question" component={ListOfGeoQuestion} />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
             </Switch>

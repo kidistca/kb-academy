@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -95,11 +95,18 @@ export default class Profile extends Component {
                   </Button>
                 </Link>
                 {userOne.role === "admin" && (
-                  <Link to="/create-interview-question">
-                    <Button variant="outline-info" className="ml-3">
-                      Create Interview Question
-                    </Button>
-                  </Link>
+                  <Fragment>
+                    <Link to="/create-interview-question">
+                      <Button variant="outline-info" className="ml-3">
+                        Create Interview Question
+                      </Button>
+                    </Link>
+                    <Link to="/create-geo-question">
+                      <Button variant="outline-info" className="ml-3">
+                        Create Geography Test
+                      </Button>
+                    </Link>
+                  </Fragment>
                 )}
               </Card.Body>
             </Card>

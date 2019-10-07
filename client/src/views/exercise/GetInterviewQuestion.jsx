@@ -7,7 +7,7 @@ export default class ListQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questionList: this.props.questions
+      questionList: []
     };
   }
 
@@ -24,29 +24,38 @@ export default class ListQuestions extends Component {
       });
   }
 
+  // data() {
+  //   return {
+  //     local_data: JSON.parse(JSON.stringify(this.data))
+  //   };
+  // }
+
   render() {
-    const questionList = this.props.questions;
-    console.log(
-      "List questions",
-      this.props.questions,
-      this.state.questionList
-    );
+    const questionList = this.state.questionList;
+    console.log("List questions", this.state.questionList.question);
+
     return (
-      // (!questionMany && (
-      //   <div>
-      //     <h1 className="text-white">Loading exercise...</h1>
-      //   </div>
-      // )) || (
-      <Container>
-        {/* {questionList.map(questionItem => (
-          <div>
-            <h3 className="text-white">{questionItem.question}</h3>
-            <h3 className="text-white">{questionItem.optionOne}</h3>
-            <h3 className="text-white">{questionItem.optionTwo}</h3>
-          </div>
-        ))} */}
-        {/* <h1>{questionList.question}</h1> */}
-      </Container>
+      (!questionList && (
+        <div>
+          <h1 className="text-white">Loading exercise...</h1>
+        </div>
+      )) || (
+        <Container>
+          {questionList.map(questionItem => (
+            <div style={{ backgroundColor: "grey" }}>
+              <h3 className="text-white">Questions: {questionItem.question}</h3>
+              <h3 className="text-white">A: {questionItem.optionOne}</h3>
+              <h3 className="text-white">B: {questionItem.optionTwo}</h3>
+              <h3 className="text-white">C: {questionItem.optionThree}</h3>
+              <h3 className="text-white">D: {questionItem.optionFour}</h3>
+              <h3 className="text-white">Solution: {questionItem.solution}</h3>
+              <h3 className="text-white">
+                Explanation: {questionItem.description}
+              </h3>
+            </div>
+          ))}
+        </Container>
+      )
     );
   }
 }

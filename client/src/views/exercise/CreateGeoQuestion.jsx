@@ -1,26 +1,41 @@
 import React, { Component } from "react";
+
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-// import Radio from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 
-import { interviewQuestion as interviewQuestionServices } from "../../services/exercise-api";
-//import GetInterviewQuestion from "../../views/exercise/GetInterviewQuestion";
+import * as AuthServices from "./../../services/auth-api";
+import * as ExercServices from "./../../services/exercise-api";
+import { geoQuestion as geoQuestionServices } from "../../services/exercise-api";
 
-export default class CreateChoiceQuestion extends Component {
+export default class CreateGeoQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
       question: "",
-      optionOne: "",
-      optionTwo: "",
-      optionThree: "",
-      optionFour: "",
-      solution: "",
-      description: ""
+      imageOne: "",
+      imageTwo: "",
+      imageThree: "",
+      imageFour: "",
+      solution: ""
     };
     this.handleChange = this.handleChange.bind(this);
+    this.onFileChange = this.onFileChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+  }
+
+  componentDidMount() {
+    AuthServices.signedIn()
+      .then(user => {
+        this.setState({
+          user
+        });
+        console.log("loged in", user.name);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   handleChange(event) {
@@ -31,48 +46,52 @@ export default class CreateChoiceQuestion extends Component {
     });
   }
 
-  // handleCheck() {
-  //   checked = "checked";
-  // }
-
-  onSubmitForm(event) {
-    event.preventDefault();
-    const {
-      question,
-      optionOne,
-      optionTwo,
-      optionThree,
-      optionFour,
-      solution,
-      description
-    } = this.state;
-    interviewQuestionServices({
-      question,
-      optionOne,
-      optionTwo,
-      optionThree,
-      optionFour,
-      solution,
-      description
-    })
-      .then(user => {
-        // this.props.history.push("/list-interview-question");
-        this.props.history.push("/list-interview-question");
+  onFileChange(event) {
+    const data = new window.FormData();
+    data.append("image", event.target.files[0]);
+    ExercServices.uploadGeoPicture(data)
+      .then(exercise => {
+        console.log(exercise);
+        this.setState({
+          exercise
+        });
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  // get QuestionList() {
-  //   return this.state;
-  // }
+  onSubmitForm(event) {
+    event.preventDefault();
+    const {
+      question,
+      imageOne,
+      imageTwo,
+      imageThree,
+      imageFour,
+      solution
+    } = this.state;
+    geoQuestionServices({
+      question,
+      imageOne,
+      imageTwo,
+      imageThree,
+      imageFour,
+      solution
+    })
+      .then(exercise => {
+        this.props.history.push("/list-geo-question");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   render() {
-    //const question = this.state.question;
+    //const imageOne = this.state;
     return (
       <Container>
-        <h1 className="text-white">WebDev Interview Question</h1>
+        <h1 className="text-white">Geography Question</h1>
         <Form onSubmit={this.onSubmitForm}>
           <Form.Group>
             <Form.Label htmlFor="question" className="text-white">
@@ -87,20 +106,43 @@ export default class CreateChoiceQuestion extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
+
+          <Image
+            src={this.state.imageOne}
+            alt="imageOne"
+            style={{ maxWidth: "100%" }}
+          />
           <Form.Group>
-            <Form.Label htmlFor="option-one" className="text-white">
-              A
-            </Form.Label>
+            <label for="question-one-image" className="file-input">
+              <span>Image One</span>
+            </label>
             <Form.Control
-              id="option-one"
-              name="optionOne"
-              type="text"
-              placeholder="Option 1"
-              value={this.state.optionOne}
-              onChange={this.handleChange}
+              id="question-one-image"
+              type="file"
+              name="imageOne"
+              onChange={this.onFileChange}
             />
           </Form.Group>
-          <Form.Group>
+
+          {/* <Image
+                src={this.state.user.image}
+                alt={this.state.user.username}
+                style={{ maxWidth: "100%" }}
+              />
+              <Form.Group>
+                <label for="profile-photo" className="file-input">
+                  <span>Profile Photo</span>
+                </label>
+                <Form.Control
+                  id="profile-photo"
+                  type="file"
+                  name="image"
+                  onChange={this.onFileChange}
+                />
+              </Form.Group>
+            </Form> */}
+
+          {/* <Form.Group>
             <Form.Label htmlFor="option-two" className="text-white">
               B
             </Form.Label>
@@ -178,23 +220,8 @@ export default class CreateChoiceQuestion extends Component {
               type="radio"
               id="optionD"
             />
-          </Form.Group>
+          </Form.Group> */}
 
-          <Form.Group>
-            <Form.Label htmlFor="option-description" className="text-white">
-              Explanation
-            </Form.Label>
-            <Form.Control
-              as="textarea"
-              rows="3"
-              id="option-description"
-              name="description"
-              type="text"
-              placeholder="Explanation"
-              value={this.state.description}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
           <Button type="submit">Add question</Button>
         </Form>
         {/* <GetInterviewQuestion questions={this.QuestionList} /> */}

@@ -29,9 +29,19 @@ export default class HomeView extends Component {
               Create Interview Question
             </Button>
           </Link>
-          <Link to="/list-of-interview-question">
+          <Link to="/list-interview-question">
             <Button variant="outline-info" size="lg">
               List of Interview Question
+            </Button>
+          </Link>
+          <Link to="/create-geo-question">
+            <Button variant="outline-info" size="lg">
+              Create Geography Questions
+            </Button>
+          </Link>
+          <Link to="/list-geo-question">
+            <Button variant="outline-info" size="lg">
+              List of Geography Question
             </Button>
           </Link>
         </Container>
