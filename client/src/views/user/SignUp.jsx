@@ -46,7 +46,7 @@ export default class SignUp extends Component {
         <Card bg="transparent" text="info" border="info" className="my-5  px-3">
           <Card.Body>
             <h1 className="my-3 font-weight-lighter">
-              Discover our challanges!
+              Discover our challenges!
             </h1>
             <Form onSubmit={this.onSubmitForm}>
               <Form.Group>

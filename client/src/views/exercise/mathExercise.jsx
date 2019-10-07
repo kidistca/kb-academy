@@ -151,12 +151,12 @@ export default class MathExercise extends Component {
           <Col>
             {(this.state.correct && (
               <Image
-                className="ml-5 mt-4"
+                className="ml-3 mt-4"
                 src={this.state.correct ? "../images/correct.png" : false}
               />
             )) || (
               <Image
-                className="ml-5 mt-4"
+                className="ml-3 mt-4"
                 src={this.state.wrong ? "../images/wrong.png" : false}
               />
             )}
