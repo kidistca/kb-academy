@@ -5,8 +5,8 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
-import * as AuthServices from "./../../services/auth-api";
-import * as ExercServices from "./../../services/exercise-api";
+//import * as AuthServices from "./../../services/auth-api";
+import * as ExercServices from "../../services/exercise-api";
 //import { geoQuestion } from "../../services/exercise-api";
 
 export default class CreateGeoQuestion extends Component {
@@ -35,6 +35,15 @@ export default class CreateGeoQuestion extends Component {
     });
   }
 
+  handleChangeImage = event => {
+    this.setState({
+      exercise: {
+        ...this.state.exercise,
+        imageOne: event.target.files[0]
+      }
+    });
+  };
+
   onSubmitForm(event) {
     event.preventDefault();
     const exercise = this.state.exercise;
@@ -46,16 +55,6 @@ export default class CreateGeoQuestion extends Component {
         console.log(error);
       });
   }
-
-  handleChangeImage(event) {
-    this.setState({
-      exercise: {
-        ...this.state.exercise,
-        imageOne: event.target.files[0]
-      }
-    });
-  }
-
   render() {
     return (
       <Container>
