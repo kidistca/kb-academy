@@ -89,9 +89,9 @@ export default class SignUp extends Component {
               <Button type="submit" className="my-3" variant="info">
                 Sign up
               </Button>
-            </Card.Body>
-          </Card>
-        </Form>
+            </Form>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }

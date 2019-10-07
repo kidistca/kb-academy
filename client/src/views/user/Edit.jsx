@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
+import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 
 import * as AuthServices from "./../../services/auth-api";
@@ -71,12 +71,21 @@ export default class Edit extends Component {
     const userOne = this.state.user;
     console.log(userOne.name);
     return (
-      <Container>
-        <Row>
-          <Col>
+      <Container className="d-flex justify-content-center">
+        <Card
+          bg="transparent"
+          text="info"
+          border="info"
+          className="my-5  px-3"
+          style={{ width: "26rem" }}
+        >
+          <Card.Body>
+            <h1 className="my-3 font-weight-lighter">Edit your profile:</h1>
             <Form onSubmit={this.onEdit}>
               <Form.Group>
-                <Form.Label htmlFor="user-name">Name</Form.Label>
+                <Form.Label htmlFor="user-name" className="mt-3">
+                  Name
+                </Form.Label>
                 <Form.Control
                   id="user-name"
                   name="name"
@@ -86,7 +95,9 @@ export default class Edit extends Component {
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label htmlFor="user-email">Email</Form.Label>
+                <Form.Label htmlFor="user-email" className="mt-3">
+                  Email
+                </Form.Label>
                 <Form.Control
                   id="user-email"
                   type="email"
@@ -95,8 +106,10 @@ export default class Edit extends Component {
                   onChange={this.OnFormValueChange}
                 />
               </Form.Group>
-              <Form.Group>
-                <Form.Label htmlFor="user-role">Role</Form.Label>
+              {/* <Form.Group>
+                <Form.Label htmlFor="user-role" className="mt-3">
+                  Role
+                </Form.Label>
                 <Form.Control
                   id="user-role"
                   type="text"
@@ -104,14 +117,25 @@ export default class Edit extends Component {
                   value={userOne.role}
                   onChange={this.OnFormValueChange}
                 />
-              </Form.Group>
-              <Button type="submit">Edit</Button>
+              </Form.Group> */}
+              <Button
+                type="submit"
+                className="my-3 mr-3"
+                variant="outline-light"
+              >
+                Edit
+              </Button>
+              <Button
+                onClick={this.onDelete}
+                className="my-3"
+                variant="info"
+                variant="outline-danger"
+              >
+                Delete
+              </Button>
             </Form>
-            <Button onClick={this.onDelete} className="btn-danger">
-              Delete
-            </Button>
-          </Col>
-        </Row>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }
