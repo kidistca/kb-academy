@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
 
 import * as AuthServices from "./../../services/auth-api";
 
@@ -128,7 +127,6 @@ export default class Edit extends Component {
               <Button
                 onClick={this.onDelete}
                 className="my-3"
-                variant="info"
                 variant="outline-danger"
               >
                 Delete
