@@ -20,7 +20,7 @@ export const createExercise = ({ answer, solution }) => {
   });
 };
 
-export const multipleChoice = ({
+export const interviewQuestion = ({
   question,
   optionOne,
   optionTwo,
@@ -31,7 +31,7 @@ export const multipleChoice = ({
 }) => {
   return new Promise((resolve, reject) => {
     exerciseApi
-      .post("/multiple-choice", {
+      .post("/create-interview-question", {
         question,
         optionOne,
         optionTwo,
@@ -41,8 +41,22 @@ export const multipleChoice = ({
         description
       })
       .then(response => {
-        console.log(response.data.user);
-        resolve(response.data.user);
+        console.log("From exercise api", response.data["exercise"]);
+        resolve(response.data.exercise);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
+
+export const listInterviewQuestion = () => {
+  return new Promise((resolve, reject) => {
+    exerciseApi
+      .get("/create-interview-question")
+      .then(response => {
+        console.log("From list interview", response.data.exercise);
+        resolve(response.data["exercise"]);
       })
       .catch(error => {
         reject(error);

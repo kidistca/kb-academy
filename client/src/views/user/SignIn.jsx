@@ -3,9 +3,8 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Alert from "react-bootstrap/Alert";
+// import Alert from "react-bootstrap/Alert";
+import { Link } from "react-router-dom";
 
 import { signIn as signInService } from "./../../services/auth-api";
 
@@ -80,9 +79,12 @@ export default class Login extends Component {
               </Button>
               <p className="text-info mt-5 mb-3">
                 New in Edukids?{" "}
-                <a href="/signup" className="text-info">
+                {/* <a href="/signup" className="text-info">
                   Sign Up here.
-                </a>
+                </a> */}
+                <Link className="text-info" to="/signup">
+                  Create account
+                </Link>
               </p>
             </Form>
           </Card.Body>

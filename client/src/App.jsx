@@ -13,11 +13,11 @@ import SignUpView from "./views/user/SignUp";
 import SignInView from "./views/user/SignIn";
 import ProfileView from "./views/user/Profile";
 import EditProfileView from "./views/user/Edit";
-// import * as AuthServices from "./services/auth-api";
 
 import MathExercise from "./views/exercise/mathExercise";
 import MultipleChoice from "./views/exercise/multiple-choice";
-import InterviewQuestion from "./views/exercise/CreateChoiceQuestion";
+import InterviewQuestion from "./views/exercise/CreateInterviewQuestion";
+import ListOfInterviewQuestion from "./views/exercise/GetInterviewQuestion";
 
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
@@ -65,6 +65,10 @@ export default class App extends Component {
               <Route
                 path="/create-interview-question"
                 component={InterviewQuestion}
+              />
+              <Route
+                path="/list-of-interview-question"
+                component={ListOfInterviewQuestion}
               />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />

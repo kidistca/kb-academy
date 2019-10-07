@@ -28,7 +28,7 @@ let operators = [
     }
   },
   {
-    sign: "/",
+    sign: "÷",
     method: function(a, b) {
       return a / b;
     }

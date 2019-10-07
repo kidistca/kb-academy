@@ -21,12 +21,17 @@ export default class HomeView extends Component {
           <br />
           <Link to="/multiple-choice">
             <Button variant="outline-info" size="lg">
-              Multiple Choice
+              Multiple Choice - temp
             </Button>
           </Link>
           <Link to="/create-interview-question">
             <Button variant="outline-info" size="lg">
-              Multiple Choice
+              Create Interview Question
+            </Button>
+          </Link>
+          <Link to="/list-of-interview-question">
+            <Button variant="outline-info" size="lg">
+              List of Interview Question
             </Button>
           </Link>
         </Container>
