@@ -20,6 +20,9 @@ export const createExercise = ({ answer, solution }) => {
   });
 };
 
+//-----------------------------------Interview Question ----------------------------
+//-----------------------------------Interview Question ----------------------------
+//-----------------------------------Interview Question ----------------------------
 export const interviewQuestion = ({
   question,
   optionOne,
@@ -64,6 +67,10 @@ export const listInterviewQuestion = () => {
   });
 };
 
+//-----------------------------------Geo Question ----------------------------
+//-----------------------------------Geo Question ----------------------------
+//-----------------------------------Geo Question ----------------------------
+
 export const geoQuestion = ({
   question,
   imageOne,
@@ -74,7 +81,7 @@ export const geoQuestion = ({
 }) => {
   return new Promise((resolve, reject) => {
     exerciseApi
-      .post("/create-geo-question", {
+      .post("/create-geo", {
         question,
         imageOne,
         imageTwo,

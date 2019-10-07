@@ -70,11 +70,7 @@ export default class CreateChoiceQuestion extends Component {
   }
 
   render() {
-<<<<<<< HEAD
     //const question = this.state.question;
-=======
-    // const question = this.state.question;
->>>>>>> 6ab0f79968e4cd3d0188fab14ea2ed703920efc0
     return (
       <Container>
         <h1 className="text-white">WebDev Interview Question</h1>

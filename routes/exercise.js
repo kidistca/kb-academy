@@ -22,6 +22,9 @@ router.post(
   createExerciseController
 );
 
+//-------------------------------- Route Interview Questions  ----------------------------
+//-------------------------------- Route Interview Questions  ----------------------------
+
 router.post(
   "/exercise/create-interview-question",
   routeGuardMiddleware(true),
@@ -33,6 +36,9 @@ router.get(
   routeGuardMiddleware(true),
   listInterviewQuestionController
 );
+
+//-------------------------------- Route Geography ----------------------------
+//-------------------------------- Route Geography ----------------------------
 
 router.post(
   "/exercise/create-geo",

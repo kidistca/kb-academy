@@ -13,36 +13,38 @@ export default class CreateGeoQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: "",
-      imageOne: "",
-      imageTwo: "",
-      imageThree: "",
-      imageFour: "",
-      solution: ""
+      exercise: {
+        question: "",
+        imageOne: "",
+        imageTwo: "",
+        imageThree: "",
+        imageFour: "",
+        solution: ""
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.onFileChange = this.onFileChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
-  componentDidMount() {
-    AuthServices.signedIn()
-      .then(user => {
-        this.setState({
-          user
-        });
-        console.log("loged in", user.name);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  // componentDidMount() {
+  //   AuthServices.signedIn()
+  //     .then(exercise => {
+  //       this.setState({
+  //         exercise
+  //       });
+  //       console.log("Question in from geo", exercise.question);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      exercise: { ...this.state.exercise, ...{ [name]: value } }
     });
   }
 
@@ -70,7 +72,7 @@ export default class CreateGeoQuestion extends Component {
       imageThree,
       imageFour,
       solution
-    } = this.state;
+    } = this.state.exercise;
     geoQuestionServices({
       question,
       imageOne,
@@ -102,22 +104,22 @@ export default class CreateGeoQuestion extends Component {
               name="question"
               type="text"
               placeholder="Question"
-              value={this.state.question}
+              value={this.state.exercise.question}
               onChange={this.handleChange}
             />
           </Form.Group>
 
           <Image
-            src={this.state.imageOne}
-            alt="imageOne"
+            src={this.state.exercise.imageOne}
+            alt="Image-One"
             style={{ maxWidth: "100%" }}
           />
           <Form.Group>
-            <label for="question-one-image" className="file-input">
+            <label for="geo-one-image" className="file-input">
               <span>Image One</span>
             </label>
             <Form.Control
-              id="question-one-image"
+              id="geo-one-image"
               type="file"
               name="imageOne"
               onChange={this.onFileChange}
