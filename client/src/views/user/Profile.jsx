@@ -72,7 +72,6 @@ export default class Profile extends Component {
                     alt={userOne.name}
                     style={{ maxWidth: "100%" }}
                   />
-
                   <Form.Group className="text-center ">
                     <Form.Control
                       id="profile-photo"
@@ -83,9 +82,9 @@ export default class Profile extends Component {
                     />
                   </Form.Group>
                 </Form>
-                <Card.Header className="text-info font-weight-lighter display-4 text-center">
+                <h2 className="text-info font-weight-lighter text-center">
                   {userOne.name}'s Profile
-                </Card.Header>
+                </h2>
                 <h4 className="text-white font-weight-lighter">
                   {userOne.email}
                 </h4>
@@ -95,8 +94,16 @@ export default class Profile extends Component {
                     Edit Profile
                   </Button>
                 </Link>
+                {userOne.role === "admin" && (
+                  <Link to="/create-interview-question">
+                    <Button variant="outline-info" className="ml-3">
+                      Create Interview Question
+                    </Button>
+                  </Link>
+                )}
               </Card.Body>
             </Card>
+            )
           </Row>
         </Container>
       )
