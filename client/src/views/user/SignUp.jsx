@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
+import { Link } from "react-router-dom";
 import { signUp as signUpService } from "./../../services/auth-api";
 
 export default class SignUp extends Component {
@@ -91,9 +91,15 @@ export default class SignUp extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Button type="submit" className="my-3" variant="info">
+              <Button type="submit" className="mt-3" variant="info">
                 Sign up
               </Button>
+              <p className="text-info mt-5 mb-3">
+                Already have an account?{" "}
+                <Link className="text-info" to="/signin">
+                  Sign in
+                </Link>
+              </p>
             </Card.Body>
           </Card>
         </Form>
