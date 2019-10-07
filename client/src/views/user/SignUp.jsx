@@ -41,17 +41,12 @@ export default class SignUp extends Component {
   render() {
     return (
       <Container className="d-flex justify-content-center">
-        <Form onSubmit={this.onSubmitForm}>
-          <Card
-            bg="transparent"
-            text="info"
-            border="info"
-            className="my-5  px-3"
-          >
-            <Card.Body>
-              <h1 className="my-3 font-weight-lighter">
-                Discover our challanges!
-              </h1>
+        <Card bg="transparent" text="info" border="info" className="my-5  px-3">
+          <Card.Body>
+            <h1 className="my-3 font-weight-lighter">
+              Discover our challenges!
+            </h1>
+            <Form onSubmit={this.onSubmitForm}>
               <Form.Group>
                 <Form.Label htmlFor="user-name" className="mt-3">
                   Name

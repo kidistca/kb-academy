@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+
 import { Link } from "react-router-dom";
 import * as AuthServices from "./../../services/auth-api";
 
@@ -53,39 +55,48 @@ export default class Profile extends Component {
           <h1 className="text-white">Loading profile...</h1>
         </div>
       )) || (
-        <Container>
+        <Container className="d-flex justify-content-center">
           <Row>
-            <Col>
-              <Form>
-                <Image
-                  src={userOne.image}
-                  alt={userOne.name}
-                  style={{ maxWidth: "100%" }}
-                />
-                <Form.Group>
-                  <Form.Label htmlFor="profile-photo" className="text-white">
-                    Profile Photo
-                  </Form.Label>
-                  <Form.Control
-                    id="profile-photo"
-                    type="file"
-                    name="image"
-                    onChange={this.onFileChange}
+            <Card
+              bg="transparent"
+              text="info"
+              border="info"
+              className="my-5 px-3 "
+              style={{ width: "26rem" }}
+            >
+              <Card.Body className="text-center mt-3">
+                <Form>
+                  <Card.Img
+                    variant="top"
+                    src={userOne.image}
+                    alt={userOne.name}
+                    style={{ maxWidth: "100%" }}
                   />
-                </Form.Group>
-                {/* <Button type="submit">Upload Image</Button> */}
-              </Form>
-            </Col>
-            <Col>
-              <h3 className="text-white">{userOne.name}</h3>
-              <h3 className="text-white">{userOne.email}</h3>
-              <h3 className="text-white">{userOne.role}</h3>
-              <Link to="/profile-edit">
-                <Button>Change Profile</Button>
-              </Link>
-              <br />
-              <br />
-            </Col>
+
+                  <Form.Group className="text-center ">
+                    <Form.Control
+                      id="profile-photo"
+                      type="file"
+                      name="image"
+                      onChange={this.onFileChange}
+                      className="text-white"
+                    />
+                  </Form.Group>
+                </Form>
+                <Card.Header className="text-info font-weight-lighter display-4 text-center">
+                  {userOne.name}'s Profile
+                </Card.Header>
+                <h4 className="text-white font-weight-lighter">
+                  {userOne.email}
+                </h4>
+                <h4 className="text-info">{userOne.role}</h4>
+                <Link to="/profile-edit">
+                  <Button className="my-3" variant="info">
+                    Edit Profile
+                  </Button>
+                </Link>
+              </Card.Body>
+            </Card>
           </Row>
         </Container>
       )
