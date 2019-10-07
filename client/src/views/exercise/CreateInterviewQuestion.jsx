@@ -21,6 +21,7 @@ export default class CreateChoiceQuestion extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   handleChange(event) {
@@ -31,9 +32,14 @@ export default class CreateChoiceQuestion extends Component {
     });
   }
 
-  // handleCheck() {
-  //   checked = "checked";
-  // }
+  handleCheck(event) {
+    const checked = event.currentTarget.value;
+    console.log(checked);
+    this.setState({
+      ...this.state,
+      solution: checked
+    });
+  }
 
   onSubmitForm(event) {
     event.preventDefault();
@@ -56,7 +62,6 @@ export default class CreateChoiceQuestion extends Component {
       description
     })
       .then(user => {
-        // this.props.history.push("/list-interview-question");
         this.props.history.push("/list-interview-question");
       })
       .catch(error => {
@@ -64,12 +69,12 @@ export default class CreateChoiceQuestion extends Component {
       });
   }
 
-  // get QuestionList() {
-  //   return this.state;
-  // }
-
   render() {
+<<<<<<< HEAD
     //const question = this.state.question;
+=======
+    // const question = this.state.question;
+>>>>>>> 6ab0f79968e4cd3d0188fab14ea2ed703920efc0
     return (
       <Container>
         <h1 className="text-white">WebDev Interview Question</h1>
@@ -149,34 +154,37 @@ export default class CreateChoiceQuestion extends Component {
               className="text-white"
               inline
               name="choice"
-              label="A"
+              value="A"
               type="radio"
               id="optionA"
-              onChange={this.handleChange}
+              onChange={this.handleCheck}
             />
             <Form.Check
               className="text-white"
               inline
               name="choice"
-              label="B"
+              value="B"
               type="radio"
               id="optionB"
+              onChange={this.handleCheck}
             />
             <Form.Check
               className="text-white"
               inline
               name="choice"
-              label="C"
+              value="C"
               type="radio"
               id="optionC"
+              onChange={this.handleCheck}
             />
             <Form.Check
               className="text-white"
               inline
               name="choice"
-              label="D"
+              value="D"
               type="radio"
               id="optionD"
+              onChange={this.handleCheck}
             />
           </Form.Group>
 
