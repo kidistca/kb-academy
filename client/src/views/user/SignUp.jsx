@@ -89,15 +89,12 @@ export default class SignUp extends Component {
               <Button type="submit" className="mt-3" variant="info">
                 Sign up
               </Button>
-<<<<<<< HEAD
               <p className="text-info mt-5 mb-3">
                 Already have an account?{" "}
                 <Link className="text-info" to="/signin">
                   Sign in
                 </Link>
               </p>
-=======
->>>>>>> a86ed32e1a0253d781b059346649b36bdf9cacef
             </Form>
           </Card.Body>
         </Card>

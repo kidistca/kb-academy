@@ -41,7 +41,7 @@ export const interviewQuestion = ({
         description
       })
       .then(response => {
-        console.log("From exercise api", response.data["exercise"]);
+        console.log("From interview api", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {
@@ -53,10 +53,10 @@ export const interviewQuestion = ({
 export const listInterviewQuestion = () => {
   return new Promise((resolve, reject) => {
     exerciseApi
-      .get("/list-of-interview-question")
+      .get("/list-interview-question")
       .then(response => {
         console.log("From list interview", response.data.exercise);
-        resolve(response.data["exercise"]);
+        resolve(response.data.exercise);
       })
       .catch(error => {
         reject(error);

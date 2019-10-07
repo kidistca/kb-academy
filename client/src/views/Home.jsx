@@ -29,7 +29,7 @@ export default class HomeView extends Component {
               Create Interview Question
             </Button>
           </Link>
-          <Link to="/list-of-interview-question">
+          <Link to="/list-interview-question">
             <Button variant="outline-info" size="lg">
               List of Interview Question
             </Button>

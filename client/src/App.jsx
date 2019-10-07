@@ -67,7 +67,7 @@ export default class App extends Component {
                 component={InterviewQuestion}
               />
               <Route
-                path="/list-of-interview-question"
+                path="/list-interview-question"
                 component={ListOfInterviewQuestion}
               />
               <Route path="/error/:code" component={ErrorView} />

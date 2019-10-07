@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
+// import Col from "react-bootstrap/Col";
 
 import * as AuthServices from "./../../services/auth-api";
 
@@ -80,7 +80,7 @@ export default class Edit extends Component {
           style={{ width: "26rem" }}
         >
           <Card.Body>
-            <h1 className="my-3 font-weight-lighter">Edit your profile:</h1>
+            <h1 className="my-3 font-weight-lighter">Edit your profile</h1>
             <Form onSubmit={this.onEdit}>
               <Form.Group>
                 <Form.Label htmlFor="user-name" className="mt-3">
@@ -128,7 +128,6 @@ export default class Edit extends Component {
               <Button
                 onClick={this.onDelete}
                 className="my-3"
-                variant="info"
                 variant="outline-danger"
               >
                 Delete
