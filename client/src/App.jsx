@@ -17,10 +17,10 @@ import EditProfileView from "./views/user/Edit";
 import MathExercise from "./views/exercise/mathExercise";
 import MultipleChoice from "./views/exercise/multiple-choice";
 import InterviewQuestion from "./views/exercise/CreateInterviewQuestion";
-import ListOfInterviewQuestion from "./views/exercise/GetGeoQuestion";
+import ListOfInterviewQuestion from "./views/exercise/GetInterviewQuestion";
 
 import GeoQuestion from "./views/exercise/CreateGeoQuestion";
-import ListOfGeoQuestion from "./views/exercise/GetInterviewQuestion";
+import ListOfGeoQuestion from "./views/exercise/GetGeoQuestion";
 
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
