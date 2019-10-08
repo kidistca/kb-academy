@@ -27,19 +27,37 @@ export default class ListQuestions extends Component {
       });
   }
 
+  // handleClick(event) {
+  //   let color = "white";
+  //   const id = event.target.id;
+  //   return this.state.questionList.map(function(questionSingle) {
+  //     return questionSingle.solution === id
+  //       ? !this.state.correct
+  //       : this.state.correct;
+  //   });
+  // }
+
   handleClick(event) {
-    let color = "white";
     const id = event.target.id;
-    return this.state.questionList.map(function(questionItem) {
-      return questionItem.solution === id
-        ? (document.getElementById().style.color = "red")
-        : (color = "red");
-    });
+    for (const questionSingle of this.state.questionList) {
+      if (questionSingle.solution === id) {
+        console.log("my beautiful id right", questionSingle.solution);
+        this.setState({
+          correct: true
+        });
+      } else {
+        console.log("Wrong");
+        this.setState({
+          correct: false
+        });
+      }
+    }
   }
 
   // (document.getElementById(id).style.color = "red")
   render() {
-    let color = "white";
+    console.log(this.state.correct);
+    let color = this.state.correct ? "green" : "red";
     // for (let i = 0; i < questionList.length; i++) {
     const questionList = this.state.questionList;
     const correct = this.state.correct;
@@ -56,7 +74,7 @@ export default class ListQuestions extends Component {
               <h3 className="text-white">Q: {questionItem.question}</h3>
               <h3 className="text-white">
                 <Button
-                  // style={{ color: color }}
+                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="A"
@@ -67,6 +85,7 @@ export default class ListQuestions extends Component {
               </h3>
               <h3 className="text-white">
                 <Button
+                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="B"
@@ -77,6 +96,7 @@ export default class ListQuestions extends Component {
               </h3>
               <h3 className="text-white">
                 <Button
+                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="C"
@@ -87,6 +107,7 @@ export default class ListQuestions extends Component {
               </h3>
               <h3 className="text-white">
                 <Button
+                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="D"

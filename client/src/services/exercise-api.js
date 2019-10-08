@@ -67,6 +67,10 @@ export const listInterviewQuestion = () => {
   });
 };
 
+//-----------------------------------Geo Question ----------------------------
+//-----------------------------------Geo Question ----------------------------
+//-----------------------------------Geo Question ----------------------------
+
 export const geoQuestion = data => {
   new Promise((resolve, reject) => {
     const formData = new FormData();

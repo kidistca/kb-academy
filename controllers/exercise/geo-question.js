@@ -4,12 +4,11 @@ const ExerciseGeo = require("../../models/exercises/exercise-geo");
 
 module.exports = (req, res, next) => {
   const { question, solution } = req.body;
-  const { imageOne, imageTwo, imageThree, imageFour } = ExerciseGeo.create({
+  const { url } = req.file;
+  console.log(url);
+  ExerciseGeo.create({
     question,
-    imageOne,
-    imageTwo,
-    imageThree,
-    imageFour,
+    imageOne: { url },
     solution
   })
     .then(exercise => {
