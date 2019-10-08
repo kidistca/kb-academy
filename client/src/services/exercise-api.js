@@ -72,9 +72,11 @@ export const listInterviewQuestion = () => {
 //-----------------------------------Geo Question ----------------------------
 
 export const geoQuestion = data => {
-  new Promise((resolve, reject) => {
-    const formData = new FormData();
-    for (let prop in data) formData.append(prop, data[prop]);
+  const formData = new FormData();
+  formData.append("question", data.question);
+  formData.append("solution", data.solution);
+  for (let answer of data.answers) formData.append(answer.id, answer.value);
+  return new Promise((resolve, reject) => {
     exerciseApi
       .post("/create-geo", formData)
       .then(response => {
@@ -87,19 +89,19 @@ export const geoQuestion = data => {
   });
 };
 
-// export const listGeoQuestion = () => {
-//   return new Promise((resolve, reject) => {
-//     exerciseApi
-//       .get("/list-geo-question")
-//       .then(response => {
-//         console.log("From list geo", response.data.exercise);
-//         resolve(response.data.exercise);
-//       })
-//       .catch(error => {
-//         reject(error);
-//       });
-//   });
-// };
+export const listGeoQuestion = () => {
+  return new Promise((resolve, reject) => {
+    exerciseApi
+      .get("/list-geo-question")
+      .then(response => {
+        console.log("From list geo", response.data.exercise);
+        resolve(response.data.exercise);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
 
 // export const uploadGeoPicture = data => {
 //   return new Promise((resolve, reject) => {

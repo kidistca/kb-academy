@@ -35,19 +35,24 @@ router.get(
   listInterviewQuestionController
 );
 
-// router.post(
-//   "/exercise/create-geo",
-//   routeGuardMiddleware(true),
-//   uploadImageMiddleware.single("image"),
-//   createGeoController
-// );
-
 router.post(
   "/exercise/create-geo",
   routeGuardMiddleware(true),
-  geoImageMiddleware.single("imageOne"),
+  geoImageMiddleware.fields([
+    { name: "image-1" },
+    { name: "image-2" },
+    { name: "image-3" },
+    { name: "image-4" }
+  ]),
   createGeoController
 );
+
+// router.post(
+//   "/exercise/create-geo",
+//   routeGuardMiddleware(true),
+//   geoImageMiddleware.single("imageTwo"),
+//   createGeoController
+// );
 
 router.get(
   "/exercise/list-geo-question",

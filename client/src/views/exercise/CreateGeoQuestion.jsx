@@ -12,11 +12,15 @@ import { listGeoQuestionServices } from "./../../services/exercise-api";
 export default class CreateGeoQuestion extends Component {
   constructor(props) {
     super(props);
+    const answers = [...new Array(4)].fill(null).map((value, index) => ({
+      id: `image-${index + 1}`,
+      value: null
+    }));
     this.state = {
       exercise: {
         question: "",
-        imageOne: "",
-        solution: ""
+        solution: "",
+        answers
       }
     };
     this.handleChange = this.handleChange.bind(this);
@@ -30,21 +34,31 @@ export default class CreateGeoQuestion extends Component {
   //   });
   // }
 
+  handleChangeImage(event) {
+    const answers = this.state.exercise.answers.map(answer => {
+      if (answer.id === event.target.name) {
+        return {
+          id: answer.id,
+          value: event.target.files[0]
+        };
+      } else {
+        return answer;
+      }
+    });
+
+    this.setState({
+      exercise: {
+        ...this.state.exercise,
+        answers
+      }
+    });
+  }
+
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
       exercise: { ...this.state.exercise, [name]: value }
-    });
-  }
-
-  handleChangeImage(event) {
-    console.log("Images", event.target.files[0]);
-    this.setState({
-      exercise: {
-        ...this.state.exercise,
-        imageOne: event.target.files[0]
-      }
     });
   }
 
@@ -54,8 +68,13 @@ export default class CreateGeoQuestion extends Component {
     console.log("what does exercise have", exercise);
     geoQuestion(exercise)
       .then(exercise => {
+        // this.setState({
+        //   exercise: {
+        //     ...this.state.exercise,
+        //     imageOne: event.target.files[0]
+        //   }
+        // });
         this.props.history.push("/");
-        console.log("BENIIIII", this.props);
       })
       .catch(error => {
         console.log("this is the error", error);
@@ -65,11 +84,6 @@ export default class CreateGeoQuestion extends Component {
   render() {
     const exercise = this.state.exercise;
     return (
-      // (!exercise && (
-      //   <div>
-      //     <h1 className="text-white">Loading Geo...</h1>
-      //   </div>
-      // )) || (
       <Container>
         <h1 className="text-white">Geography Question</h1>
         <Form onSubmit={this.onSubmitForm}>
@@ -86,124 +100,26 @@ export default class CreateGeoQuestion extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-
-          {/* <Image
-            src={exercise.imageOne}
+          <Image
+            src={this.state.imageOne}
             alt="Image-One"
             style={{ maxWidth: "100%" }}
             className="text-white"
-          /> */}
-          <Form.Group>
-            {/* <label for="geo-one-image" className="file-input text-white">
-                <span>Image One</span>
-              </label> */}
-            <Form.Control
-              id="geo-one-image"
-              type="file"
-              name="imageOne"
-              onChange={this.handleChangeImage}
-              className="text-white"
-            />
-          </Form.Group>
-
-          {/* <Image
-                src={this.state.user.image}
-                alt={this.state.user.username}
-                style={{ maxWidth: "100%" }}
+          />
+          {this.state.exercise.answers.map(answer => (
+            <Form.Group>
+              {/* <label for="geo-one-image" className="file-input text-white">
+                  <span>Image One</span>
+                </label> */}
+              <Form.Control
+                id="geo-one-image"
+                type="file"
+                name={answer.id}
+                onChange={this.handleChangeImage}
+                className="text-white"
               />
-              <Form.Group>
-                <label for="profile-photo" className="file-input">
-                  <span>Profile Photo</span>
-                </label>
-                <Form.Control
-                  id="profile-photo"
-                  type="file"
-                  name="image"
-                  onChange={this.onFileChange}
-                />
-              </Form.Group>
-            </Form> */}
-
-          {/* <Form.Group>
-            <Form.Label htmlFor="option-two" className="text-white">
-              B
-            </Form.Label>
-            <Form.Control
-              id="option-two"
-              name="optionTwo"
-              type="text"
-              placeholder="Option 2"
-              value={this.state.optionTwo}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="option-three" className="text-white">
-              C
-            </Form.Label>
-            <Form.Control
-              id="option-three"
-              name="optionThree"
-              type="text"
-              placeholder="Option 3"
-              value={this.state.optionThree}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="option-four" className="text-white">
-              D
-            </Form.Label>
-            <Form.Control
-              id="option-four"
-              name="optionFour"
-              type="text"
-              placeholder="Option 4"
-              value={this.state.optionFour}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label htmlFor="choice" className="text-white">
-              Solution
-            </Form.Label>
-            <br />
-            <Form.Check
-              className="text-white"
-              inline
-              name="choice"
-              label="A"
-              type="radio"
-              id="optionA"
-              onChange={this.handleChange}
-            />
-            <Form.Check
-              className="text-white"
-              inline
-              name="choice"
-              label="B"
-              type="radio"
-              id="optionB"
-            />
-            <Form.Check
-              className="text-white"
-              inline
-              name="choice"
-              label="C"
-              type="radio"
-              id="optionC"
-            />
-            <Form.Check
-              className="text-white"
-              inline
-              name="choice"
-              label="D"
-              type="radio"
-              id="optionD"
-            />
-          </Form.Group> */}
-
+            </Form.Group>
+          ))}
           <Button type="submit">Add question</Button>
         </Form>
       </Container>
