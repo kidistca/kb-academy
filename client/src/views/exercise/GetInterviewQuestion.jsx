@@ -34,7 +34,7 @@ export default class ListQuestions extends Component {
     const correct = event.target.id === item.solution ? true : false;
     let answerArray = this.state.answers;
 
-    var found = false;
+    let found = false;
     for (let i = 0; i < answerArray.length; i++) {
       if (answerArray[i].id === item._id) {
         found = true;
@@ -51,7 +51,6 @@ export default class ListQuestions extends Component {
   render() {
     // console.log(this.state.correct);
     const questionList = this.state.questionList;
-    let color = "white";
 
     const answerArray = this.state.answers;
 
