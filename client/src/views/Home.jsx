@@ -34,7 +34,7 @@ export default class HomeView extends Component {
               List of Interview Question
             </Button>
           </Link>
-          <Link to="/create-geo-question">
+          <Link to="/create-geo">
             <Button variant="outline-info" size="lg">
               Create Geography Questions
             </Button>

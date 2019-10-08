@@ -73,7 +73,7 @@ export default class App extends Component {
                 path="/list-interview-question"
                 component={ListOfInterviewQuestion}
               />
-              <Route path="/create-geo-question" component={GeoQuestion} />
+              <Route path="/create-geo" component={GeoQuestion} />
               <Route path="/list-geo-question" component={ListOfGeoQuestion} />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />

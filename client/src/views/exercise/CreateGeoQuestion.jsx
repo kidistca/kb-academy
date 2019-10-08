@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
 import * as ExercServices from "../../services/exercise-api";
+import { geoQuestion } from "./../../services/exercise-api";
+import { listGeoQuestionServices } from "./../../services/exercise-api";
 
 export default class CreateGeoQuestion extends Component {
   constructor(props) {
@@ -14,9 +16,6 @@ export default class CreateGeoQuestion extends Component {
       exercise: {
         question: "",
         imageOne: "",
-        imageTwo: "",
-        imageThree: "",
-        imageFour: "",
         solution: ""
       }
     };
@@ -25,15 +24,22 @@ export default class CreateGeoQuestion extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
+  // componentDidMount() {
+  //   this.setState({
+  //     exercise: this.state.exercise
+  //   });
+  // }
+
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      exercise: { ...this.state.exercise, ...{ [name]: value } }
+      exercise: { ...this.state.exercise, [name]: value }
     });
   }
 
   handleChangeImage(event) {
+    console.log("Images", event.target.files[0]);
     this.setState({
       exercise: {
         ...this.state.exercise,
@@ -45,16 +51,25 @@ export default class CreateGeoQuestion extends Component {
   onSubmitForm(event) {
     event.preventDefault();
     const exercise = this.state.exercise;
-    ExercServices.geoQuestion(exercise)
+    console.log("what does exercise have", exercise);
+    geoQuestion(exercise)
       .then(exercise => {
-        console.log("BENIIIII", exercise);
+        this.props.history.push("/");
+        console.log("BENIIIII", this.props);
       })
       .catch(error => {
-        console.log(error);
+        console.log("this is the error", error);
       });
   }
+
   render() {
+    const exercise = this.state.exercise;
     return (
+      // (!exercise && (
+      //   <div>
+      //     <h1 className="text-white">Loading Geo...</h1>
+      //   </div>
+      // )) || (
       <Container>
         <h1 className="text-white">Geography Question</h1>
         <Form onSubmit={this.onSubmitForm}>
@@ -67,25 +82,27 @@ export default class CreateGeoQuestion extends Component {
               name="question"
               type="text"
               placeholder="Question"
-              value={this.state.exercise.question}
+              value={this.state.question}
               onChange={this.handleChange}
             />
           </Form.Group>
 
-          <Image
-            src={this.state.exercise.imageOne}
+          {/* <Image
+            src={exercise.imageOne}
             alt="Image-One"
             style={{ maxWidth: "100%" }}
-          />
+            className="text-white"
+          /> */}
           <Form.Group>
-            <label for="geo-one-image" className="file-input">
-              <span>Image One</span>
-            </label>
+            {/* <label for="geo-one-image" className="file-input text-white">
+                <span>Image One</span>
+              </label> */}
             <Form.Control
               id="geo-one-image"
               type="file"
               name="imageOne"
               onChange={this.handleChangeImage}
+              className="text-white"
             />
           </Form.Group>
 
@@ -189,7 +206,6 @@ export default class CreateGeoQuestion extends Component {
 
           <Button type="submit">Add question</Button>
         </Form>
-        {/* <GetInterviewQuestion questions={this.QuestionList} /> */}
       </Container>
     );
   }
