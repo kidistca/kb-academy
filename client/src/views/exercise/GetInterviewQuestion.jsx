@@ -11,10 +11,9 @@ export default class ListQuestions extends Component {
     super(props);
     this.state = {
       questionList: [],
-      correct: false,
-      wrong: false
+      answers: []
     };
-    this.getInitialState = this.handleClick.bind(this);
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -31,28 +30,37 @@ export default class ListQuestions extends Component {
       });
   }
 
-  handleClick(event) {
-    const id = event.target.id;
-    for (const questionSingle of this.state.questionList) {
-      if (questionSingle.solution === id) {
-        console.log("my beautiful id right", questionSingle.solution);
-        this.setState({
-          correct: true
-        });
-      } else {
-        console.log("Wrong");
-        this.setState({
-          wrong: true
-        });
+  handleClick(event, item) {
+    const correct = event.target.id === item.solution ? true : false;
+    let answerArray = this.state.answers;
+
+    let found = false;
+    for (let i = 0; i < answerArray.length; i++) {
+      if (answerArray[i].id === item._id) {
+        found = true;
       }
+    }
+    if (!found) {
+      this.setState({
+        ...this.state,
+        answers: [...this.state.answers, { id: item._id, correct }]
+      });
     }
   }
 
-  // (document.getElementById(id).style.color = "red")
-
   render() {
-    console.log(this.state.correct);
+    // console.log(this.state.correct);
     const questionList = this.state.questionList;
+
+    const answerArray = this.state.answers;
+
+    function chooseColor(itemId) {
+      let solution = answerArray.find(x => x.id === itemId);
+
+      if (solution === undefined) return "white";
+      else if (solution.correct === true) return "green";
+      else if (solution.correct === false) return "red";
+    }
 
     return (
       (!questionList && (
@@ -62,51 +70,50 @@ export default class ListQuestions extends Component {
       )) || (
         <Container>
           {questionList.map(questionItem => (
-            <div style={{ backgroundColor: "grey" }}>
+            <div key={questionItem._id}>
+              {/* <pre className="text-white">
+                {JSON.stringify(this.state.answers, null, 2)}
+              </pre> */}
               <h3 className="text-white">Q: {questionItem.question}</h3>
 
-              <h3 className="text-white">
-                <Button
-                  className="border-0"
-                  variant="outline-light"
-                  id="A"
-                  onClick={this.handleClick}
-                >
-                  A. {questionItem.optionOne}
-                </Button>
-              </h3>
+              <Button
+                style={{ color: chooseColor(questionItem._id) }}
+                className="border-0"
+                variant="outline-light"
+                id="A"
+                onClick={e => this.handleClick(e, questionItem)}
+              >
+                A. {questionItem.optionOne}
+              </Button>
 
-              <h3 className="text-white">
-                <Button
-                  className="border-0"
-                  variant="outline-light"
-                  id="B"
-                  onClick={this.handleClick}
-                >
-                  B. {questionItem.optionTwo}
-                </Button>
-              </h3>
+              <Button
+                style={{ color: chooseColor(questionItem._id) }}
+                className="border-0"
+                variant="outline-light"
+                id="B"
+                onClick={e => this.handleClick(e, questionItem)}
+              >
+                B. {questionItem.optionTwo}
+              </Button>
 
-              <h3 className="text-white">
-                <Button
-                  className="border-0"
-                  variant="outline-light"
-                  id="C"
-                  onClick={this.handleClick}
-                >
-                  C. {questionItem.optionThree}
-                </Button>
-              </h3>
-              <h3 className="text-white">
-                <Button
-                  className="border-0"
-                  variant="outline-light"
-                  id="D"
-                  onClick={this.handleClick}
-                >
-                  D. {questionItem.optionFour}
-                </Button>
-              </h3>
+              <Button
+                style={{ color: chooseColor(questionItem._id) }}
+                className="border-0"
+                variant="outline-light"
+                id="C"
+                onClick={e => this.handleClick(e, questionItem)}
+              >
+                C. {questionItem.optionThree}
+              </Button>
+              <Button
+                style={{ color: chooseColor(questionItem._id) }}
+                className="border-0"
+                variant="outline-light"
+                id="D"
+                onClick={e => this.handleClick(e, questionItem)}
+              >
+                D. {questionItem.optionFour}
+              </Button>
 
               <br />
               <div style={{ backgroundColor: "green" }}>
