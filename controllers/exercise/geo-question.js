@@ -3,7 +3,7 @@
 const ExerciseGeo = require("../../models/exercises/exercise-geo");
 
 module.exports = (req, res, next) => {
-  const { question } = req.body;
+  const { question, solution } = req.body;
   // const imageOne = req.files;
 
   // const data = {
@@ -26,7 +26,8 @@ module.exports = (req, res, next) => {
     imageOne: file1,
     imageTwo: file2,
     imageThree: file3,
-    imageFour: file4
+    imageFour: file4,
+    solution
 
     // $push: {
     //   answers: { $each: [{ file1 }, { file2 }] }

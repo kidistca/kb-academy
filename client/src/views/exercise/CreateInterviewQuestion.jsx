@@ -151,6 +151,7 @@ export default class CreateChoiceQuestion extends Component {
               inline
               name="choice"
               value="A"
+              label="A"
               type="radio"
               id="optionA"
               onChange={this.handleCheck}
@@ -160,6 +161,7 @@ export default class CreateChoiceQuestion extends Component {
               inline
               name="choice"
               value="B"
+              label="B"
               type="radio"
               id="optionB"
               onChange={this.handleCheck}
@@ -169,6 +171,7 @@ export default class CreateChoiceQuestion extends Component {
               inline
               name="choice"
               value="C"
+              label="C"
               type="radio"
               id="optionC"
               onChange={this.handleCheck}
@@ -178,6 +181,7 @@ export default class CreateChoiceQuestion extends Component {
               inline
               name="choice"
               value="D"
+              label="D"
               type="radio"
               id="optionD"
               onChange={this.handleCheck}
