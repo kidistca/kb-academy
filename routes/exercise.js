@@ -4,6 +4,7 @@ const { Router } = require("express");
 const router = Router();
 const routeGuardMiddleware = require("./../middleware/route-guard");
 const uploadImageMiddleware = require("./../middleware/picture-upload");
+const geoImageMiddleware = require("./../middleware/geo-picture-upload");
 
 // ---------------------------------- EXERCISE ----------------------------------
 // ---------------------------------- EXERCISE ----------------------------------
@@ -14,7 +15,7 @@ const interviewQuestionController = require("../controllers/exercise/interview-q
 const listInterviewQuestionController = require("../controllers/exercise/list-interview-question");
 const listGeoQuestionController = require("../controllers/exercise/list-geo-question");
 const createGeoController = require("../controllers/exercise/geo-question");
-//const uploadGeoController = require("./../controllers/exercise/upload-geo-pic");
+// const uploadGeoController = require("./../controllers/exercise/upload-geo-pic");
 
 router.post(
   "/exercise/create-exercise",
@@ -34,13 +35,20 @@ router.get(
   listInterviewQuestionController
 );
 
+// router.post(
+//   "/exercise/create-geo",
+//   routeGuardMiddleware(true),
+//   uploadImageMiddleware.single("image"),
+//   createGeoController
+// );
+
 router.post(
   "/exercise/create-geo",
-  uploadImageMiddleware.single("image"),
   routeGuardMiddleware(true),
-  uploadImageMiddleware.single("image"),
+  geoImageMiddleware.single("imageOne"),
   createGeoController
 );
+
 router.get(
   "/exercise/list-geo-question",
   routeGuardMiddleware(true),

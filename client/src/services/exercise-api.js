@@ -87,19 +87,19 @@ export const geoQuestion = data => {
   });
 };
 
-export const listGeoQuestion = () => {
-  return new Promise((resolve, reject) => {
-    exerciseApi
-      .get("/list-geo-question")
-      .then(response => {
-        console.log("From list geo", response.data.exercise);
-        resolve(response.data.exercise);
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
-};
+// export const listGeoQuestion = () => {
+//   return new Promise((resolve, reject) => {
+//     exerciseApi
+//       .get("/list-geo-question")
+//       .then(response => {
+//         console.log("From list geo", response.data.exercise);
+//         resolve(response.data.exercise);
+//       })
+//       .catch(error => {
+//         reject(error);
+//       });
+//   });
+// };
 
 // export const uploadGeoPicture = data => {
 //   return new Promise((resolve, reject) => {
