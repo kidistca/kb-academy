@@ -43,6 +43,7 @@ router.get(
 router.post(
   "/exercise/create-geo",
   routeGuardMiddleware(true),
+  uploadImageMiddleware.single("image"),
   createGeoController
 );
 router.get(

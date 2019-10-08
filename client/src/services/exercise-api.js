@@ -67,37 +67,16 @@ export const listInterviewQuestion = () => {
   });
 };
 
-<<<<<<< HEAD
 //-----------------------------------Geo Question ----------------------------
 //-----------------------------------Geo Question ----------------------------
 //-----------------------------------Geo Question ----------------------------
 
-export const geoQuestion = ({
-  question,
-  imageOne,
-  imageTwo,
-  imageThree,
-  imageFour,
-  solution
-}) => {
-  return new Promise((resolve, reject) => {
-    exerciseApi
-      .post("/create-geo", {
-        question,
-        imageOne,
-        imageTwo,
-        imageThree,
-        imageFour,
-        solution
-      })
-=======
 export const geoQuestion = data => {
   new Promise((resolve, reject) => {
     const formData = new FormData();
     for (let prop in data) formData.append(prop, data[prop]);
     exerciseApi
       .post("/create-geo", formData)
->>>>>>> a4a083adb9e984e7375a901796078f95937d6553
       .then(response => {
         console.log("From geo api", response.data.exercise);
         resolve(response.data.exercise);
