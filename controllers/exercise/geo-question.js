@@ -3,20 +3,35 @@
 const ExerciseGeo = require("../../models/exercises/exercise-geo");
 
 module.exports = (req, res, next) => {
-  const { question, solution } = req.body;
-  const answers = req.file.url;
+  const { question } = req.body;
+  // const imageOne = req.files;
 
-  console.log("file url", req.file.url);
-  const data = {
+  // const data = {
+  //   question,
+  //   answers
+  // };
+  console.log("file url", req.files["image-1"][0]["url"]);
+
+  const file1 = req.files["image-1"][0]["url"];
+  const file2 = req.files["image-2"][0]["url"];
+  const file3 = req.files["image-3"][0]["url"];
+  const file4 = req.files["image-4"][0]["url"];
+
+  // for (let id in req.files) {
+  //   data[id] = req.files[id][0].url;
+  // }
+
+  ExerciseGeo.create({
     question,
-    answers
-  };
+    imageOne: file1,
+    imageTwo: file2,
+    imageThree: file3,
+    imageFour: file4
 
-  for (let id in req.files) {
-    data[id] = req.files[id][0].url;
-  }
-
-  ExerciseGeo.create(data)
+    // $push: {
+    //   answers: { $each: [{ file1 }, { file2 }] }
+    // }
+  })
     .then(exercise => {
       res.json({ exercise });
     })

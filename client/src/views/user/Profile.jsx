@@ -101,7 +101,7 @@ export default class Profile extends Component {
                         Create Interview Question
                       </Button>
                     </Link>
-                    <Link to="/create-geo-question">
+                    <Link to="/create-geo">
                       <Button variant="outline-info" className="ml-3">
                         Create Geography Test
                       </Button>

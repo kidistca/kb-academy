@@ -10,6 +10,7 @@ export default class ListGeoQuestions extends Component {
     this.state = {
       questionGeoList: []
     };
+    this.onClickImage = this.onClickImage.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +25,8 @@ export default class ListGeoQuestions extends Component {
         console.log(error);
       });
   }
+
+  onClickImage() {}
 
   render() {
     const questionGeoList = this.state.questionGeoList;
@@ -42,39 +45,31 @@ export default class ListGeoQuestions extends Component {
               <Image
                 src={questionGeoItem.imageOne}
                 alt="Image-One"
-                style={{ maxWidth: "100%" }}
+                style={{ maxWidth: "30%" }}
                 className="text-white"
+                id="1"
               />
               <Image
                 src={questionGeoItem.imageTwo}
                 alt="Image-Two"
-                style={{ maxWidth: "100%" }}
+                style={{ maxWidth: "30%" }}
                 className="text-white"
+                id="2"
               />
               <Image
                 src={questionGeoItem.imageThree}
                 alt="Image-Three"
-                style={{ maxWidth: "100%" }}
+                style={{ maxWidth: "30%" }}
                 className="text-white"
+                id="3"
               />
               <Image
                 src={questionGeoItem.imageFour}
                 alt="Image-Four"
-                style={{ maxWidth: "100%" }}
+                style={{ maxWidth: "30%" }}
                 className="text-white"
+                id="4"
               />
-              {/* <Image className="text-white">
-                A: {questionGeoItem.imageOne}
-              </Image> */}
-              {/* <Image className="text-white">
-                B: {questionGeoItem.imageTwo}
-              </Image>
-              <Image className="text-white">
-                C: {questionGeoItem.imageThree}
-              </Image>
-              <Image className="text-white">
-                D: {questionGeoItem.imageFour}
-              </Image> */}
               <h3 className="text-white">
                 Solution: {questionGeoItem.solution}
               </h3>
