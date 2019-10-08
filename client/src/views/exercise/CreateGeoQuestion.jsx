@@ -3,7 +3,10 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+
+import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 
 import * as ExercServices from "../../services/exercise-api";
 import { geoQuestion } from "./../../services/exercise-api";
@@ -24,11 +27,11 @@ export default class CreateGeoQuestion extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     exercise: this.state.exercise
-  //   });
-  // }
+  componentDidMount() {
+    this.setState({
+      exercise: this.state.exercise
+    });
+  }
 
   handleChange(event) {
     const name = event.target.name;
@@ -71,32 +74,40 @@ export default class CreateGeoQuestion extends Component {
       //   </div>
       // )) || (
       <Container>
-        <h1 className="text-white">Geography Question</h1>
-        <Form onSubmit={this.onSubmitForm}>
-          <Form.Group>
-            <Form.Label htmlFor="question" className="text-white">
-              Question
-            </Form.Label>
-            <Form.Control
-              id="question"
-              name="question"
-              type="text"
-              placeholder="Question"
-              value={this.state.question}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
+        <Card
+          bg="transparent"
+          text="info"
+          border="info"
+          className="my-5 px-3 "
+          style={{ width: "40rem" }}
+        >
+          <Card.Body className="text-center mt-3">
+            <h1 className="text-white">Geography Question</h1>
+            <Form onSubmit={this.onSubmitForm}>
+              <Form.Group>
+                <Form.Label htmlFor="question" className="text-white">
+                  Question
+                </Form.Label>
+                <Form.Control
+                  id="question"
+                  name="question"
+                  type="text"
+                  placeholder="Question"
+                  value={this.state.question}
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
 
-          {/* <Image
+              {/* <Image
             src={exercise.imageOne}
             alt="Image-One"
             style={{ maxWidth: "100%" }}
             className="text-white"
           /> */}
-          <Form.Group>
-            {/* <label for="geo-one-image" className="file-input text-white">
+              {/* <Form.Group>
+            <label for="geo-one-image" className="file-input text-white">
                 <span>Image One</span>
-              </label> */}
+              </label>
             <Form.Control
               id="geo-one-image"
               type="file"
@@ -104,27 +115,26 @@ export default class CreateGeoQuestion extends Component {
               onChange={this.handleChangeImage}
               className="text-white"
             />
-          </Form.Group>
+          </Form.Group> */}
 
-          {/* <Image
-                src={this.state.user.image}
-                alt={this.state.user.username}
-                style={{ maxWidth: "100%" }}
-              />
-              <Form.Group>
-                <label for="profile-photo" className="file-input">
-                  <span>Profile Photo</span>
-                </label>
-                <Form.Control
-                  id="profile-photo"
-                  type="file"
-                  name="image"
-                  onChange={this.onFileChange}
+              <Form>
+                <Card.Img
+                  variant="top"
+                  src={exercise.imageOne}
+                  alt="Image-One"
+                  style={{ maxWidth: "100%" }}
                 />
-              </Form.Group>
-            </Form> */}
+                <Form.Group className="text-center ">
+                  <Form.Control
+                    id="imageOne"
+                    type="file"
+                    name="image"
+                    onChange={this.handleChangeImage}
+                  />
+                </Form.Group>
+              </Form>
 
-          {/* <Form.Group>
+              {/* <Form.Group>
             <Form.Label htmlFor="option-two" className="text-white">
               B
             </Form.Label>
@@ -204,8 +214,14 @@ export default class CreateGeoQuestion extends Component {
             />
           </Form.Group> */}
 
-          <Button type="submit">Add question</Button>
-        </Form>
+              <Link to="/create-geo">
+                <Button variant="outline-info" className="ml-3">
+                  Create Geography Test
+                </Button>
+              </Link>
+            </Form>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }
