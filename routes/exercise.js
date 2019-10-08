@@ -14,7 +14,7 @@ const interviewQuestionController = require("../controllers/exercise/interview-q
 const listInterviewQuestionController = require("../controllers/exercise/list-interview-question");
 const listGeoQuestionController = require("../controllers/exercise/list-geo-question");
 const createGeoController = require("../controllers/exercise/geo-question");
-const uploadGeoController = require("./../controllers/exercise/upload-geo-pic");
+//const uploadGeoController = require("./../controllers/exercise/upload-geo-pic");
 
 router.post(
   "/exercise/create-exercise",

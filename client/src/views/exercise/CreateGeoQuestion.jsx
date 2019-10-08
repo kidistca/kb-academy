@@ -5,9 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
-//import * as AuthServices from "./../../services/auth-api";
 import * as ExercServices from "../../services/exercise-api";
-//import { geoQuestion } from "../../services/exercise-api";
 
 export default class CreateGeoQuestion extends Component {
   constructor(props) {
@@ -35,14 +33,14 @@ export default class CreateGeoQuestion extends Component {
     });
   }
 
-  handleChangeImage = event => {
+  handleChangeImage(event) {
     this.setState({
       exercise: {
         ...this.state.exercise,
         imageOne: event.target.files[0]
       }
     });
-  };
+  }
 
   onSubmitForm(event) {
     event.preventDefault();
@@ -69,22 +67,22 @@ export default class CreateGeoQuestion extends Component {
               name="question"
               type="text"
               placeholder="Question"
-              value={this.state.question}
+              value={this.state.exercise.question}
               onChange={this.handleChange}
             />
           </Form.Group>
 
           <Image
-            src={this.state.imageOne}
-            alt="imageOne"
+            src={this.state.exercise.imageOne}
+            alt="Image-One"
             style={{ maxWidth: "100%" }}
           />
           <Form.Group>
-            <label for="question-one-image" className="file-input">
+            <label for="geo-one-image" className="file-input">
               <span>Image One</span>
             </label>
             <Form.Control
-              id="question-one-image"
+              id="geo-one-image"
               type="file"
               name="imageOne"
               onChange={this.handleChangeImage}

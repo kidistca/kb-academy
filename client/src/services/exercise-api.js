@@ -20,6 +20,9 @@ export const createExercise = ({ answer, solution }) => {
   });
 };
 
+//-----------------------------------Interview Question ----------------------------
+//-----------------------------------Interview Question ----------------------------
+//-----------------------------------Interview Question ----------------------------
 export const interviewQuestion = ({
   question,
   optionOne,
