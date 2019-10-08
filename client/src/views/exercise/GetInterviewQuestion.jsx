@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Button";
+import Image from "react-bootstrap/Button";
 
 import { listInterviewQuestion as listInterviewQuestionServices } from "../../services/exercise-api";
 
@@ -9,8 +11,10 @@ export default class ListQuestions extends Component {
     super(props);
     this.state = {
       questionList: [],
-      correct: false
+      correct: false,
+      wrong: false
     };
+    this.getInitialState = this.handleClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -27,16 +31,6 @@ export default class ListQuestions extends Component {
       });
   }
 
-  // handleClick(event) {
-  //   let color = "white";
-  //   const id = event.target.id;
-  //   return this.state.questionList.map(function(questionSingle) {
-  //     return questionSingle.solution === id
-  //       ? !this.state.correct
-  //       : this.state.correct;
-  //   });
-  // }
-
   handleClick(event) {
     const id = event.target.id;
     for (const questionSingle of this.state.questionList) {
@@ -48,20 +42,18 @@ export default class ListQuestions extends Component {
       } else {
         console.log("Wrong");
         this.setState({
-          correct: false
+          wrong: true
         });
       }
     }
   }
 
   // (document.getElementById(id).style.color = "red")
+
   render() {
     console.log(this.state.correct);
-    let color = this.state.correct ? "green" : "red";
-    // for (let i = 0; i < questionList.length; i++) {
     const questionList = this.state.questionList;
-    const correct = this.state.correct;
-    // console.log(questionList.length);
+
     return (
       (!questionList && (
         <div>
@@ -72,9 +64,9 @@ export default class ListQuestions extends Component {
           {questionList.map(questionItem => (
             <div style={{ backgroundColor: "grey" }}>
               <h3 className="text-white">Q: {questionItem.question}</h3>
+
               <h3 className="text-white">
                 <Button
-                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="A"
@@ -83,9 +75,9 @@ export default class ListQuestions extends Component {
                   A. {questionItem.optionOne}
                 </Button>
               </h3>
+
               <h3 className="text-white">
                 <Button
-                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="B"
@@ -94,9 +86,9 @@ export default class ListQuestions extends Component {
                   B. {questionItem.optionTwo}
                 </Button>
               </h3>
+
               <h3 className="text-white">
                 <Button
-                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="C"
@@ -107,7 +99,6 @@ export default class ListQuestions extends Component {
               </h3>
               <h3 className="text-white">
                 <Button
-                  style={{ color: color }}
                   className="border-0"
                   variant="outline-light"
                   id="D"
@@ -116,6 +107,7 @@ export default class ListQuestions extends Component {
                   D. {questionItem.optionFour}
                 </Button>
               </h3>
+
               <br />
               <div style={{ backgroundColor: "green" }}>
                 <h3 className="text-white">
