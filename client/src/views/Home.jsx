@@ -7,6 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
+import Button from "react-bootstrap/Button";
+
 import { Link } from "react-router-dom";
 
 export default class HomeView extends Component {
@@ -14,7 +16,7 @@ export default class HomeView extends Component {
     return (
       <div className="Background">
         <Container>
-          <Row className="my-5">
+          <Row className="my-3">
             <Col sm={4} className="my-5">
               <Link to="/create-exercise">
                 <Image
@@ -25,12 +27,25 @@ export default class HomeView extends Component {
                 />
               </Link>
               <Accordion>
-                <Card style={{ width: "20rem" }} bg="transparent" text="info">
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
-                    Read More >
+                <Card style={{ width: "20rem" }} bg="transparent" text="white">
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    eventKey="0"
+                    bg="transparent"
+                  >
+                    <Link to="/create-exercise">
+                      <Button variant="outline-light" className="mr-2">
+                        Go!
+                      </Button>
+                    </Link>
+                    <Button variant="outline-light">Read more</Button>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>Hello! I'm the body</Card.Body>
+                  <Accordion.Collapse eventKey="0" bg="transparent">
+                    <Card.Body>
+                      Hello! Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua.
+                    </Card.Body>
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
@@ -45,12 +60,25 @@ export default class HomeView extends Component {
                 />
               </Link>
               <Accordion>
-                <Card style={{ width: "20rem" }} bg="transparent" text="info">
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
-                    Read More >
+                <Card style={{ width: "20rem" }} bg="transparent" text="white">
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    eventKey="0"
+                    bg="transparent"
+                  >
+                    <Link to="/list-geo-question">
+                      <Button variant="outline-light" className="mr-2">
+                        Go!
+                      </Button>
+                    </Link>
+                    <Button variant="outline-light">Read more</Button>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>Hello! I'm the body</Card.Body>
+                  <Accordion.Collapse eventKey="0" bg="transparent">
+                    <Card.Body>
+                      Hello! Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua.
+                    </Card.Body>
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
@@ -65,12 +93,25 @@ export default class HomeView extends Component {
                 />
               </Link>
               <Accordion>
-                <Card style={{ width: "20rem" }} bg="transparent" text="info">
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
-                    Read More >
+                <Card style={{ width: "20rem" }} bg="transparent" text="white">
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    eventKey="0"
+                    bg="transparent"
+                  >
+                    <Link to="/list-interview-question">
+                      <Button variant="outline-light" className="mr-2">
+                        Go!
+                      </Button>
+                    </Link>
+                    <Button variant="outline-light">Read more</Button>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>Hello! I'm the body</Card.Body>
+                  <Accordion.Collapse eventKey="0" bg="transparent">
+                    <Card.Body>
+                      Hello! Lorem ipsum dolor sit amet, consectetur adipiscing
+                      elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua.
+                    </Card.Body>
                   </Accordion.Collapse>
                 </Card>
               </Accordion>

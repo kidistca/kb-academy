@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Button";
-import Image from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { listInterviewQuestion as listInterviewQuestionServices } from "../../services/exercise-api";
 
@@ -71,59 +72,82 @@ export default class ListQuestions extends Component {
         <Container>
           {questionList.map(questionItem => (
             <div key={questionItem._id}>
-              {/* <pre className="text-white">
-                {JSON.stringify(this.state.answers, null, 2)}
-              </pre> */}
-              <h3 className="text-white">Q: {questionItem.question}</h3>
+              <Row>
+                <Col className="d-flex justify-content-center">
+                  <Card
+                    bg="transparent"
+                    text="info"
+                    border="white"
+                    className="mt-5 px-3"
+                    style={{ width: "45rem" }}
+                  >
+                    <Card.Body>
+                      <h1
+                        className="font-weight-lighter mb-4"
+                        style={{ color: chooseColor(questionItem._id) }}
+                      >
+                        {questionItem.question}
+                      </h1>
+                      <Row>
+                        <Button
+                          style={{ color: chooseColor(questionItem._id) }}
+                          variant="outline-secondary"
+                          id="A"
+                          onClick={e => this.handleClick(e, questionItem)}
+                        >
+                          <h4 className="font-weight-lighter">
+                            <strong>A.</strong> {questionItem.optionOne}
+                          </h4>
+                        </Button>
 
-              <Button
-                style={{ color: chooseColor(questionItem._id) }}
-                className="border-0"
-                variant="outline-light"
-                id="A"
-                onClick={e => this.handleClick(e, questionItem)}
-              >
-                A. {questionItem.optionOne}
-              </Button>
+                        <Button
+                          style={{ color: chooseColor(questionItem._id) }}
+                          variant="outline-secondary"
+                          id="B"
+                          onClick={e => this.handleClick(e, questionItem)}
+                        >
+                          <h4 className="font-weight-lighter">
+                            <strong>B.</strong> {questionItem.optionTwo}
+                          </h4>
+                        </Button>
 
-              <Button
-                style={{ color: chooseColor(questionItem._id) }}
-                className="border-0"
-                variant="outline-light"
-                id="B"
-                onClick={e => this.handleClick(e, questionItem)}
-              >
-                B. {questionItem.optionTwo}
-              </Button>
+                        <Button
+                          style={{ color: chooseColor(questionItem._id) }}
+                          variant="outline-secondary"
+                          id="C"
+                          onClick={e => this.handleClick(e, questionItem)}
+                        >
+                          <h4 className="font-weight-lighter">
+                            <strong>C.</strong> {questionItem.optionThree}
+                          </h4>
+                        </Button>
 
-              <Button
-                style={{ color: chooseColor(questionItem._id) }}
-                className="border-0"
-                variant="outline-light"
-                id="C"
-                onClick={e => this.handleClick(e, questionItem)}
-              >
-                C. {questionItem.optionThree}
-              </Button>
-              <Button
-                style={{ color: chooseColor(questionItem._id) }}
-                className="border-0"
-                variant="outline-light"
-                id="D"
-                onClick={e => this.handleClick(e, questionItem)}
-              >
-                D. {questionItem.optionFour}
-              </Button>
-
-              <br />
-              <div style={{ backgroundColor: "green" }}>
-                <h3 className="text-white">
-                  Solution: {questionItem.solution}
-                </h3>
-                <h3 className="text-white">
-                  Explanation: {questionItem.description}
-                </h3>
-              </div>
+                        <Button
+                          style={{ color: chooseColor(questionItem._id) }}
+                          variant="outline-secondary"
+                          id="D"
+                          onClick={e => this.handleClick(e, questionItem)}
+                        >
+                          <h4 className="font-weight-lighter">
+                            <strong>D.</strong> {questionItem.optionFour}
+                          </h4>
+                        </Button>
+                      </Row>
+                      <div
+                        className="mt-5"
+                        style={{ color: chooseColor(questionItem._id) }}
+                      >
+                        <h3 className="text-white">
+                          Solution: {questionItem.solution}
+                        </h3>
+                        <h3 className="text-white">
+                          Explanation: {questionItem.description}
+                        </h3>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
             </div>
           ))}
         </Container>

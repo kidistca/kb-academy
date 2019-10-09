@@ -64,19 +64,21 @@ class NavbarEdu extends Component {
     const user1 = this.state.user;
 
     return (
-      <Navbar>
+      <Navbar className="mt-3">
         <Col>
-          <Image
-            alt="logo"
-            src="../images/logo-edukids.png"
-            className="mr-auto"
-            style={{ maxWidth: "100%" }}
-          />
+          <Link to="/">
+            <Image
+              alt="logo"
+              src="../images/logo-edukids.png"
+              className="mr-auto"
+              style={{ maxWidth: "100%" }}
+            />
+          </Link>
         </Col>
         {(!user1 && (
           <Fragment>
-            <Link className="btn text-white" to="/signin">
-              Sign In
+            <Link to="/signin">
+              <Button variant="outline-light">Sign In</Button>
             </Link>
           </Fragment>
         )) || (
@@ -84,6 +86,19 @@ class NavbarEdu extends Component {
             <Link className="btn text-white" to="/">
               Home
             </Link>
+            {user1.role === "admin" && (
+              <Fragment>
+                <Link
+                  className="btn text-white"
+                  to="/create-interview-question"
+                >
+                  Create Interview Question
+                </Link>
+                <Link className="btn text-white" to="/create-geo">
+                  Create Geography Test
+                </Link>
+              </Fragment>
+            )}
             <Link className="btn text-white" to="/profile">
               Profile
             </Link>

@@ -78,9 +78,9 @@ export default class Login extends Component {
                 Sign in
               </Button>
               <p className="text-info mt-5 mb-3">
-                New in Edukids?{" "}
+                New in Eduk?{" "}
                 <Link className="text-info" to="/signup">
-                  Create account
+                  Create account here.
                 </Link>
               </p>
             </Form>
