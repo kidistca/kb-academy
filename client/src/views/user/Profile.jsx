@@ -107,7 +107,7 @@ export default class Profile extends Component {
               </Card.Body>
             </Card>
             <Row>
-              {userOne.role === "admin" && (
+              {userOne.role === "Administrator" && (
                 <Fragment>
                   <Link to="/create-interview-question">
                     <Button variant="outline-info" className="ml-3">
@@ -116,7 +116,7 @@ export default class Profile extends Component {
                   </Link>
                   <Link to="/create-geo">
                     <Button variant="outline-info" className="ml-3">
-                      Create Geography Test
+                      Create Geography Exercise
                     </Button>
                   </Link>
                 </Fragment>

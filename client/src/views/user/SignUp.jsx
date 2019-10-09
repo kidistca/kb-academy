@@ -54,7 +54,7 @@ export default class SignUp extends Component {
                   id="user-name"
                   name="name"
                   type="text"
-                  placeholder="name"
+                  placeholder="Name"
                   value={this.state.name}
                   onChange={this.handleChange}
                 />

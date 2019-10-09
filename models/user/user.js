@@ -22,8 +22,8 @@ const schema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    enum: ["student", "admin"],
-    default: "student"
+    enum: ["Student", "Administrator"],
+    default: "Student"
   },
   image: {
     type: String

@@ -83,11 +83,11 @@ export default class ListGeoQuestions extends Component {
             style={{ width: "45rem" }}
           >
             <Card.Body>
-              {questionGeoList.map(questionGeoItem => (
+              {questionGeoList.map((questionGeoItem, index) => (
                 <div key={questionGeoItem._id}>
                   <Row>
                     <h1 className="font-weight-lighter text-info">
-                      {this.state.count + 1}. {questionGeoItem.question}
+                      {index + 1}. {questionGeoItem.question}
                     </h1>
                   </Row>
 

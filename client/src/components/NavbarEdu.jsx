@@ -35,17 +35,10 @@ class NavbarEdu extends Component {
         console.log(error);
       });
   }
-  // componentDidUpdate() {
-  //   signedInService()
-  //     .then(user => {
-  //       this.setState({
-  //         user
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
+
+  componentDidUpdate(previousProps, previousState) {
+    if (!this.state.user) this.componentDidMount();
+  }
 
   signOut(event) {
     event.preventDefault();
@@ -86,7 +79,7 @@ class NavbarEdu extends Component {
             <Link className="btn text-white" to="/">
               Home
             </Link>
-            {user1.role === "admin" && (
+            {user1.role === "Administrator" && (
               <Fragment>
                 <Link
                   className="btn text-white"
@@ -95,7 +88,7 @@ class NavbarEdu extends Component {
                   Create Interview Question
                 </Link>
                 <Link className="btn text-white" to="/create-geo">
-                  Create Geography Test
+                  Create Geography Exercise
                 </Link>
               </Fragment>
             )}
