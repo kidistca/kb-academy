@@ -59,6 +59,7 @@ export default class ListGeoQuestions extends Component {
                 style={{ maxWidth: "50%" }}
                 className="text-white selected"
                 id="1"
+                // key=""
                 // value={data.id}
                 onClick={this.onClickImage}
               />
