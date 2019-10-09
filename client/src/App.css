@@ -7,3 +7,6 @@
 .file-input + input {
   display: none;
 } */
+.selected {
+  box-shadow: 0px 12px 22px 1px rgb(33, 240, 95);
+}

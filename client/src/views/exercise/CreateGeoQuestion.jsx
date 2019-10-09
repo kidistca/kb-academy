@@ -122,20 +122,21 @@ export default class CreateGeoQuestion extends Component {
             className="text-white"
           />
           {this.state.exercise.answers.map(answer => (
-            <Form.Group>
-              {/* <label for="geo-one-image" className="file-input text-white">
+            <div key={answer.id}>
+              <Form.Group>
+                {/* <label for="geo-one-image" className="file-input text-white">
                   <span>Image One</span>
                 </label> */}
-              <Form.Control
-                id="geo-one-image"
-                type="file"
-                name={answer.id}
-                onChange={this.handleChangeImage}
-                className="text-white"
-              />
-            </Form.Group>
+                <Form.Control
+                  id="geo-one-image"
+                  type="file"
+                  name={answer.id}
+                  onChange={this.handleChangeImage}
+                  className="text-white"
+                />
+              </Form.Group>
+            </div>
           ))}
-
           <Form.Group>
             <Form.Label htmlFor="choice" className="text-white">
               Solution
@@ -182,6 +183,7 @@ export default class CreateGeoQuestion extends Component {
               onChange={this.handleCheck}
             />
           </Form.Group>
+
           <Button type="submit">Add question</Button>
         </Form>
       </Container>

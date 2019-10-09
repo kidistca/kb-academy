@@ -28,10 +28,14 @@ export default class ListGeoQuestions extends Component {
 
   onClickImage(event) {
     const id = event.target.id;
+    const objId = event.target.alt;
+    console.log("the clicked event", event.target.alt);
     for (let i of this.state.questionGeoList) {
-      if (i.solution === id) {
+      if (i.solution === id && i._id === objId) {
         console.log("Corect");
-      } else console.log("Wrong answer");
+        event.currentTarget.style.backgroundColor = "green";
+        // className = "selected";
+      } else console.log("Wrong answer", i._id);
     }
   }
 
@@ -45,21 +49,22 @@ export default class ListGeoQuestions extends Component {
       )) || (
         <Container>
           {questionGeoList.map(questionGeoItem => (
-            <div style={{ backgroundColor: "grey" }} key={questionGeoItem._id}>
+            <div key={questionGeoItem._id}>
               <h3 className="text-white">
                 Questions: {questionGeoItem.question}
               </h3>
               <Image
                 src={questionGeoItem.imageOne}
-                alt="Image-One"
+                alt={questionGeoItem._id}
                 style={{ maxWidth: "50%" }}
-                className="text-white"
+                className="text-white selected"
                 id="1"
+                // value={data.id}
                 onClick={this.onClickImage}
               />
               <Image
                 src={questionGeoItem.imageTwo}
-                alt="Image-Two"
+                alt={questionGeoItem._id}
                 style={{ maxWidth: "50%" }}
                 className="text-white"
                 id="2"
@@ -67,7 +72,7 @@ export default class ListGeoQuestions extends Component {
               />
               <Image
                 src={questionGeoItem.imageThree}
-                alt="Image-Three"
+                alt={questionGeoItem._id}
                 style={{ maxWidth: "50%" }}
                 className="text-white"
                 id="3"
@@ -75,7 +80,7 @@ export default class ListGeoQuestions extends Component {
               />
               <Image
                 src={questionGeoItem.imageFour}
-                alt="Image-Four"
+                alt={questionGeoItem._id}
                 style={{ maxWidth: "50%" }}
                 className="text-white"
                 id="4"
