@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Accordion from "react-bootstrap/Accordion";
+import Card, { CardBody } from "react-bootstrap/Card";
 
 // import { createExercise } from "./../../services/exercise-api";
 let operators = [
@@ -113,89 +115,110 @@ export default class MathExercise extends Component {
 
   render() {
     return (
-      <Container>
-        <Row className="my-5">
-          <Col md={4} className="px-5">
-            <h1 className="text-info font-weight-lighter">
-              SCORE: {this.state.score}
-            </h1>
-          </Col>
+      <Container className="my-4">
+        <Card bg="transparent" className="mb-2 border-0">
+          <Card.Body className="d-flex justify-content-center">
+            <Row>
+              <h1 className="text-info font-weight-lighter">
+                SCORE: {this.state.score}
+              </h1>
+            </Row>
+          </Card.Body>
+        </Card>
+        <Card bg="transparent" border="info p-4">
+          <Card.Body>
+            <Row>
+              <h5 className="text-white mr-4 display-1 font-weight-lighter">
+                {this.state.exercise.valueOne}
+              </h5>
+              <h6 className="text-white mr-4 display-1 font-weight-lighter">
+                {this.state.operators[this.state.randomOperator].sign}
+              </h6>
+              <h5 className="text-white mr-5 display-1 font-weight-lighter">
+                {this.state.exercise.valueTwo} ={" "}
+              </h5>
+              <Form.Control
+                size="lg"
+                id="answer"
+                type="number"
+                name="answer"
+                value={this.state.exercise.answer}
+                onChange={this.handleAnswer}
+                style={{
+                  fontSize: "80px",
+                  width: "20rem",
+                  height: "6rem",
+                  background: "transparent"
+                }}
+                className="text-white font-weight-lighter mt-3"
+              />
+              <Col>
+                {(this.state.correct && (
+                  <Image
+                    className="ml-3 mt-4"
+                    src={this.state.correct ? "../images/correct.png" : false}
+                  />
+                )) || (
+                  <Image
+                    className="ml-3 mt-4"
+                    src={this.state.wrong ? "../images/wrong.png" : false}
+                  />
+                )}
+              </Col>
+            </Row>
 
-          {/* <Button onClick={this.checkAnswer}>{this.state.score}</Button> */}
-        </Row>
-        <Row className="my-5 px-5">
-          <h5 className="text-white mr-4 display-1 font-weight-lighter">
-            {this.state.exercise.valueOne}
-          </h5>
-          <h6 className="text-white mr-4 display-1 font-weight-lighter">
-            {this.state.operators[this.state.randomOperator].sign}
-          </h6>
-          <h5 className="text-white mr-5 display-1 font-weight-lighter">
-            {this.state.exercise.valueTwo} ={" "}
-          </h5>
-          <Form.Control
-            size="lg"
-            id="answer"
-            type="number"
-            name="answer"
-            value={this.state.exercise.answer}
-            onChange={this.handleAnswer}
-            style={{
-              fontSize: "80px",
-              width: "20rem",
-              height: "6rem",
-              background: "transparent"
-            }}
-            className="text-white font-weight-lighter mt-3"
-          />
-          <Col>
-            {(this.state.correct && (
-              <Image
-                className="ml-3 mt-4"
-                src={this.state.correct ? "../images/correct.png" : false}
-              />
-            )) || (
-              <Image
-                className="ml-3 mt-4"
-                src={this.state.wrong ? "../images/wrong.png" : false}
-              />
-            )}
-          </Col>
-        </Row>
-        {/* <Row className="mt-5">
-          <Form.Group>
-            <Form.Label htmlFor="answer" className="text-white">
-              Answer 456
-            </Form.Label>
-          </Form.Group>
-        </Row> */}
-        <Row className="px-5">
-          <Button
-            variant="outline-info"
-            type="submit"
-            onClick={this.checkAnswer}
-            size="lg"
-            className="mr-5"
-          >
-            Check answer
-          </Button>
-          <Button
-            variant="outline-secondary"
-            onClick={this.nextNumberToCaculate}
-            size="lg"
-          >
-            Next
-          </Button>
-        </Row>
-        <Row className="my-5 px-5">
-          <h5 className="text-white">
-            Solution{" "}
-            {this.state.operators[this.state.randomOperator].method(
-              this.state.exercise.valueOne,
-              this.state.exercise.valueTwo
-            )}
-          </h5>
-        </Row>
+            <Row>
+              <Accordion>
+                <Row>
+                  <Accordion.Toggle
+                    as={Card.Header}
+                    eventKey="0"
+                    bg="transparent"
+                  >
+                    <Button variant="outline-secondary" size="sm">
+                      Get the solution
+                    </Button>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0" bg="transparent">
+                    <Card.Body>
+                      <h5 className="text-secondary font-weight-lighter">
+                        {this.state.operators[this.state.randomOperator].method(
+                          this.state.exercise.valueOne,
+                          this.state.exercise.valueTwo
+                        )}
+                      </h5>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Row>
+              </Accordion>
+            </Row>
+          </Card.Body>
+        </Card>
+        <Card bg="transparent" className="border-0">
+          <Card.Body>
+            <Row>
+              <Button
+                variant="outline-info"
+                type="submit"
+                onClick={this.checkAnswer}
+                size="lg"
+                className="ml-auto mb-3"
+              >
+                Check answer
+              </Button>
+            </Row>
+            <Row>
+              <Button
+                variant="outline-light"
+                onClick={this.nextNumberToCaculate}
+                size="lg"
+                className="ml-auto"
+              >
+                Next
+              </Button>
+            </Row>
+          </Card.Body>
+        </Card>
       </Container>
     );
   }

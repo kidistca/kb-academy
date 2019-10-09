@@ -202,7 +202,7 @@ export default class CreateChoiceQuestion extends Component {
                   id="option-description"
                   name="description"
                   type="text"
-                  placeholder="Please write the soultion explanation"
+                  placeholder="Please write the solution explanation"
                   value={this.state.description}
                   onChange={this.handleChange}
                 />
