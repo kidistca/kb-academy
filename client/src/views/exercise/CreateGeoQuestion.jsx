@@ -4,13 +4,9 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import { Link } from "react-router-dom";
 
-import * as ExercServices from "../../services/exercise-api";
 import { geoQuestion } from "./../../services/exercise-api";
-import { listGeoQuestionServices } from "./../../services/exercise-api";
 
 export default class CreateGeoQuestion extends Component {
   constructor(props) {
