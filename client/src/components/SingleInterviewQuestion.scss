@@ -1,0 +1,19 @@
+$green: rgb(38, 182, 38);
+$red: red;
+
+.interview-question {
+  button {
+    border: 0;
+    margin-right: 1em;
+    &.answer-selected-correct {
+      background-color: $green;
+    }
+    &.answer-selected-wrong {
+      background-color: $red;
+    }
+    &.answer-correct {
+      border: 2px solid $green;
+      padding: 1px;
+    }
+  }
+}
