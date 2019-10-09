@@ -9,7 +9,6 @@ import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Card, { CardBody } from "react-bootstrap/Card";
 
-// import { createExercise } from "./../../services/exercise-api";
 let operators = [
   {
     sign: "+",
@@ -89,13 +88,14 @@ export default class MathExercise extends Component {
 
   checkAnswer() {
     const answer1 = this.state.exercise.answer;
-    const solution = this.state.operators[this.state.randomOperator].method(
+    let solution = this.state.operators[this.state.randomOperator].method(
       this.state.exercise.valueOne,
       this.state.exercise.valueTwo
     );
-    console.log("solu", solution);
+    let roundedSolution = Math.round(solution * 100) / 100;
+    console.log("solu", roundedSolution);
     // if (!this.state.answer) {
-    if (answer1 === solution) {
+    if (answer1 === roundedSolution) {
       this.setState({
         score: this.state.score + 5,
         correct: true
@@ -115,6 +115,11 @@ export default class MathExercise extends Component {
   }
 
   render() {
+    let solution = this.state.operators[this.state.randomOperator].method(
+      this.state.exercise.valueOne,
+      this.state.exercise.valueTwo
+    );
+    let roundedSolution = Math.round(solution * 100) / 100;
     return (
       <Container className="my-4">
         <Card bg="transparent" className="mb-2 border-0">
@@ -183,13 +188,15 @@ export default class MathExercise extends Component {
                   <Accordion.Collapse eventKey="0" bg="transparent">
                     <Card.Body>
                       <h5 className="text-secondary font-weight-lighter">
-                        {this.state.operators[this.state.randomOperator].method(
-                          this.state.exercise.valueOne,
-                          this.state.exercise.valueTwo
-                        )}
+                        {roundedSolution}
                       </h5>
                     </Card.Body>
                   </Accordion.Collapse>
+                  <Card.Body>
+                    <h5 className="text-info font-weight-lighter">
+                      Please round off the quotient to two decimal point
+                    </h5>
+                  </Card.Body>
                 </Row>
               </Accordion>
             </Row>

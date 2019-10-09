@@ -5,7 +5,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
-import Button from "react-bootstrap/Button";
 
 import { listGeoQuestion as listGeoQuestionServices } from "../../services/exercise-api";
 
@@ -17,7 +16,8 @@ export default class ListGeoQuestions extends Component {
       correct: false,
       wrong: false,
       itemObjId1: "",
-      itemObjId2: ""
+      itemObjId2: "",
+      count: 0
     };
     this.onClickImage = this.onClickImage.bind(this);
   }
@@ -36,7 +36,6 @@ export default class ListGeoQuestions extends Component {
   }
 
   onClickImage(event) {
-    let right = false;
     const id = event.target.id;
     const objId = event.target.alt;
     console.log("the clicked event", event.target.alt);
@@ -63,10 +62,12 @@ export default class ListGeoQuestions extends Component {
   }
 
   render() {
+    console.log("length", this.state.questionGeoList.length);
     let correct = this.state.correct;
     let wrong = this.state.wrong;
     let itemObjId1 = this.state.itemObjId1;
     let itemObjId2 = this.state.itemObjId2;
+    let count = this.state.count;
     const questionGeoList = this.state.questionGeoList;
     return (
       (!questionGeoList && (
@@ -86,7 +87,7 @@ export default class ListGeoQuestions extends Component {
                 <div key={questionGeoItem._id}>
                   <Row>
                     <h1 className="font-weight-lighter text-info">
-                      Question: {questionGeoItem.question}
+                      {this.state.count + 1}. {questionGeoItem.question}
                     </h1>
                   </Row>
 
@@ -138,11 +139,7 @@ export default class ListGeoQuestions extends Component {
                             as={Card.Header}
                             eventKey="0"
                             bg="transparent"
-                          >
-                            <Button variant="outline-secondary" size="sm">
-                              Solution
-                            </Button>
-                          </Accordion.Toggle>
+                          ></Accordion.Toggle>
                         </Col>
                         <Col>
                           <Accordion.Collapse eventKey="0" bg="transparent">

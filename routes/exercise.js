@@ -15,7 +15,6 @@ const interviewQuestionController = require("../controllers/exercise/interview-q
 const listInterviewQuestionController = require("../controllers/exercise/list-interview-question");
 const listGeoQuestionController = require("../controllers/exercise/list-geo-question");
 const createGeoController = require("../controllers/exercise/geo-question");
-// const uploadGeoController = require("./../controllers/exercise/upload-geo-pic");
 
 router.post(
   "/exercise/create-exercise",
@@ -47,24 +46,10 @@ router.post(
   createGeoController
 );
 
-// router.post(
-//   "/exercise/create-geo",
-//   routeGuardMiddleware(true),
-//   geoImageMiddleware.single("imageTwo"),
-//   createGeoController
-// );
-
 router.get(
   "/exercise/list-geo-question",
   routeGuardMiddleware(true),
   listGeoQuestionController
 );
-
-// router.post(
-//   "/exercise/upload",
-//   routeGuardMiddleware(true),
-//   uploadImageMiddleware.single("image"),
-//   uploadGeoController
-// );
 
 module.exports = router;
