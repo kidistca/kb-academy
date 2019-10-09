@@ -8,7 +8,8 @@ export default class ListGeoQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questionGeoList: []
+      questionGeoList: [],
+      correct: false
     };
     this.onClickImage = this.onClickImage.bind(this);
   }
@@ -33,7 +34,7 @@ export default class ListGeoQuestions extends Component {
     for (let i of this.state.questionGeoList) {
       if (i.solution === id && i._id === objId) {
         console.log("Corect");
-        event.currentTarget.style.backgroundColor = "green";
+        // event.currentTarget.style.backgroundColor = "green";
         // className = "selected";
       } else console.log("Wrong answer", i._id);
     }
