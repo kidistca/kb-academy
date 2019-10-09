@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 import { signIn as signInService } from "./../../services/auth-api";
+import { signedIn as signedInService } from "./../../services/auth-api";
 
 export default class Login extends Component {
   constructor() {

@@ -102,6 +102,32 @@ export default class Profile extends Component {
                     </Col>
                   </Row>
                 </Form>
+                <h2 className="text-info font-weight-lighter text-center">
+                  {userOne.name}'s Profile
+                </h2>
+                <h4 className="text-white font-weight-lighter">
+                  {userOne.email}
+                </h4>
+                <h4 className="text-info">{userOne.role}</h4>
+                <Link to="/profile-edit">
+                  <Button className="my-3" variant="info">
+                    Edit Profile
+                  </Button>
+                </Link>
+                {userOne.role === "admin" && (
+                  <Fragment>
+                    <Link to="/create-interview-question">
+                      <Button variant="outline-info" className="ml-3">
+                        Create Interview Question
+                      </Button>
+                    </Link>
+                    <Link to="/create-geo">
+                      <Button variant="outline-info" className="ml-3">
+                        Create Geography Test
+                      </Button>
+                    </Link>
+                  </Fragment>
+                )}
               </Card.Body>
             </Card>
             <Row>

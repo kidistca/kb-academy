@@ -10,6 +10,7 @@ export default class ListGeoQuestions extends Component {
     this.state = {
       questionGeoList: []
     };
+    this.onClickImage = this.onClickImage.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +26,19 @@ export default class ListGeoQuestions extends Component {
       });
   }
 
+  onClickImage(event) {
+    const id = event.target.id;
+    const objId = event.target.alt;
+    console.log("the clicked event", event.target.alt);
+    for (let i of this.state.questionGeoList) {
+      if (i.solution === id && i._id === objId) {
+        console.log("Corect");
+        event.currentTarget.style.backgroundColor = "green";
+        // className = "selected";
+      } else console.log("Wrong answer", i._id);
+    }
+  }
+
   render() {
     const questionGeoList = this.state.questionGeoList;
     return (
@@ -35,46 +49,44 @@ export default class ListGeoQuestions extends Component {
       )) || (
         <Container>
           {questionGeoList.map(questionGeoItem => (
-            <div style={{ backgroundColor: "grey" }}>
+            <div key={questionGeoItem._id}>
               <h3 className="text-white">
                 Questions: {questionGeoItem.question}
               </h3>
               <Image
                 src={questionGeoItem.imageOne}
-                alt="Image-One"
-                style={{ maxWidth: "100%" }}
-                className="text-white"
+                alt={questionGeoItem._id}
+                style={{ maxWidth: "50%" }}
+                className="text-white selected"
+                id="1"
+                // key=""
+                // value={data.id}
+                onClick={this.onClickImage}
               />
               <Image
                 src={questionGeoItem.imageTwo}
-                alt="Image-Two"
-                style={{ maxWidth: "100%" }}
+                alt={questionGeoItem._id}
+                style={{ maxWidth: "50%" }}
                 className="text-white"
+                id="2"
+                onClick={this.onClickImage}
               />
               <Image
                 src={questionGeoItem.imageThree}
-                alt="Image-Three"
-                style={{ maxWidth: "100%" }}
+                alt={questionGeoItem._id}
+                style={{ maxWidth: "50%" }}
                 className="text-white"
+                id="3"
+                onClick={this.onClickImage}
               />
               <Image
                 src={questionGeoItem.imageFour}
-                alt="Image-Four"
-                style={{ maxWidth: "100%" }}
+                alt={questionGeoItem._id}
+                style={{ maxWidth: "50%" }}
                 className="text-white"
+                id="4"
+                onClick={this.onClickImage}
               />
-              {/* <Image className="text-white">
-                A: {questionGeoItem.imageOne}
-              </Image> */}
-              {/* <Image className="text-white">
-                B: {questionGeoItem.imageTwo}
-              </Image>
-              <Image className="text-white">
-                C: {questionGeoItem.imageThree}
-              </Image>
-              <Image className="text-white">
-                D: {questionGeoItem.imageFour}
-              </Image> */}
               <h3 className="text-white">
                 Solution: {questionGeoItem.solution}
               </h3>

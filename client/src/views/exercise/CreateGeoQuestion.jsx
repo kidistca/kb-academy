@@ -29,11 +29,23 @@ export default class CreateGeoQuestion extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeImage = this.handleChangeImage.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   componentDidMount() {
     this.setState({
       exercise: this.state.exercise
+    });
+  }
+
+  handleCheck(event) {
+    const checked = event.currentTarget.value;
+    console.log(checked);
+    this.setState({
+      exercise: {
+        ...this.state.exercise,
+        ...{ solution: checked }
+      }
     });
   }
 
@@ -77,7 +89,7 @@ export default class CreateGeoQuestion extends Component {
         //     imageOne: event.target.files[0]
         //   }
         // });
-        this.props.history.push("/");
+        this.props.history.push("/list-geo-question");
       })
       .catch(error => {
         console.log("this is the error", error);
@@ -110,19 +122,68 @@ export default class CreateGeoQuestion extends Component {
             className="text-white"
           />
           {this.state.exercise.answers.map(answer => (
-            <Form.Group>
-              {/* <label for="geo-one-image" className="file-input text-white">
+            <div key={answer.id}>
+              <Form.Group>
+                {/* <label for="geo-one-image" className="file-input text-white">
                   <span>Image One</span>
                 </label> */}
-              <Form.Control
-                id="geo-one-image"
-                type="file"
-                name={answer.id}
-                onChange={this.handleChangeImage}
-                className="text-white"
-              />
-            </Form.Group>
+                <Form.Control
+                  id="geo-one-image"
+                  type="file"
+                  name={answer.id}
+                  onChange={this.handleChangeImage}
+                  className="text-white"
+                />
+              </Form.Group>
+            </div>
           ))}
+          <Form.Group>
+            <Form.Label htmlFor="choice" className="text-white">
+              Solution
+            </Form.Label>
+            <br />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              value="1"
+              label="1"
+              type="radio"
+              id="optionA"
+              onChange={this.handleCheck}
+            />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              label="2"
+              value="2"
+              type="radio"
+              id="optionB"
+              onChange={this.handleCheck}
+            />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              label="3"
+              value="3"
+              type="radio"
+              id="optionC"
+              onChange={this.handleCheck}
+            />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              label="4"
+              value="4"
+              type="radio"
+              id="optionD"
+              onChange={this.handleCheck}
+            />
+          </Form.Group>
+
           <Button type="submit">Add question</Button>
         </Form>
       </Container>

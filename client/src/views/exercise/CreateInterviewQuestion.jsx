@@ -200,32 +200,70 @@ export default class CreateChoiceQuestion extends Component {
                 />
               </Form.Group>
 
-              <Form.Group>
-                <Form.Label htmlFor="option-description" className="text-info">
-                  Explanation
-                </Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  id="option-description"
-                  name="description"
-                  type="text"
-                  placeholder="Please, type here an explanation"
-                  value={this.state.description}
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Button
-                variant="outline-info"
-                type="submit"
-                block
-                className="my-4"
-              >
-                Add question
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+          <Form.Group>
+            <Form.Label htmlFor="choice" className="text-white">
+              Solution
+            </Form.Label>
+            <br />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              value="A"
+              label="A"
+              type="radio"
+              id="optionA"
+              onChange={this.handleCheck}
+            />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              value="B"
+              label="B"
+              type="radio"
+              id="optionB"
+              onChange={this.handleCheck}
+            />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              value="C"
+              label="C"
+              type="radio"
+              id="optionC"
+              onChange={this.handleCheck}
+            />
+            <Form.Check
+              className="text-white"
+              inline
+              name="choice"
+              value="D"
+              label="D"
+              type="radio"
+              id="optionD"
+              onChange={this.handleCheck}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label htmlFor="option-description" className="text-white">
+              Explanation
+            </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows="3"
+              id="option-description"
+              name="description"
+              type="text"
+              placeholder="Explanation"
+              value={this.state.description}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button type="submit">Add question</Button>
+        </Form>
         {/* <GetInterviewQuestion questions={this.QuestionList} /> */}
       </Container>
     );
