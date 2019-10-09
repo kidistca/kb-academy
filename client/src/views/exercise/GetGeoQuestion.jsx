@@ -14,7 +14,10 @@ export default class ListGeoQuestions extends Component {
     super(props);
     this.state = {
       questionGeoList: [],
-      correct: false
+      correct: false,
+      wrong: false,
+      itemObjId1: "",
+      itemObjId2: ""
     };
     this.onClickImage = this.onClickImage.bind(this);
   }
@@ -33,19 +36,37 @@ export default class ListGeoQuestions extends Component {
   }
 
   onClickImage(event) {
+    let right = false;
     const id = event.target.id;
     const objId = event.target.alt;
     console.log("the clicked event", event.target.alt);
-    for (let i of this.state.questionGeoList) {
-      if (i.solution === id && i._id === objId) {
+    for (let question of this.state.questionGeoList) {
+      if (question.solution === id && question._id === objId) {
         console.log("Corect");
-        // event.currentTarget.style.backgroundColor = "green";
-        // className = "selected";
-      } else console.log("Wrong answer", i._id);
+        this.setState({
+          ...this.state,
+          correct: true,
+          wrong: false,
+          itemObjId1: objId
+        });
+      }
+      if (question.solution !== id && question._id === objId) {
+        console.log("Wrong answer", objId);
+        this.setState({
+          ...this.state,
+          correct: false,
+          wrong: true,
+          itemObjId2: objId
+        });
+      }
     }
   }
 
   render() {
+    let correct = this.state.correct;
+    let wrong = this.state.wrong;
+    let itemObjId1 = this.state.itemObjId1;
+    let itemObjId2 = this.state.itemObjId2;
     const questionGeoList = this.state.questionGeoList;
     return (
       (!questionGeoList && (
@@ -65,7 +86,7 @@ export default class ListGeoQuestions extends Component {
                 <div key={questionGeoItem._id}>
                   <Row>
                     <h1 className="font-weight-lighter text-info">
-                      Questions: {questionGeoItem.question}
+                      Question: {questionGeoItem.question}
                     </h1>
                   </Row>
 
@@ -131,6 +152,29 @@ export default class ListGeoQuestions extends Component {
                               </h5>
                             </Card.Body>
                           </Accordion.Collapse>
+                        </Col>
+                        <Col>
+                          {(correct && itemObjId1 === questionGeoItem._id && (
+                            <Image
+                              className="ml-3 mt-4"
+                              src={
+                                correct
+                                  ? "../images/correct.png"
+                                  : "../images/wrong.png"
+                              }
+                            />
+                          )) ||
+                            (wrong &&
+                              (itemObjId2 === questionGeoItem._id && (
+                                <Image
+                                  className="ml-3 mt-4"
+                                  src={
+                                    wrong
+                                      ? "../images/wrong.png"
+                                      : "../images/correct.png"
+                                  }
+                                />
+                              )))}
                         </Col>
                       </Row>
                     </Accordion>

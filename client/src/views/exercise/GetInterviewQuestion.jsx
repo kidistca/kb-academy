@@ -103,10 +103,10 @@ export default class ListQuestions extends Component {
                         id="B"
                         name={questionItem._id}
                         onClick={this.handleClick}
-                        style={
-                          itemObjId === questionItem._id &&
-                          itemId === questionItem.solution && { color: color }
-                        }
+                        // style={
+                        //   itemObjId === questionItem._id &&
+                        //   itemId === questionItem.solution && { color: color }
+                        // }
                       >
                         B. {questionItem.optionTwo}
                       </Button>
@@ -116,10 +116,10 @@ export default class ListQuestions extends Component {
                         id="C"
                         name={questionItem._id}
                         onClick={this.handleClick}
-                        style={
-                          itemObjId === questionItem._id &&
-                          itemId === questionItem.solution && { color: color }
-                        }
+                        // style={
+                        //   itemObjId === questionItem._id &&
+                        //   itemId === questionItem.solution && { color: color }
+                        // }
                       >
                         C. {questionItem.optionThree}
                       </Button>
@@ -129,10 +129,10 @@ export default class ListQuestions extends Component {
                         id="D"
                         name={questionItem._id}
                         onClick={this.handleClick}
-                        style={
-                          itemObjId === questionItem._id &&
-                          itemId === questionItem.solution && { color: color }
-                        }
+                        // style={
+                        //   itemObjId === questionItem._id &&
+                        //   itemId === questionItem.solution && { color: color }
+                        // }
                       >
                         D. {questionItem.optionFour}
                       </Button>

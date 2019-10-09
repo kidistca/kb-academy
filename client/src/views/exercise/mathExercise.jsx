@@ -94,6 +94,7 @@ export default class MathExercise extends Component {
       this.state.exercise.valueTwo
     );
     console.log("solu", solution);
+    // if (!this.state.answer) {
     if (answer1 === solution) {
       this.setState({
         score: this.state.score + 5,
