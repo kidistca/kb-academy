@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 
+import PrettyFileInput from "../../components/PrettyFileInput";
+
 import Card from "react-bootstrap/Card";
 
 import { Link } from "react-router-dom";
@@ -75,15 +77,7 @@ export default class Profile extends Component {
                         alt={userOne.name}
                         style={{ maxHeight: "300px", maxWidth: "400px" }}
                       />
-                      <Form.Group className="text-center">
-                        <Form.Control
-                          id="profile-photo"
-                          type="file"
-                          name="image"
-                          onChange={this.onFileChange}
-                          className="text-white"
-                        />
-                      </Form.Group>
+                      <Form.Group className="text-center"></Form.Group>
                     </Col>
                     <Col>
                       <h2 className="text-info ">{userOne.name}'s Profile</h2>
@@ -95,10 +89,18 @@ export default class Profile extends Component {
                       </h5>
 
                       <Link to="/profile-edit">
-                        <Button className="my-3" variant="info">
+                        <Button className="my-3 mr-3" variant="info">
                           Edit Profile
                         </Button>
                       </Link>
+                      <Button className="pb-0" variant="info">
+                        <PrettyFileInput
+                          id="profile-photo"
+                          type="file"
+                          name="image"
+                          onChange={this.onFileChange}
+                        />
+                      </Button>
                     </Col>
                   </Row>
                 </Form>

@@ -216,10 +216,7 @@ export default class CreateChoiceQuestion extends Component {
                 Add question
               </Button>
             </Form>
-<<<<<<< HEAD
-=======
             {/* <GetInterviewQuestion questions={this.QuestionList} /> */}
->>>>>>> 41aba322b53b5771dc231b4d0b924ee8cf14ee03
           </Card.Body>
         </Card>
       </Container>

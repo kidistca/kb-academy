@@ -117,41 +117,6 @@ export default class HomeView extends Component {
               </Accordion>
             </Col>
           </Row>
-
-          {/* <br />
-          <br />
-          <Link to="/create-exercise">
-            <Button variant="outline-info" size="lg">
-              Math Exercise
-            </Button>
-          </Link>
-          <br />
-          <br />
-          <Link to="/multiple-choice">
-            <Button variant="outline-info" size="lg">
-              Multiple Choice - temp
-            </Button>
-          </Link>
-          <Link to="/create-interview-question">
-            <Button variant="outline-info" size="lg">
-              Create Interview Question
-            </Button>
-          </Link>
-          <Link to="/list-interview-question">
-            <Button variant="outline-info" size="lg">
-              List of Interview Question
-            </Button>
-          </Link>
-          <Link to="/create-geo">
-            <Button variant="outline-info" size="lg">
-              Create Geography Questions
-            </Button>
-          </Link>
-          <Link to="/list-geo-question">
-            <Button variant="outline-info" size="lg">
-              List of Geography Question
-            </Button>
-          </Link> */}
         </Container>
       </div>
     );

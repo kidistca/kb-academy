@@ -82,10 +82,7 @@ export default class ListQuestions extends Component {
                     style={{ width: "45rem" }}
                   >
                     <Card.Body>
-                      <h1
-                        className="font-weight-lighter mb-4"
-                        style={{ color: chooseColor(questionItem._id) }}
-                      >
+                      <h1 className="font-weight-lighter mb-4">
                         {questionItem.question}
                       </h1>
                       <Row>
