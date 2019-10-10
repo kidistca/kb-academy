@@ -53,12 +53,59 @@ export const interviewQuestion = ({
   });
 };
 
+export const editInterview = (
+  id,
+  {
+    question,
+    optionOne,
+    optionTwo,
+    optionThree,
+    optionFour,
+    solution,
+    description
+  }
+) =>
+  new Promise((resolve, reject) => {
+    exerciseApi
+      .patch(`/edit-interview/${id}`, {
+        question,
+        optionOne,
+        optionTwo,
+        optionThree,
+        optionFour,
+        solution,
+        description
+      })
+      .then(response => {
+        resolve(response.data.exercise);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+
+//GET ALL INTERVIEW QUESTIONS
 export const listInterviewQuestion = () => {
   return new Promise((resolve, reject) => {
     exerciseApi
       .get("/list-interview-question")
       .then(response => {
         console.log("From list interview", response.data.exercise);
+        resolve(response.data.exercise);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
+
+//GET SINGLE INTERVIEW QUESTION
+export const interviewQuestionDetail = id => {
+  return new Promise((resolve, reject) => {
+    exerciseApi
+      .get("/interview-question/" + id)
+      .then(response => {
+        console.log("INTERVIEW DETAIL", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {

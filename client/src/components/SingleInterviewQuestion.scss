@@ -1,9 +1,10 @@
-$green: rgb(38, 182, 38);
-$red: red;
+$green: #35b788;
+$red: #c93d3d;
 
 .interview-question {
   button {
     border: 0;
+    text-align: left;
     margin-right: 1em;
     &.answer-selected-correct {
       background-color: $green;
@@ -12,8 +13,7 @@ $red: red;
       background-color: $red;
     }
     &.answer-correct {
-      border: 2px solid $green;
-      padding: 1px;
+      border: 3px solid $green;
     }
   }
 }

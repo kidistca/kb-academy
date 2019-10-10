@@ -16,6 +16,7 @@ import EditProfileView from "./views/user/Edit";
 
 import MathExercise from "./views/exercise/mathExercise";
 import MultipleChoice from "./views/exercise/multiple-choice";
+import EditMultipleChoice from "./views/exercise/editInterview";
 import InterviewQuestion from "./views/exercise/CreateInterviewQuestion";
 import ListOfInterviewQuestion from "./views/exercise/GetInterviewQuestion";
 
@@ -88,6 +89,11 @@ export default class App extends Component {
               <Route
                 path="/create-interview-question"
                 component={InterviewQuestion}
+              />
+              <Route
+                path="/edit-interview/:id"
+                exact
+                component={EditMultipleChoice}
               />
               <Route
                 path="/list-interview-question"
