@@ -12,5 +12,5 @@
 }
 .text-newline {
   white-space: pre-Line;
-  text-align: left;
+  /* text-align: left; */
 }
