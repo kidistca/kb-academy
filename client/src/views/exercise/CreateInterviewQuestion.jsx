@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
 // import Radio from "react-bootstrap";
 
 import { interviewQuestion as interviewQuestionServices } from "../../services/exercise-api";

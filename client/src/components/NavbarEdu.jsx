@@ -92,7 +92,7 @@ class NavbarEdu extends Component {
 
                 <Link to="/profile">
                   <Button variant="outline-info text-white border-0 mr-2 mb-2">
-                    Profile
+                    Hi, {user1.name}
                   </Button>
                 </Link>
                 <Form onSubmit={this.props.signOut}>
