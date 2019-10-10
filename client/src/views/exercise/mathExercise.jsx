@@ -94,7 +94,6 @@ export default class MathExercise extends Component {
     );
     let roundedSolution = Math.round(solution * 100) / 100;
     console.log("solu", roundedSolution);
-    // if (!this.state.answer) {
     if (answer1 === roundedSolution) {
       this.setState({
         score: this.state.score + 5,
@@ -206,17 +205,20 @@ export default class MathExercise extends Component {
           <Card.Body>
             <Row>
               <Button
+                id="chechbtn"
                 variant="outline-info"
                 type="submit"
                 onClick={this.checkAnswer}
                 size="lg"
                 className="ml-auto mb-3"
+                // disabled={this.state.correct}
               >
                 Check answer
               </Button>
             </Row>
             <Row>
               <Button
+                id="next"
                 variant="outline-light"
                 onClick={this.nextNumberToCaculate}
                 size="lg"

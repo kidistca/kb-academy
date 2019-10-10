@@ -25,6 +25,7 @@ import ListOfGeoQuestion from "./views/exercise/GetGeoQuestion";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 import { signedIn } from "./services/auth-api";
+import { signOut as signOutService } from "./services/auth-api";
 
 export default class App extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export default class App extends Component {
       user: null,
       loaded: false
     };
+    this.signOut = this.signOut.bind(this);
   }
 
   componentDidMount() {
@@ -51,12 +53,30 @@ export default class App extends Component {
       });
   }
 
+  componentDidUpdate(previousProps, previousState) {
+    if (!this.state.user) signedIn();
+  }
+
+  signOut(event) {
+    event.preventDefault();
+    signOutService()
+      .then(() => {
+        this.setState({
+          user: null
+        });
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="App">
         <Router>
           <Container>
-            <NavbarEdu />
+            <NavbarEdu user={this.state.user} signOut={this.signOut} />
             <Switch>
               <Route path="/" exact component={HomeView} />
               <Route path="/signup" component={SignUpView} />

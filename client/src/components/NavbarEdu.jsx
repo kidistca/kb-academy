@@ -17,44 +17,44 @@ import { withRouter } from "react-router";
 class NavbarEdu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: null
-    };
-    this.signOut = this.signOut.bind(this);
+    // this.state = {
+    //   user: null
+    // };
+    // this.signOut = this.signOut.bind(this);
   }
 
-  componentDidMount() {
-    signedInService()
-      .then(user => {
-        this.setState({
-          user
-        });
-        // console.log("loged in", user);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  // componentDidMount() {
+  //   signedInService()
+  //     .then(user => {
+  //       this.setState({
+  //         user
+  //       });
+  //       // console.log("loged in", user);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 
-  componentDidUpdate(previousProps, previousState) {
-    if (!this.state.user) this.componentDidMount();
-  }
+  // componentDidUpdate(previousProps, previousState) {
+  //   if (!this.state.user) this.componentDidMount();
+  // }
 
-  signOut(event) {
-    event.preventDefault();
-    signOutService()
-      .then(() => {
-        this.setState({
-          user: null
-        });
-        this.props.history.push("/");
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  // signOut(event) {
+  //   event.preventDefault();
+  //   signOutService()
+  //     .then(() => {
+  //       this.setState({
+  //         user: null
+  //       });
+  //       this.props.history.push("/");
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
   render() {
-    const user1 = this.state.user;
+    const user1 = this.props.user;
 
     return (
       <Navbar className="mt-3">
@@ -95,7 +95,7 @@ class NavbarEdu extends Component {
             <Link className="btn text-white" to="/profile">
               Profile
             </Link>
-            <Form onSubmit={this.signOut}>
+            <Form onSubmit={this.props.signOut}>
               <Button
                 type="submit"
                 className="btn btn-outline-light bg-transparent"
