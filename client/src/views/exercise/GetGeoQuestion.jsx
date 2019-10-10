@@ -85,14 +85,40 @@ export default class ListGeoQuestions extends Component {
             <Card.Body>
               {questionGeoList.map((questionGeoItem, index) => (
                 <div key={questionGeoItem._id}>
-                  <Row>
-                    <h1 className="font-weight-lighter text-info">
-                      {index + 1}. {questionGeoItem.question}
-                    </h1>
+                  <Row className="mt-3">
+                    <Col sm={9}>
+                      <h4 className="font-weight-lighter text-info">
+                        <strong as="h2">{index + 1}. </strong>
+                        {questionGeoItem.question}
+                      </h4>
+                    </Col>
+                    <Col sm={3} className="text-right">
+                      {(correct && itemObjId1 === questionGeoItem._id && (
+                        <Image
+                          width="35px"
+                          src={
+                            correct
+                              ? "../images/correct.png"
+                              : "../images/wrong.png"
+                          }
+                        />
+                      )) ||
+                        (wrong &&
+                          (itemObjId2 === questionGeoItem._id && (
+                            <Image
+                              width="35px"
+                              src={
+                                wrong
+                                  ? "../images/wrong.png"
+                                  : "../images/correct.png"
+                              }
+                            />
+                          )))}
+                    </Col>
                   </Row>
 
                   <Row>
-                    <Col className="d-flex justify-content-center">
+                    <Col className="d-flex justify-content-center mt-2">
                       <Image
                         src={questionGeoItem.imageOne}
                         alt={questionGeoItem._id}
@@ -149,29 +175,6 @@ export default class ListGeoQuestions extends Component {
                               </h5>
                             </Card.Body>
                           </Accordion.Collapse>
-                        </Col>
-                        <Col>
-                          {(correct && itemObjId1 === questionGeoItem._id && (
-                            <Image
-                              className="ml-3 mt-4"
-                              src={
-                                correct
-                                  ? "../images/correct.png"
-                                  : "../images/wrong.png"
-                              }
-                            />
-                          )) ||
-                            (wrong &&
-                              (itemObjId2 === questionGeoItem._id && (
-                                <Image
-                                  className="ml-3 mt-4"
-                                  src={
-                                    wrong
-                                      ? "../images/wrong.png"
-                                      : "../images/correct.png"
-                                  }
-                                />
-                              )))}
                         </Col>
                       </Row>
                     </Accordion>
