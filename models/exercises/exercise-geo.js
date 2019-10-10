@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
   question: {
     type: String,
-    lowercase: true,
     trim: true
   },
   // answers: [
