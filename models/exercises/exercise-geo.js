@@ -17,12 +17,6 @@ const schema = new mongoose.Schema({
   //     }
   //   }
   // // ],
-  // answers: {
-  //   type: [String]
-  // },
-  // solution: {
-  //   type: String // The id of one of the answers
-  // },
 
   imageOne: {
     type: String

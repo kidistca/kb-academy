@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
-
+import Form from "react-bootstrap/Form";
 import "./SingleInterviewQuestion.scss";
 import { Link } from "react-router-dom";
 
@@ -113,7 +113,7 @@ export default class SingleInterviewQuestion extends Component {
                         bg="transparent"
                       >
                         <Button variant="outline-secondary">
-                          Explanation here.
+                          View the explanation here
                         </Button>
                       </Accordion.Toggle>
                     </Row>
@@ -123,7 +123,16 @@ export default class SingleInterviewQuestion extends Component {
                           <p className="text-info font-weight-lighter">
                             Solution: {questionItem.solution}
                           </p>
-                          <p className="text-light ">
+                          {/* <Form>
+                          <Form.Group>
+                            <Form.Control
+                              as="textarea"
+                              rows="3"
+                              // {questionItem.description}
+                            />
+                          </Form.Group>
+                        </Form> */}
+                          <p className="text-light">
                             {questionItem.description}
                           </p>
                         </Card.Body>
