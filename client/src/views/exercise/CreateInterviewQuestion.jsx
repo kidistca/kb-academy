@@ -95,6 +95,8 @@ export default class CreateChoiceQuestion extends Component {
                   id="question"
                   name="question"
                   type="text"
+                  as="textarea"
+                  rows="3"
                   placeholder="Type your question here"
                   value={this.state.question}
                   onChange={this.handleChange}

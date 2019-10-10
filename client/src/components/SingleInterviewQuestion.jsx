@@ -60,10 +60,15 @@ export default class SingleInterviewQuestion extends Component {
               className="mt-3 px-3"
               style={{ width: "45rem" }}
             >
+              <Card.Header
+                className="font-weight-lighter mt-3 mb-2 bg-info text-white"
+                as="h3"
+              >
+                <strong as="h2">{index + 1}</strong>
+                {".  "}
+                {questionItem.question}
+              </Card.Header>
               <Card.Body>
-                <h1 className="font-weight-lighter mb-4">
-                  {index + 1}. {questionItem.question}
-                </h1>
                 <Row className="mx-3">
                   <Button
                     block
