@@ -35,7 +35,9 @@ export default class ListQuestions extends Component {
         </div>
       )) || (
         <Container>
-          <h1 className="font-weight-lighter text-info">WebDev Intervew</h1>
+          <h1 className="font-weight-lighter text-info text-center mt-5">
+            WebDev Intervew
+          </h1>
           {questionList.map((questionItem, index) => (
             <SingleInterviewQuestion
               key={questionItem._id}

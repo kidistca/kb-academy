@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
   question: {
     type: String,
     // required: true,
-    lowercase: true,
+
     trim: true
   },
   optionOne: {

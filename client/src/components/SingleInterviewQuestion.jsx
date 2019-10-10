@@ -57,7 +57,7 @@ export default class SingleInterviewQuestion extends Component {
               bg="transparent"
               text="info"
               border="info"
-              className="mt-5 px-3"
+              className="mt-3 px-3"
               style={{ width: "45rem" }}
             >
               <Card.Body>
