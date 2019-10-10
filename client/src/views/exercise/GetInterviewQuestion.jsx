@@ -36,10 +36,11 @@ export default class ListQuestions extends Component {
       )) || (
         <Container>
           <h1 className="font-weight-lighter text-info">WebDev Intervew</h1>
-          {questionList.map(questionItem => (
+          {questionList.map((questionItem, index) => (
             <SingleInterviewQuestion
               key={questionItem._id}
               question={questionItem}
+              index={index}
             />
           ))}
         </Container>

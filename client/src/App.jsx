@@ -54,9 +54,9 @@ export default class App extends Component {
       });
   }
 
-  componentDidUpdate(previousProps, previousState) {
-    if (!this.state.user) signedIn();
-  }
+  // componentDidUpdate(previousProps, previousState) {
+  //   if (!this.state.user) signedIn();
+  // }
 
   signOut(event) {
     event.preventDefault();

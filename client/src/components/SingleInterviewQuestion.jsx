@@ -47,6 +47,7 @@ export default class SingleInterviewQuestion extends Component {
 
   render() {
     const questionItem = this.props.question;
+    const index = this.props.index;
 
     return (
       <div key={questionItem._id} className="interview-question">
@@ -61,7 +62,7 @@ export default class SingleInterviewQuestion extends Component {
             >
               <Card.Body>
                 <h1 className="font-weight-lighter mb-4">
-                  {questionItem.question}
+                  {index + 1}. {questionItem.question}
                 </h1>
                 <Row className="mx-3">
                   <Button

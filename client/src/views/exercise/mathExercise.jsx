@@ -45,7 +45,8 @@ export default class MathExercise extends Component {
         valueOne: Math.floor(Math.random() * 1000),
         valueTwo: Math.floor(Math.random() * 1000),
         answer: 0,
-        solution: 0
+        solution: 0,
+        btnCheck: false
       },
       score: 0,
       correct: false,
@@ -67,7 +68,8 @@ export default class MathExercise extends Component {
         valueOne: Math.floor(Math.random() * 1000),
         valueTwo: Math.floor(Math.random() * 1000),
         answer: 0,
-        solution: 0
+        solution: 0,
+        btnCheck: false
       },
       correct: false,
       wrong: false,
@@ -97,7 +99,8 @@ export default class MathExercise extends Component {
     if (answer1 === roundedSolution) {
       this.setState({
         score: this.state.score + 5,
-        correct: true
+        correct: true,
+        btnCheck: true
       });
     } else {
       this.setState({
@@ -211,7 +214,7 @@ export default class MathExercise extends Component {
                 onClick={this.checkAnswer}
                 size="lg"
                 className="ml-auto mb-3"
-                // disabled={this.state.correct}
+                // disabled={this.state.btnCheck}
               >
                 Check answer
               </Button>
