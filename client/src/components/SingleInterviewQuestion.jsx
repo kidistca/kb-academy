@@ -61,8 +61,8 @@ export default class SingleInterviewQuestion extends Component {
               style={{ width: "45rem" }}
             >
               <Card.Header
-                className="font-weight-lighter mt-3 mb-2 bg-info text-white"
-                as="h3"
+                className=" mt-3 mb-2 bg-info text-white text-newline"
+                as="h5"
               >
                 <strong as="h2">{index + 1}</strong>
                 {".  "}

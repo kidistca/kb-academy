@@ -106,6 +106,8 @@ export default class EditInterview extends Component {
                   id="question"
                   name="question"
                   type="text"
+                  as="textarea"
+                  rows="3"
                   placeholder="Type your question here"
                   value={this.state.exercise.question}
                   onChange={this.OnFormValueChange}

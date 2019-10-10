@@ -10,3 +10,7 @@
 .selected {
   box-shadow: 0px 12px 22px 1px rgb(33, 240, 95);
 }
+.text-newline {
+  white-space: pre-Line;
+  text-align: left;
+}
