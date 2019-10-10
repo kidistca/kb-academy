@@ -5,12 +5,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-// import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
 
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import FormControl from "react-bootstrap/FormControl";
+import Row from "react-bootstrap/Row";
 
 import { withRouter } from "react-router";
 
@@ -57,8 +53,8 @@ class NavbarEdu extends Component {
     const user1 = this.props.user;
 
     return (
-      <Navbar className="mt-3">
-        <Col>
+      <Navbar bg="transparent" expand="lg" className="navbar-dark mt-4">
+        <Row>
           <Link to="/">
             <Image
               alt="logo"
@@ -67,44 +63,50 @@ class NavbarEdu extends Component {
               style={{ maxWidth: "100%" }}
             />
           </Link>
-        </Col>
-        {(!user1 && (
-          <Fragment>
-            <Link to="/signin">
-              <Button variant="outline-light">Sign In</Button>
-            </Link>
-          </Fragment>
-        )) || (
-          <Fragment>
-            <Link className="btn text-white" to="/">
-              Home
-            </Link>
-            {user1.role === "Administrator" && (
+        </Row>
+        <div className="ml-auto mt-4">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            {(!user1 && (
               <Fragment>
-                <Link
-                  className="btn text-white"
-                  to="/create-interview-question"
-                >
-                  Create Interview Question
-                </Link>
-                <Link className="btn text-white" to="/create-geo">
-                  Create Geography Exercise
+                <Link to="/signin">
+                  <Button variant="outline-light">Sign In</Button>
                 </Link>
               </Fragment>
+            )) || (
+              <Fragment>
+                {user1.role === "Administrator" && (
+                  <Fragment>
+                    <Link to="/create-interview-question">
+                      <Button variant="outline-info text-white border-0 mr-2 mb-2">
+                        Create Interview Question
+                      </Button>
+                    </Link>
+                    <Link to="/create-geo">
+                      <Button variant="outline-info text-white border-0 mr-2 mb-2">
+                        Create Geography Exercise
+                      </Button>
+                    </Link>
+                  </Fragment>
+                )}
+
+                <Link to="/profile">
+                  <Button variant="outline-info text-white border-0 mr-2 mb-2">
+                    Profile
+                  </Button>
+                </Link>
+                <Form onSubmit={this.props.signOut}>
+                  <Button
+                    type="submit"
+                    className="btn btn-outline-light bg-transparent mb-2"
+                  >
+                    Sign Out
+                  </Button>
+                </Form>
+              </Fragment>
             )}
-            <Link className="btn text-white" to="/profile">
-              Profile
-            </Link>
-            <Form onSubmit={this.props.signOut}>
-              <Button
-                type="submit"
-                className="btn btn-outline-light bg-transparent"
-              >
-                Sign Out
-              </Button>
-            </Form>
-          </Fragment>
-        )}
+          </Navbar.Collapse>
+        </div>
       </Navbar>
     );
   }
