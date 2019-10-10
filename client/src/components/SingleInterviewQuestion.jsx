@@ -136,12 +136,13 @@ export default class SingleInterviewQuestion extends Component {
           </Col>
         </Row>
         <Row>
-          <Link to={"/edit-interview/" + questionItem._id}>
-            <Button className="my-3 mr-3" variant="info">
-              Edit Question
-            </Button>
-          </Link>
-          <Button>Delete Question</Button>
+          <Col className="d-flex justify-content-center">
+            <Link to={"/edit-interview/" + questionItem._id}>
+              <Button className="my-3 mr-3" variant="info">
+                Edit Question
+              </Button>
+            </Link>
+          </Col>
         </Row>
       </div>
     );
