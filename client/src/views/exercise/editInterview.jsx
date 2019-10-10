@@ -107,7 +107,7 @@ export default class EditInterview extends Component {
                   name="question"
                   type="text"
                   as="textarea"
-                  rows="3"
+                  rows="5"
                   placeholder="Type your question here"
                   value={this.state.exercise.question}
                   onChange={this.OnFormValueChange}
@@ -119,6 +119,8 @@ export default class EditInterview extends Component {
                 <Form.Control
                   id="option-one"
                   name="optionOne"
+                  as="textarea"
+                  rows="2"
                   type="text"
                   placeholder="Type an answer"
                   value={this.state.exercise.optionOne}
@@ -132,6 +134,8 @@ export default class EditInterview extends Component {
                   id="option-two"
                   name="optionTwo"
                   type="text"
+                  as="textarea"
+                  rows="2"
                   placeholder="Type an answer"
                   value={this.state.exercise.optionTwo}
                   onChange={this.OnFormValueChange}
@@ -143,6 +147,8 @@ export default class EditInterview extends Component {
                   id="option-three"
                   name="optionThree"
                   type="text"
+                  as="textarea"
+                  rows="2"
                   placeholder="Type an answer"
                   value={this.state.exercise.optionThree}
                   onChange={this.OnFormValueChange}
@@ -154,6 +160,8 @@ export default class EditInterview extends Component {
                   id="option-four"
                   name="optionFour"
                   type="text"
+                  as="textarea"
+                  rows="2"
                   placeholder="Type an answer"
                   value={this.state.exercise.optionFour}
                   onChange={this.OnFormValueChange}
@@ -211,7 +219,7 @@ export default class EditInterview extends Component {
                 </Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows="3"
+                  rows="5"
                   id="option-description"
                   name="description"
                   type="text"

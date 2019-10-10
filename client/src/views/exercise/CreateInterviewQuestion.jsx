@@ -96,7 +96,7 @@ export default class CreateChoiceQuestion extends Component {
                   name="question"
                   type="text"
                   as="textarea"
-                  rows="3"
+                  rows="5"
                   placeholder="Type your question here"
                   value={this.state.question}
                   onChange={this.handleChange}
@@ -109,6 +109,8 @@ export default class CreateChoiceQuestion extends Component {
                   id="option-one"
                   name="optionOne"
                   type="text"
+                  as="textarea"
+                  rows="2"
                   placeholder="Type an answer"
                   value={this.state.optionOne}
                   onChange={this.handleChange}
@@ -121,6 +123,8 @@ export default class CreateChoiceQuestion extends Component {
                   id="option-two"
                   name="optionTwo"
                   type="text"
+                  as="textarea"
+                  rows="2"
                   placeholder="Type an answer"
                   value={this.state.optionTwo}
                   onChange={this.handleChange}
@@ -132,6 +136,8 @@ export default class CreateChoiceQuestion extends Component {
                   id="option-three"
                   name="optionThree"
                   type="text"
+                  as="textarea"
+                  rows="2"
                   placeholder="Type an answer"
                   value={this.state.optionThree}
                   onChange={this.handleChange}
@@ -143,6 +149,8 @@ export default class CreateChoiceQuestion extends Component {
                   id="option-four"
                   name="optionFour"
                   type="text"
+                  as="textarea"
+                  rows="2"
                   placeholder="Type an answer"
                   value={this.state.optionFour}
                   onChange={this.handleChange}
@@ -157,6 +165,8 @@ export default class CreateChoiceQuestion extends Component {
                   label="A"
                   className="text-info"
                   inline
+                  as="textarea"
+                  rows="3"
                   name="choice"
                   value="A"
                   type="radio"
@@ -200,7 +210,7 @@ export default class CreateChoiceQuestion extends Component {
                 </Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows="3"
+                  rows="5"
                   id="option-description"
                   name="description"
                   type="text"

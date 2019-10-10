@@ -61,15 +61,16 @@ export default class SingleInterviewQuestion extends Component {
               style={{ width: "45rem" }}
             >
               <Card.Header
-                className=" mt-3 mb-2 bg-info text-white text-newline"
+                // font-weight-lighter
+                className=" mt-3 mb-2 text-info text-newline"
                 as="h5"
               >
                 <strong as="h2">{index + 1}</strong>
                 {".  "}
                 {questionItem.question}
               </Card.Header>
-              <Card.Body>
-                <Row className="mx-3">
+              <Card.Body className="text-newline">
+                <Row className="mx-3 text-newline">
                   <Button
                     block
                     className={this.chooseClass("A")}
@@ -124,7 +125,7 @@ export default class SingleInterviewQuestion extends Component {
                     </Row>
                     <Row>
                       <Accordion.Collapse eventKey="0" bg="transparent">
-                        <Card.Body>
+                        <Card.Body className="text-newline">
                           <p className="text-info font-weight-lighter">
                             Solution: {questionItem.solution}
                           </p>
