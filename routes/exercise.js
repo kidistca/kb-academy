@@ -3,7 +3,7 @@
 const { Router } = require("express");
 const router = Router();
 const routeGuardMiddleware = require("./../middleware/route-guard");
-const uploadImageMiddleware = require("./../middleware/picture-upload");
+//const uploadImageMiddleware = require("./../middleware/picture-upload");
 const geoImageMiddleware = require("./../middleware/geo-picture-upload");
 
 // ---------------------------------- EXERCISE ----------------------------------
@@ -13,9 +13,10 @@ const geoImageMiddleware = require("./../middleware/geo-picture-upload");
 const createExerciseController = require("./../controllers/exercise/create-exercise");
 const interviewQuestionController = require("../controllers/exercise/interview-question");
 const listInterviewQuestionController = require("../controllers/exercise/list-interview-question");
+const detailInterviewQuestionController = require("../controllers/exercise/detail-interview");
 const listGeoQuestionController = require("../controllers/exercise/list-geo-question");
 const createGeoController = require("../controllers/exercise/geo-question");
-// const uploadGeoController = require("./../controllers/exercise/upload-geo-pic");
+const editInterviewController = require("../controllers/exercise/edit-interview");
 
 router.post(
   "/exercise/create-exercise",
@@ -29,10 +30,22 @@ router.post(
   interviewQuestionController
 );
 
+router.patch(
+  "/exercise/edit-interview/:id",
+  routeGuardMiddleware(true),
+  editInterviewController
+);
+
 router.get(
   "/exercise/list-interview-question",
   routeGuardMiddleware(true),
   listInterviewQuestionController
+);
+
+router.get(
+  "/exercise/interview-question/:id",
+  routeGuardMiddleware(true),
+  detailInterviewQuestionController
 );
 
 router.post(
@@ -47,24 +60,10 @@ router.post(
   createGeoController
 );
 
-// router.post(
-//   "/exercise/create-geo",
-//   routeGuardMiddleware(true),
-//   geoImageMiddleware.single("imageTwo"),
-//   createGeoController
-// );
-
 router.get(
   "/exercise/list-geo-question",
   routeGuardMiddleware(true),
   listGeoQuestionController
 );
-
-// router.post(
-//   "/exercise/upload",
-//   routeGuardMiddleware(true),
-//   uploadImageMiddleware.single("image"),
-//   uploadGeoController
-// );
 
 module.exports = router;

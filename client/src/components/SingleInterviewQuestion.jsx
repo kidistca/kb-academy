@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Accordion from "react-bootstrap/Accordion";
 
 import "./SingleInterviewQuestion.scss";
+import { Link } from "react-router-dom";
 
 export default class SingleInterviewQuestion extends Component {
   constructor(props) {
@@ -53,7 +55,7 @@ export default class SingleInterviewQuestion extends Component {
             <Card
               bg="transparent"
               text="info"
-              border="white"
+              border="info"
               className="mt-5 px-3"
               style={{ width: "45rem" }}
             >
@@ -61,14 +63,9 @@ export default class SingleInterviewQuestion extends Component {
                 <h1 className="font-weight-lighter mb-4">
                   {questionItem.question}
                 </h1>
-                <Row>
-                  <pre className="text-white">
-                    {JSON.stringify(questionItem, null, 2)}
-                  </pre>
-                  {/* <pre className="text-white">
-                    {JSON.stringify(this.state.answeredId, null, 2)}
-                  </pre> */}
+                <Row className="mx-3">
                   <Button
+                    block
                     className={this.chooseClass("A")}
                     variant="outline-light"
                     id="A"
@@ -78,6 +75,7 @@ export default class SingleInterviewQuestion extends Component {
                   </Button>
 
                   <Button
+                    block
                     className={this.chooseClass("B")}
                     variant="outline-light"
                     id="B"
@@ -87,6 +85,7 @@ export default class SingleInterviewQuestion extends Component {
                   </Button>
 
                   <Button
+                    block
                     className={this.chooseClass("C")}
                     variant="outline-light"
                     id="C"
@@ -94,8 +93,8 @@ export default class SingleInterviewQuestion extends Component {
                   >
                     C. {questionItem.optionThree}
                   </Button>
-
                   <Button
+                    block
                     className={this.chooseClass("D")}
                     variant="outline-light"
                     id="D"
@@ -104,16 +103,44 @@ export default class SingleInterviewQuestion extends Component {
                     D. {questionItem.optionFour}
                   </Button>
                 </Row>
-
-                <h3 className="text-white">
-                  Solution: {questionItem.solution}
-                </h3>
-                <h3 className="text-white">
-                  Explanation: {questionItem.description}
-                </h3>
+                <Row className="mx-2 mt-3">
+                  <Accordion>
+                    <Row>
+                      <Accordion.Toggle
+                        as={Card.Header}
+                        eventKey="0"
+                        bg="transparent"
+                      >
+                        <Button variant="outline-secondary">
+                          Explanation here.
+                        </Button>
+                      </Accordion.Toggle>
+                    </Row>
+                    <Row>
+                      <Accordion.Collapse eventKey="0" bg="transparent">
+                        <Card.Body>
+                          <p className="text-info font-weight-lighter">
+                            Solution: {questionItem.solution}
+                          </p>
+                          <p className="text-light ">
+                            {questionItem.description}
+                          </p>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Row>
+                  </Accordion>
+                </Row>
               </Card.Body>
             </Card>
           </Col>
+        </Row>
+        <Row>
+          <Link to={"/edit-interview/" + questionItem._id}>
+            <Button className="my-3 mr-3" variant="info">
+              Edit Question
+            </Button>
+          </Link>
+          <Button>Delete Question</Button>
         </Row>
       </div>
     );
