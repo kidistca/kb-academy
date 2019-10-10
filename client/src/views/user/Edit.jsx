@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-// import Col from "react-bootstrap/Col";
 
 import * as AuthServices from "./../../services/auth-api";
 
@@ -29,7 +28,7 @@ export default class Edit extends Component {
             ...user
           }
         });
-        console.log("loged in", user);
+        // console.log("loged in", user);
       })
       .catch(error => {
         console.log(error);
@@ -39,7 +38,6 @@ export default class Edit extends Component {
   OnFormValueChange(event) {
     const name = event.target.name;
     const value = event.target.value;
-    console.log("this is my name", name, value);
     this.setState({
       user: { ...this.state.user, ...{ [name]: value } }
     });
@@ -69,7 +67,6 @@ export default class Edit extends Component {
 
   render() {
     const userOne = this.state.user;
-    console.log(userOne.name);
     return (
       <Container className="d-flex justify-content-center">
         <Card

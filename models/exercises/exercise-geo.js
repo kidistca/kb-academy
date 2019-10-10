@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
   question: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
   // answers: [
   //   {

@@ -28,7 +28,6 @@ export default class Profile extends Component {
         this.setState({
           user
         });
-        console.log("loged in", user.name);
       })
       .catch(error => {
         console.log(error);

@@ -7,7 +7,7 @@ import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
-import Card, { CardBody } from "react-bootstrap/Card";
+import Card from "react-bootstrap/Card";
 
 let operators = [
   {
@@ -184,7 +184,7 @@ export default class MathExercise extends Component {
                     bg="transparent"
                   >
                     <Button variant="outline-secondary" size="sm">
-                      Get the solution
+                      View the solution
                     </Button>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" bg="transparent">

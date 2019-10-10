@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 import Card from "react-bootstrap/Card";
 
-import PrettyFileInput from "../../components/PrettyFileInput";
+// import PrettyFileInput from "../../components/PrettyFileInput";
 
 import { geoQuestion } from "./../../services/exercise-api";
 
@@ -95,7 +95,7 @@ export default class CreateGeoQuestion extends Component {
   }
 
   render() {
-    const exercise = this.state.exercise;
+    // const exercise = this.state.exercise;
     return (
       <Container className="d-flex justify-content-center">
         <Card
@@ -121,13 +121,6 @@ export default class CreateGeoQuestion extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-
-              {/* <Image
-                src={this.state.imageOne}
-                alt="Image-One"
-                style={{ maxWidth: "100%" }}
-                className="text-white"
-              /> */}
               {this.state.exercise.answers.map(answer => (
                 <div key={answer.id}>
                   <Form.Group>

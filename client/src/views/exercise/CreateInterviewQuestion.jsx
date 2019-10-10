@@ -96,6 +96,7 @@ export default class CreateChoiceQuestion extends Component {
                   type="text"
                   as="textarea"
                   rows="5"
+                  required
                   placeholder="Type your question here"
                   value={this.state.question}
                   onChange={this.handleChange}
@@ -110,6 +111,7 @@ export default class CreateChoiceQuestion extends Component {
                   type="text"
                   as="textarea"
                   rows="2"
+                  required
                   placeholder="Type an answer"
                   value={this.state.optionOne}
                   onChange={this.handleChange}
@@ -124,6 +126,7 @@ export default class CreateChoiceQuestion extends Component {
                   type="text"
                   as="textarea"
                   rows="2"
+                  required
                   placeholder="Type an answer"
                   value={this.state.optionTwo}
                   onChange={this.handleChange}
@@ -137,6 +140,7 @@ export default class CreateChoiceQuestion extends Component {
                   type="text"
                   as="textarea"
                   rows="2"
+                  required
                   placeholder="Type an answer"
                   value={this.state.optionThree}
                   onChange={this.handleChange}
@@ -150,6 +154,7 @@ export default class CreateChoiceQuestion extends Component {
                   type="text"
                   as="textarea"
                   rows="2"
+                  required
                   placeholder="Type an answer"
                   value={this.state.optionFour}
                   onChange={this.handleChange}
@@ -164,10 +169,9 @@ export default class CreateChoiceQuestion extends Component {
                   label="A"
                   className="text-info"
                   inline
-                  as="textarea"
-                  rows="3"
                   name="choice"
                   value="A"
+                  required
                   type="radio"
                   id="optionA"
                   onChange={this.handleCheck}
@@ -227,7 +231,6 @@ export default class CreateChoiceQuestion extends Component {
                 Add question
               </Button>
             </Form>
-            {/* <GetInterviewQuestion questions={this.QuestionList} /> */}
           </Card.Body>
         </Card>
       </Container>

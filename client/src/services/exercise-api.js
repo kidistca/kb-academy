@@ -44,7 +44,7 @@ export const interviewQuestion = ({
         description
       })
       .then(response => {
-        console.log("From interview api", response.data.exercise);
+        // console.log("From interview api", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {
@@ -90,7 +90,6 @@ export const listInterviewQuestion = () => {
     exerciseApi
       .get("/list-interview-question")
       .then(response => {
-        console.log("From list interview", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {
@@ -105,7 +104,6 @@ export const interviewQuestionDetail = id => {
     exerciseApi
       .get("/interview-question/" + id)
       .then(response => {
-        console.log("INTERVIEW DETAIL", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {
@@ -127,7 +125,6 @@ export const geoQuestion = data => {
     exerciseApi
       .post("/create-geo", formData)
       .then(response => {
-        console.log("From geo api", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {
@@ -141,7 +138,6 @@ export const listGeoQuestion = () => {
     exerciseApi
       .get("/list-geo-question")
       .then(response => {
-        console.log("From list geo", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {
@@ -149,16 +145,3 @@ export const listGeoQuestion = () => {
       });
   });
 };
-
-// export const uploadGeoPicture = data => {
-//   return new Promise((resolve, reject) => {
-//     exerciseApi
-//       .post("/upload", data)
-//       .then(response => {
-//         resolve(response.data.exercise);
-//       })
-//       .catch(error => {
-//         reject(error);
-//       });
-//   });
-// };

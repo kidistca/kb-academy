@@ -75,6 +75,11 @@ class NavbarEdu extends Component {
               </Fragment>
             )) || (
               <Fragment>
+                <Link to="/profile">
+                  <Button variant="outline-info text-white border-0 mr-2 mb-2">
+                    Hi, {user1.name}
+                  </Button>
+                </Link>
                 {user1.role === "Administrator" && (
                   <Fragment>
                     <Link to="/create-interview-question">
@@ -90,11 +95,6 @@ class NavbarEdu extends Component {
                   </Fragment>
                 )}
 
-                <Link to="/profile">
-                  <Button variant="outline-info text-white border-0 mr-2 mb-2">
-                    Hi, {user1.name}
-                  </Button>
-                </Link>
                 <Form onSubmit={this.props.signOut}>
                   <Button
                     type="submit"
