@@ -42,9 +42,9 @@ export default class HomeView extends Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" bg="transparent">
                     <Card.Body>
-                      Hello! Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
+                      The Math exercises are created to be used as a tool to
+                      develop your Math skills. Challenge yourself with four of
+                      the fundamental operations of elementary mathematics.
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
@@ -75,9 +75,10 @@ export default class HomeView extends Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" bg="transparent">
                     <Card.Body>
-                      Hello! Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
+                      The geography exercises are created to be used as a tool
+                      to gage your geography skill by answering interactive
+                      geography questions. This exercises are expected to be fun
+                      and entertaining.
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
@@ -108,9 +109,10 @@ export default class HomeView extends Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" bg="transparent">
                     <Card.Body>
-                      Hello! Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit, sed do eiusmod tempor incididunt ut labore et dolore
-                      magna aliqua.
+                      The WebDev interview questioner is intended to be used as
+                      a tool to prep Web Developer to employment market and
+                      broaden your knowledge horizons. The questioner includes
+                      both technical and behavioural questions.
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
