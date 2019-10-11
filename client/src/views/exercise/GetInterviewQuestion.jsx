@@ -40,7 +40,7 @@ export default class ListQuestions extends Component {
       )) || (
         <Container className="d-flex justify-content-center">
           <h1 className="font-weight-lighter text-info text-center mt-5">
-            WebDev Interview
+            WebDev Interview Questions
           </h1>
 
           {questionList.map((questionItem, index) => (
