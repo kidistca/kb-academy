@@ -39,9 +39,12 @@ export default class EditInterview extends Component {
   }
 
   OnFormValueChange(event) {
+    const checked = event.currentTarget.value;
     const name = event.target.name;
     const value = event.target.value;
-    this.setState({ exercise: { ...this.state.exercise, [name]: value } });
+    this.setState({
+      exercise: { ...this.state.exercise, [name]: value, solution: checked }
+    });
   }
 
   onEdit(event) {
@@ -164,6 +167,7 @@ export default class EditInterview extends Component {
                   Choose the right answer:
                 </Form.Label>
                 <Form.Check
+                  checked={this.state.exercise.solution === "A"}
                   label="A"
                   className="text-info"
                   inline
@@ -175,6 +179,7 @@ export default class EditInterview extends Component {
                   onChange={this.OnFormValueChange}
                 />
                 <Form.Check
+                  checked={this.state.exercise.solution === "B"}
                   label="B"
                   className="text-info"
                   inline
@@ -185,6 +190,7 @@ export default class EditInterview extends Component {
                   onChange={this.OnFormValueChange}
                 />
                 <Form.Check
+                  checked={this.state.exercise.solution === "C"}
                   label="C"
                   className="text-info"
                   inline
@@ -195,6 +201,7 @@ export default class EditInterview extends Component {
                   onChange={this.OnFormValueChange}
                 />
                 <Form.Check
+                  checked={this.state.exercise.solution === "D"}
                   label="D"
                   className="text-info"
                   inline
