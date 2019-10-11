@@ -105,27 +105,28 @@ export default class Profile extends Component {
                 </Form>
               </Card.Body>
             </Card>
-            <Row>
-              {userOne.role === "Administrator" && (
-                <Fragment>
-                  <Link to="/create-interview-question">
-                    <Button variant="outline-info" className="ml-3">
-                      Create Interview Question
-                    </Button>
-                  </Link>
-                  <Link to="/create-geo">
-                    <Button variant="outline-info" className="ml-3">
-                      Create Geography Exercise
-                    </Button>
-                  </Link>
-                </Fragment>
-              )}
-              <Link to="/">
-                <Button variant="info" className="ml-3">
-                  Start an exercise!
-                </Button>
-              </Link>
-            </Row>
+          </Row>
+          <Row className="d-flex justify-content-center">
+            {userOne.role === "Administrator" && (
+              <Fragment>
+                <Link to="/create-interview-question">
+                  <Button variant="outline-info" className="ml-3">
+                    Create Interview Question
+                  </Button>
+                </Link>
+                <Link to="/create-geo">
+                  <Button variant="outline-info" className="ml-3">
+                    Create Geography Exercise
+                  </Button>
+                </Link>
+              </Fragment>
+            )}
+
+            <Link to="/">
+              <Button variant="info" className="ml-3">
+                Start an exercise!
+              </Button>
+            </Link>
           </Row>
         </Container>
       )
