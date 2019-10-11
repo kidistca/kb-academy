@@ -18,7 +18,6 @@ export default class ListQuestions extends Component {
         this.setState({
           questionList
         });
-        console.log("Exercise question", questionList);
       })
       .catch(error => {
         console.log(error);

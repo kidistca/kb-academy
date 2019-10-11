@@ -128,15 +128,6 @@ export default class SingleInterviewQuestion extends Component {
                           <p className="text-info font-weight-lighter">
                             Solution: {questionItem.solution}
                           </p>
-                          {/* <Form>
-                          <Form.Group>
-                            <Form.Control
-                              as="textarea"
-                              rows="3"
-                              // {questionItem.description}
-                            />
-                          </Form.Group>
-                        </Form> */}
                           <p className="text-light">
                             {questionItem.description}
                           </p>

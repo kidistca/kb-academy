@@ -38,7 +38,6 @@ export default class CreateGeoQuestion extends Component {
 
   handleCheck(event) {
     const checked = event.currentTarget.value;
-    console.log(checked);
     this.setState({
       exercise: {
         ...this.state.exercise,
@@ -78,15 +77,8 @@ export default class CreateGeoQuestion extends Component {
   onSubmitForm(event) {
     event.preventDefault();
     const exercise = this.state.exercise;
-    console.log("what does exercise have", exercise);
     geoQuestion(exercise)
       .then(exercise => {
-        // this.setState({
-        //   exercise: {
-        //     ...this.state.exercise,
-        //     imageOne: event.target.files[0]
-        //   }
-        // });
         this.props.history.push("/list-geo-question");
       })
       .catch(error => {
@@ -116,6 +108,7 @@ export default class CreateGeoQuestion extends Component {
                   id="question"
                   name="question"
                   type="text"
+                  required
                   placeholder="Type your question here"
                   value={this.state.question}
                   onChange={this.handleChange}
@@ -130,6 +123,7 @@ export default class CreateGeoQuestion extends Component {
                       name={answer.id}
                       onChange={this.handleChangeImage}
                       className="text-white"
+                      required
                     />
                   </Form.Group>
                 </div>
@@ -155,6 +149,7 @@ export default class CreateGeoQuestion extends Component {
                   name="choice"
                   label="2"
                   value="2"
+                  required
                   type="radio"
                   id="optionB"
                   onChange={this.handleCheck}

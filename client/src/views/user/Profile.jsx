@@ -39,7 +39,6 @@ export default class Profile extends Component {
     data.append("image", event.target.files[0]);
     AuthServices.uploadPicture(data)
       .then(user => {
-        console.log(user);
         this.setState({
           user
         });

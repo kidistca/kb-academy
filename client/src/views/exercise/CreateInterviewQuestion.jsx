@@ -35,7 +35,6 @@ export default class CreateChoiceQuestion extends Component {
 
   handleCheck(event) {
     const checked = event.currentTarget.value;
-    console.log(checked);
     this.setState({
       ...this.state,
       solution: checked

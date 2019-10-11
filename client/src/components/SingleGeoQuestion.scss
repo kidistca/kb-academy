@@ -1,0 +1,21 @@
+$green: #35b788;
+$red: #c93d3d;
+
+.interview-question {
+  button {
+    border: 0;
+    text-align: left;
+    margin-right: 1em;
+    &.answer-selected-correct {
+      // background-color: $green;
+      // background-image: "../images/wrong.png";
+      src: "../images/wrong.png";
+    }
+    &.answer-selected-wrong {
+      background-color: $red;
+    }
+    &.answer-correct {
+      border: 3px solid $green;
+    }
+  }
+}

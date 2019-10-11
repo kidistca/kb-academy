@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
   //   question,
   //   answers
   // };
-  console.log("file url", req.files["image-1"][0]["url"]);
+  // console.log("file url", req.files["image-1"][0]["url"]);
 
   const file1 = req.files["image-1"][0]["url"];
   const file2 = req.files["image-2"][0]["url"];
@@ -28,10 +28,6 @@ module.exports = (req, res, next) => {
     imageThree: file3,
     imageFour: file4,
     solution
-
-    // $push: {
-    //   answers: { $each: [{ file1 }, { file2 }] }
-    // }
   })
     .then(exercise => {
       res.json({ exercise });

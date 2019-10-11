@@ -57,6 +57,7 @@ export default class Login extends Component {
                   id="user-email"
                   name="email"
                   type="email"
+                  required
                   placeholder="Email"
                   value={this.state.email}
                   onChange={this.handleChange}
@@ -70,6 +71,7 @@ export default class Login extends Component {
                   id="user-password"
                   name="password"
                   type="password"
+                  required
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleChange}
