@@ -118,7 +118,7 @@ export default class SingleInterviewQuestion extends Component {
                         bg="transparent"
                       >
                         <Button variant="outline-secondary">
-                          View the explanation here
+                          View the explanation
                         </Button>
                       </Accordion.Toggle>
                     </Row>

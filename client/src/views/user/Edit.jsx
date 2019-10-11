@@ -28,7 +28,6 @@ export default class Edit extends Component {
             ...user
           }
         });
-        // console.log("loged in", user);
       })
       .catch(error => {
         console.log(error);

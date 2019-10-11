@@ -22,7 +22,6 @@ export default class ListGeoQuestions extends Component {
         this.setState({
           questionGeoList
         });
-        // console.log("Exercise GEO question", questionGeoList);
       })
       .catch(error => {
         console.log(error);

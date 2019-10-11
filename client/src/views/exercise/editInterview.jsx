@@ -32,7 +32,6 @@ export default class EditInterview extends Component {
         this.setState({
           exercise
         });
-        // console.log("Exercise question", exercise);
       })
       .catch(error => {
         console.log(error);

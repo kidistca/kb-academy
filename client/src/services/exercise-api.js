@@ -44,7 +44,6 @@ export const interviewQuestion = ({
         description
       })
       .then(response => {
-        // console.log("From interview api", response.data.exercise);
         resolve(response.data.exercise);
       })
       .catch(error => {
