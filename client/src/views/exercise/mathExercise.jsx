@@ -7,7 +7,7 @@ import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
-import Card, { CardBody } from "react-bootstrap/Card";
+import Card from "react-bootstrap/Card";
 
 let operators = [
   {
@@ -45,8 +45,7 @@ export default class MathExercise extends Component {
         valueOne: Math.floor(Math.random() * 1000),
         valueTwo: Math.floor(Math.random() * 1000),
         answer: 0,
-        solution: 0,
-        btnCheck: false
+        solution: 0
       },
       score: 0,
       correct: false,
@@ -56,7 +55,6 @@ export default class MathExercise extends Component {
     };
 
     this.handleAnswer = this.handleAnswer.bind(this);
-    this.scoreCounter = this.scoreCounter.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.nextNumberToCaculate = this.nextNumberToCaculate.bind(this);
   }
@@ -68,14 +66,14 @@ export default class MathExercise extends Component {
         valueOne: Math.floor(Math.random() * 1000),
         valueTwo: Math.floor(Math.random() * 1000),
         answer: 0,
-        solution: 0,
-        btnCheck: false
+        solution: 0
       },
       correct: false,
       wrong: false,
       operators: operators,
       randomOperator: Math.floor(Math.random() * operators.length)
     });
+    this.refs.btn.removeAttribute("disabled");
   }
 
   handleAnswer(event) {
@@ -85,7 +83,6 @@ export default class MathExercise extends Component {
         answer: event.target.valueAsNumber
       }
     });
-    console.log("STATE answer", this.state.exercise.answer);
   }
 
   checkAnswer() {
@@ -95,25 +92,18 @@ export default class MathExercise extends Component {
       this.state.exercise.valueTwo
     );
     let roundedSolution = Math.round(solution * 100) / 100;
-    console.log("solu", roundedSolution);
     if (answer1 === roundedSolution) {
       this.setState({
         score: this.state.score + 5,
-        correct: true,
-        btnCheck: true
+        correct: true
       });
+      this.refs.btn.setAttribute("disabled", "disabled");
     } else {
       this.setState({
         score: this.state.score,
         wrong: true
       });
     }
-  }
-
-  scoreCounter() {
-    this.setState({
-      score: this.state.score + 5
-    });
   }
 
   render() {
@@ -184,7 +174,7 @@ export default class MathExercise extends Component {
                     bg="transparent"
                   >
                     <Button variant="outline-secondary" size="sm">
-                      Get the solution
+                      View the solution
                     </Button>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0" bg="transparent">
@@ -196,7 +186,7 @@ export default class MathExercise extends Component {
                   </Accordion.Collapse>
                   <Card.Body>
                     <h5 className="text-info font-weight-lighter">
-                      Please round off the quotient to two decimal point
+                      Please round off the quotient to two decimal points
                     </h5>
                   </Card.Body>
                 </Row>
@@ -214,7 +204,7 @@ export default class MathExercise extends Component {
                 onClick={this.checkAnswer}
                 size="lg"
                 className="ml-auto mb-3"
-                // disabled={this.state.btnCheck}
+                ref="btn"
               >
                 Check answer
               </Button>

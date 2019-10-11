@@ -16,8 +16,7 @@ export default class ListGeoQuestions extends Component {
       correct: false,
       wrong: false,
       itemObjId1: "",
-      itemObjId2: "",
-      count: 0
+      itemObjId2: ""
     };
     this.onClickImage = this.onClickImage.bind(this);
   }
@@ -28,7 +27,6 @@ export default class ListGeoQuestions extends Component {
         this.setState({
           questionGeoList
         });
-        console.log("Exercise GEO question", questionGeoList);
       })
       .catch(error => {
         console.log(error);
@@ -38,10 +36,8 @@ export default class ListGeoQuestions extends Component {
   onClickImage(event) {
     const id = event.target.id;
     const objId = event.target.alt;
-    console.log("the clicked event", event.target.alt);
     for (let question of this.state.questionGeoList) {
       if (question.solution === id && question._id === objId) {
-        console.log("Corect");
         this.setState({
           ...this.state,
           correct: true,
@@ -50,7 +46,6 @@ export default class ListGeoQuestions extends Component {
         });
       }
       if (question.solution !== id && question._id === objId) {
-        console.log("Wrong answer", objId);
         this.setState({
           ...this.state,
           correct: false,
@@ -62,12 +57,10 @@ export default class ListGeoQuestions extends Component {
   }
 
   render() {
-    console.log("length", this.state.questionGeoList.length);
     let correct = this.state.correct;
     let wrong = this.state.wrong;
     let itemObjId1 = this.state.itemObjId1;
     let itemObjId2 = this.state.itemObjId2;
-    let count = this.state.count;
     const questionGeoList = this.state.questionGeoList;
     return (
       (!questionGeoList && (

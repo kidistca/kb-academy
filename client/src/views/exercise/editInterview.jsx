@@ -23,7 +23,6 @@ export default class EditInterview extends Component {
 
     this.OnFormValueChange = this.OnFormValueChange.bind(this);
     this.onEdit = this.onEdit.bind(this);
-    //this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -33,24 +32,13 @@ export default class EditInterview extends Component {
         this.setState({
           exercise
         });
-        console.log("Exercise question", exercise);
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  // handleChange(event) {
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // }
-
   OnFormValueChange(event) {
-    console.log("VALUE", event.target.value);
-    console.log("name", event.target.name);
     const name = event.target.name;
     const value = event.target.value;
     this.setState({ exercise: { ...this.state.exercise, [name]: value } });
@@ -60,11 +48,9 @@ export default class EditInterview extends Component {
     event.preventDefault();
     const id = this.props.match.params.id;
     const exercise = this.state.exercise;
-    console.log("ID", id);
     ExerciseServices.editInterview(id, exercise)
       .then(response => {
         this.props.history.push("/list-interview-question");
-        console.log("RESPONSE", response);
       })
       .catch(error => {
         console.log(error);
@@ -108,6 +94,7 @@ export default class EditInterview extends Component {
                   type="text"
                   as="textarea"
                   rows="5"
+                  required
                   placeholder="Type your question here"
                   value={this.state.exercise.question}
                   onChange={this.OnFormValueChange}
@@ -121,6 +108,7 @@ export default class EditInterview extends Component {
                   name="optionOne"
                   as="textarea"
                   rows="2"
+                  required
                   type="text"
                   placeholder="Type an answer"
                   value={this.state.exercise.optionOne}
@@ -136,6 +124,7 @@ export default class EditInterview extends Component {
                   type="text"
                   as="textarea"
                   rows="2"
+                  required
                   placeholder="Type an answer"
                   value={this.state.exercise.optionTwo}
                   onChange={this.OnFormValueChange}
@@ -149,6 +138,7 @@ export default class EditInterview extends Component {
                   type="text"
                   as="textarea"
                   rows="2"
+                  required
                   placeholder="Type an answer"
                   value={this.state.exercise.optionThree}
                   onChange={this.OnFormValueChange}
@@ -162,6 +152,7 @@ export default class EditInterview extends Component {
                   type="text"
                   as="textarea"
                   rows="2"
+                  required
                   placeholder="Type an answer"
                   value={this.state.exercise.optionFour}
                   onChange={this.OnFormValueChange}
@@ -178,6 +169,7 @@ export default class EditInterview extends Component {
                   inline
                   name="choice"
                   value="A"
+                  required
                   type="radio"
                   id="optionA"
                   onChange={this.OnFormValueChange}

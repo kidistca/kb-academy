@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   User.findByIdAndDelete(req.user._id)
     .then(() => {
       res.json({ type: "success" });
-      console.log(req.user._id);
+      // console.log(req.user._id);
     })
     .catch(error => {
       next(error);

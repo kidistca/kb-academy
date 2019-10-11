@@ -5,7 +5,6 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
-import Form from "react-bootstrap/Form";
 import "./SingleInterviewQuestion.scss";
 import { Link } from "react-router-dom";
 

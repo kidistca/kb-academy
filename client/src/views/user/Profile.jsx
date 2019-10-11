@@ -28,7 +28,6 @@ export default class Profile extends Component {
         this.setState({
           user
         });
-        console.log("loged in", user.name);
       })
       .catch(error => {
         console.log(error);
@@ -40,7 +39,6 @@ export default class Profile extends Component {
     data.append("image", event.target.files[0]);
     AuthServices.uploadPicture(data)
       .then(user => {
-        console.log(user);
         this.setState({
           user
         });

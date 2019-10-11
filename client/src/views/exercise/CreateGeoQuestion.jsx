@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 import Card from "react-bootstrap/Card";
 
-import PrettyFileInput from "../../components/PrettyFileInput";
+// import PrettyFileInput from "../../components/PrettyFileInput";
 
 import { geoQuestion } from "./../../services/exercise-api";
 
@@ -38,7 +38,6 @@ export default class CreateGeoQuestion extends Component {
 
   handleCheck(event) {
     const checked = event.currentTarget.value;
-    console.log(checked);
     this.setState({
       exercise: {
         ...this.state.exercise,
@@ -78,15 +77,8 @@ export default class CreateGeoQuestion extends Component {
   onSubmitForm(event) {
     event.preventDefault();
     const exercise = this.state.exercise;
-    console.log("what does exercise have", exercise);
     geoQuestion(exercise)
       .then(exercise => {
-        // this.setState({
-        //   exercise: {
-        //     ...this.state.exercise,
-        //     imageOne: event.target.files[0]
-        //   }
-        // });
         this.props.history.push("/list-geo-question");
       })
       .catch(error => {
@@ -95,7 +87,7 @@ export default class CreateGeoQuestion extends Component {
   }
 
   render() {
-    const exercise = this.state.exercise;
+    // const exercise = this.state.exercise;
     return (
       <Container className="d-flex justify-content-center">
         <Card
@@ -116,18 +108,12 @@ export default class CreateGeoQuestion extends Component {
                   id="question"
                   name="question"
                   type="text"
+                  required
                   placeholder="Type your question here"
                   value={this.state.question}
                   onChange={this.handleChange}
                 />
               </Form.Group>
-
-              {/* <Image
-                src={this.state.imageOne}
-                alt="Image-One"
-                style={{ maxWidth: "100%" }}
-                className="text-white"
-              /> */}
               {this.state.exercise.answers.map(answer => (
                 <div key={answer.id}>
                   <Form.Group>
@@ -137,6 +123,7 @@ export default class CreateGeoQuestion extends Component {
                       name={answer.id}
                       onChange={this.handleChangeImage}
                       className="text-white"
+                      required
                     />
                   </Form.Group>
                 </div>
@@ -162,6 +149,7 @@ export default class CreateGeoQuestion extends Component {
                   name="choice"
                   label="2"
                   value="2"
+                  required
                   type="radio"
                   id="optionB"
                   onChange={this.handleCheck}
