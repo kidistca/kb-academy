@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     _id: req.params.id
   })
     .then(exercise => {
-      console.log("EXCERCISE DETAIL", exercise);
+      //console.log("EXCERCISE DETAIL", exercise);
       res.json({ exercise });
     })
     .catch(error => {

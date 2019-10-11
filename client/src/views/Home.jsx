@@ -15,18 +15,17 @@ export default class HomeView extends Component {
   render() {
     return (
       <div className="Background">
-        <Container>
-          <Row className="my-3">
+        <Container className="d-flex justify-content-center">
+          <Row className="my-3 text-center">
             <Col sm={4} className="my-5">
               <Link to="/create-exercise">
                 <Image
                   alt="logo"
                   src="../images/math-exercise.png"
-                  className="mr-auto"
                   style={{ maxWidth: "100%" }}
                 />
               </Link>
-              <Accordion>
+              <Accordion className="d-flex justify-content-center">
                 <Card style={{ width: "20rem" }} bg="transparent" text="white">
                   <Accordion.Toggle
                     as={Card.Header}
@@ -55,11 +54,10 @@ export default class HomeView extends Component {
                 <Image
                   alt="logo"
                   src="../images/geo-exercise.png"
-                  className="mr-auto"
                   style={{ maxWidth: "100%" }}
                 />
               </Link>
-              <Accordion>
+              <Accordion className="d-flex justify-content-center">
                 <Card style={{ width: "20rem" }} bg="transparent" text="white">
                   <Accordion.Toggle
                     as={Card.Header}
@@ -84,16 +82,15 @@ export default class HomeView extends Component {
                 </Card>
               </Accordion>
             </Col>
-            <Col sm={4} className="my-5">
+            <Col md={4} className="my-5">
               <Link to="/list-interview-question">
                 <Image
                   alt="logo"
                   src="../images/webdev-exercise.png"
-                  className="mr-auto"
                   style={{ maxWidth: "100%" }}
                 />
               </Link>
-              <Accordion>
+              <Accordion className="d-flex justify-content-center">
                 <Card style={{ width: "20rem" }} bg="transparent" text="white">
                   <Accordion.Toggle
                     as={Card.Header}

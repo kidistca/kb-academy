@@ -61,12 +61,12 @@ export default class SingleInterviewQuestion extends Component {
               style={{ width: "45rem" }}
             >
               <Card.Header
-                // font-weight-lighter
-                className=" mt-3 mb-2 text-info text-newline"
+                className=" mt-3 mb-2 text-info text-newline font-weight-light"
                 as="h5"
               >
-                <strong as="h2">{index + 1}</strong>
-                {".  "}
+                <strong>{index + 1}</strong>
+                {". "}
+
                 {questionItem.question}
               </Card.Header>
               <Card.Body className="text-newline">
@@ -119,7 +119,7 @@ export default class SingleInterviewQuestion extends Component {
                         bg="transparent"
                       >
                         <Button variant="outline-secondary">
-                          View the explanation here
+                          View the explanation
                         </Button>
                       </Accordion.Toggle>
                     </Row>
@@ -129,15 +129,6 @@ export default class SingleInterviewQuestion extends Component {
                           <p className="text-info font-weight-lighter">
                             Solution: {questionItem.solution}
                           </p>
-                          {/* <Form>
-                          <Form.Group>
-                            <Form.Control
-                              as="textarea"
-                              rows="3"
-                              // {questionItem.description}
-                            />
-                          </Form.Group>
-                        </Form> */}
                           <p className="text-light">
                             {questionItem.description}
                           </p>
