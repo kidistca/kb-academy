@@ -70,6 +70,7 @@ export default class Profile extends Component {
                   <Row>
                     <Col>
                       <Image
+                        //image={"../images/correct.png"}
                         variant="top"
                         src={userOne.image}
                         alt={userOne.name}
@@ -87,11 +88,11 @@ export default class Profile extends Component {
                       </h5>
 
                       <Link to="/profile-edit">
-                        <Button className="my-3 mr-3" variant="info">
+                        <Button className="my-3 mr-3" variant="outline-light">
                           Edit Profile
                         </Button>
                       </Link>
-                      <Button className="pb-0" variant="info">
+                      <Button className="pb-0" variant="outline-light">
                         <PrettyFileInput
                           id="profile-photo"
                           type="file"
@@ -119,8 +120,12 @@ export default class Profile extends Component {
                   </Link>
                 </Fragment>
               )}
+              <Link to="/">
+                <Button variant="info" className="ml-3">
+                  Start an exercise!
+                </Button>
+              </Link>
             </Row>
-            )
           </Row>
         </Container>
       )

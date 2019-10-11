@@ -26,7 +26,8 @@ const schema = new mongoose.Schema({
     default: "Student"
   },
   image: {
-    type: String
+    type: String,
+    default: "https://pondokindahmall.co.id/assets/img/default.png"
   }
 });
 
