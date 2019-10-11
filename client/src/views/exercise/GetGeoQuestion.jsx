@@ -72,6 +72,9 @@ export default class ListGeoQuestions extends Component {
         </div>
       )) || (
         <Container>
+          <h1 className="font-weight-lighter text-info text-center mt-5">
+            Geography Questions
+          </h1>
           <Row className="d-flex justify-content-center">
             {questionGeoList.map((questionGeoItem, index) => (
               <div key={questionGeoItem._id}>

@@ -163,7 +163,7 @@ export default class SingleInterviewQuestion extends Component {
               </Card>
             </Col>
           </Row>
-          )
+
           {this.state.user.role === "Administrator" && (
             <Row>
               <Col className="d-flex justify-content-center">
